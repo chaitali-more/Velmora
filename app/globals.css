@@ -6,6 +6,12 @@ body {
 }
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
 }
 
 @keyframes shine {

@@ -1,4 +1,4 @@
-import type { Post } from '@/lib/posts'
+import type { Post } from '@/types/posts'
 import type { Metadata } from 'next'
 
 const DEFAULT_SITE_URL = 'http://localhost:3000'
@@ -89,19 +89,37 @@ export function buildRootMetadata(): Metadata {
 }
 
 export function buildHomeMetadata(): Metadata {
-  const title = 'Velmora | Tech, Health and Personal Growth'
+  const title = "Velmora - Free Online Tools & Calculators"
+
   const description =
-    'Discover practical articles on technology, productivity, healthy living, and personal growth at Velmora, with useful insights to improve everyday life.'
+    "Explore Velmora for free online tools like image compressor, QR code generator, and converters, along with health calculators such as BMI, calorie, and protein calculators."
 
   return {
     title,
     description,
+    keywords: [
+      "Velmora",
+      "free online tools",
+      "image compressor",
+      "QR code generator",
+      "image converter",
+      "health calculators",
+      "BMI calculator",
+      "calorie calculator",
+      "protein calculator",
+      "fitness tools",
+      "tech blog",
+      "productivity blog",
+      "personal growth",
+      "online utilities",
+      "free tools website"
+    ],
     alternates: {
-      canonical: '/',
+      canonical: "/",
     },
     openGraph: {
-      type: 'website',
-      url: '/',
+      type: "website",
+      url: "/",
       title,
       description,
       images: [
@@ -109,12 +127,12 @@ export function buildHomeMetadata(): Metadata {
           url: siteConfig.defaultOgImage,
           width: 1200,
           height: 630,
-          alt: 'Velmora homepage for technology, healthy breakfast, productivity, and personal growth articles',
+          alt: "Velmora tools, calculators, and blog insights for tech, health, and productivity",
         },
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       images: [siteConfig.defaultOgImage],
@@ -129,6 +147,7 @@ type StaticPageMetadataOptions = {
   description: string
   path: string
   imageAlt?: string
+  keywords?: string[]
 }
 
 export function buildStaticPageMetadata({
@@ -136,10 +155,12 @@ export function buildStaticPageMetadata({
   description,
   path,
   imageAlt,
+  keywords,
 }: StaticPageMetadataOptions): Metadata {
   return {
     title,
     description,
+    keywords,
     alternates: {
       canonical: path,
     },
@@ -168,6 +189,34 @@ export function buildStaticPageMetadata({
   }
 }
 
+type CalculatorMetadataOptions = {
+  title: string
+  description: string
+  path: string
+  keywords: string[]
+}
+
+export function buildCalculatorMetadata({
+  title,
+  description,
+  path,
+  keywords,
+}: CalculatorMetadataOptions): Metadata {
+  return buildStaticPageMetadata({
+    title,
+    description,
+    path,
+    keywords: [
+      ...keywords,
+      'Velmora calculator',
+      'health calculator',
+      'fitness calculator',
+      'nutrition calculator',
+    ],
+    imageAlt: `${title} on Velmora`,
+  })
+}
+
 export function buildBlogPostMetadata(post: Post): Metadata {
   const description = post.excerpt
   const canonicalPath = `/blog/${post.slug}`
@@ -177,6 +226,15 @@ export function buildBlogPostMetadata(post: Post): Metadata {
   return {
     title: browserTitle,
     description,
+    keywords: [
+      post.title,
+      post.category,
+      'Velmora',
+      'blog article',
+      'healthy living',
+      'technology',
+      'personal growth',
+    ],
     alternates: {
       canonical: canonicalPath,
     },

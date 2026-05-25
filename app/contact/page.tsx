@@ -4,12 +4,21 @@ import ContactForm from '@/components/ContactForm'
 import { buildStaticPageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = buildStaticPageMetadata({
-  title: 'Contact | Get in Touch for Collaboration & Queries',
-  description: 'Contact Velmora for inquiries, collaborations, feedback, or project ideas. We’d love to hear from you and help bring your ideas to life.',
-  path: '/contact',
-  imageAlt: 'Contact Velmora – Reach Out for Ideas, Feedback & Collaboration',
+  title: "Contact Velmora – Get in Touch for Support & Collaboration",
+  description:
+    "Get in touch with Velmora for support, collaborations, feedback, or business inquiries. Reach out easily and connect with us for partnerships, questions, or project ideas.",
+  path: "/contact",
+  imageAlt: "Contact Velmora for support, collaboration, and inquiries",
+  keywords: [
+    "contact Velmora",
+    "Velmora contact",
+    "contact for collaboration",
+    "business inquiries Velmora",
+    "website feedback",
+    "project collaboration",
+    "contact support online"
+  ],
 });
-
 export default function ContactPage() {
   return (
     <div>

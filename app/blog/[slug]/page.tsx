@@ -1,6 +1,8 @@
 // app/blog/[slug]/page.tsx
 import type { Metadata } from 'next'
-import { getPostBySlug, posts, type ListItem } from '@/lib/posts'
+import { connection } from 'next/server'
+import { getPostBySlug } from '@/lib/posts'
+import type { ListItem } from '@/types/posts'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
@@ -16,13 +18,9 @@ function buildKeywordRichAlt(text?: string) {
   return 'Velmora blog image about healthy living, nutrition, technology, and personal growth'
 }
 
-export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }))
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const post = await getPostBySlug(slug)
 
   if (!post) {
     return {
@@ -35,8 +33,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Props) {
+  await connection()
+
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const post = await getPostBySlug(slug)
 
   if (!post) notFound()
 
@@ -48,7 +48,7 @@ export default async function BlogPostPage({ params }: Props) {
   )
 
   return (
-    <article className="max-w-5xl mx-auto px-4 py-10">
+    <article className="mx-auto w-full max-w-7xl px-4 ">
 
       {/* Back */}
       <Link
@@ -73,17 +73,16 @@ export default async function BlogPostPage({ params }: Props) {
       </h1>
 
       {/* Cover Image */}
-      <div className="mb-10 overflow-hidden rounded-2xl">
-        <Image
-          src={post.image}
-          alt={post.alt}
-          width={1200}
-          height={600}
-          className="w-full h-[300px] md:h-[420px] object-cover"
-          priority
-        />
-      </div>
-
+    <div className="mb-10 overflow-hidden rounded-2xl aspect-[1200/630]">
+  <Image
+    src={post.image}
+    alt={post.alt}
+    width={1200}
+    height={630}
+    className="w-full h-full object-cover"
+    priority
+  />
+</div>
       {/* Divider */}
       <div className="h-px bg-zinc-200 dark:bg-zinc-800 mb-10" />
 
@@ -245,12 +244,12 @@ export default async function BlogPostPage({ params }: Props) {
                 className="
                   flex gap-3 items-start
                   rounded-xl p-4
-                  bg-blue-50 dark:bg-blue-500/10
-                  border border-blue-200 dark:border-blue-500/30
+                  bg-cyan-50 dark:bg-cyan-500/10
+                  border border-cyan-200 dark:border-cyan-500/30
                 "
               >
                 <span className="text-xl shrink-0">📌</span>
-                <p className="text-blue-800 dark:text-blue-300 text-sm md:text-base leading-relaxed">
+                <p className="text-cyan-800 dark:text-cyan-300 text-sm md:text-base leading-relaxed">
                   {block.text}
                 </p>
               </div>
@@ -467,7 +466,7 @@ export default async function BlogPostPage({ params }: Props) {
                   className="object-cover scale-100 group-hover:scale-110 transition duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80" />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 blur-2xl" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-cyan-400/20 via-violet-400/20 to-fuchsia-300/20 blur-2xl" />
                 <div className="relative z-10 p-8 md:p-12 text-white max-w-2xl">
                   <span className="inline-block mb-4 text-xs px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20">
                     🔥 Recommended Tool
@@ -483,7 +482,7 @@ export default async function BlogPostPage({ params }: Props) {
                     <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </a>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-60" />
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-300 opacity-60" />
               </div>
             )
           }
@@ -492,7 +491,7 @@ export default async function BlogPostPage({ params }: Props) {
           if (block.type === 'cta_inline') {
             return (
               <div key={i} className="group relative mt-4">
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500/40 via-purple-500/40 to-pink-500/40 opacity-0 group-hover:opacity-100 blur-md transition" />
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400/35 via-violet-400/35 to-fuchsia-300/35 opacity-0 group-hover:opacity-100 blur-md transition" />
                 <div className="relative rounded-xl p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.01]">
                   <a href={block.link} target="_blank" className="flex items-center justify-between">
                     <span className="font-medium text-zinc-800 dark:text-zinc-200">{block.text}</span>
@@ -507,10 +506,10 @@ export default async function BlogPostPage({ params }: Props) {
           if (block.type === 'cta_card') {
             return (
               <div key={i} className="group relative mt-10">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 blur-xl opacity-0 group-hover:opacity-100 transition duration-500" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/10 via-violet-400/10 to-fuchsia-300/10 blur-xl opacity-0 group-hover:opacity-100 transition duration-500" />
                 <div className="relative rounded-2xl p-6 md:p-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm group-hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.01]">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs px-3 py-1 rounded-full bg-indigo-100 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-300">
+                    <span className="text-xs px-3 py-1 rounded-full bg-violet-100 text-violet-700 dark:bg-violet-500/20 dark:text-violet-300">
                       🔥 Recommended
                     </span>
                     <span className="text-xs text-zinc-400">Used daily</span>
@@ -522,7 +521,7 @@ export default async function BlogPostPage({ params }: Props) {
                     <a
                       href={block.link}
                       target="_blank"
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.04]"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-violet-500 text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.04]"
                     >
                       {block.buttonText}
                       <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

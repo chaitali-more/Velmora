@@ -1,7 +1,7 @@
 "use client"
 
 import { useDeferredValue, useEffect, useEffectEvent, useRef, useState } from "react"
-import type { Post } from "@/lib/posts"
+import type { Post } from "@/types/posts"
 import PostCard from "./PostCard"
 const PAGE_SIZE = 4
 const ALL_CATEGORIES = "All"

@@ -1,7 +1,9 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import ScrollToTop from '@/components/ScrollToTop'
 import { buildRootMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = {
@@ -38,13 +40,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white min-h-screen">
+        <ScrollToTop />
         <Navbar />
-        <main className="container mx-auto px-4 py-12">
+        <main className="mx-auto w-full max-w-7xl px-4 py-12">
           {children}
         </main>
-        <footer className="text-center py-8 text-sm text-gray-400 dark:text-gray-600">
-          © 2026 Velmora. All rights reserved.
-        </footer>
+        <Footer />
       </body>
     </html>
   )

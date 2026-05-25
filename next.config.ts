@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     remotePatterns: [
       {
@@ -16,8 +15,13 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'i.pravatar.cc',
       },
+      {
+        protocol: 'https',
+        hostname: 'absolutescales.co.ke',
+      },
     ],
   },
+  turbopack: {}, // silences the error, enables Turbopack explicitly
 };
 
 export default nextConfig;
