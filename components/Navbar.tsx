@@ -1,20 +1,22 @@
 'use client'
 
-import { useEffect, useState, useSyncExternalStore } from 'react'
+import { type FocusEvent, useEffect, useState, useSyncExternalStore } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FiChevronDown, FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi'
 
 const calculatorLinks = [
-  { href: '/protein', label: 'Protein Calculator' },
-  { href: '/macro', label: 'Macro Calculator' },
-  { href: '/calorie', label: 'Calorie Calculator' },
   { href: '/bmi', label: 'BMI Calculator' },
   { href: '/bmr', label: 'BMR Calculator' },
+  { href: '/protein', label: 'Protein Calculator' },
+  { href: '/macro', label: 'Macro Calculator' },
+  { href: '/water', label: 'Water Intake Calculator' },
+  { href: '/calorie', label: 'Calorie Calculator' },
   { href: '/body-fat', label: 'Body Fat Calculator' },
   { href: '/ideal-weight', label: 'Ideal Weight Calculator' },
-  { href: '/water', label: 'Water Intake Calculator' },
+   
+ 
 ]
 
 const primaryLinks = [
@@ -81,6 +83,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileCalculatorsOpen, setMobileCalculatorsOpen] = useState(false)
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false)
+  const [desktopOpen, setDesktopOpen] = useState<'calculators' | 'tools' | null>(null)
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', dark)
@@ -95,6 +98,20 @@ export default function Navbar() {
     setMobileOpen(false)
     setMobileCalculatorsOpen(false)
     setMobileToolsOpen(false)
+  }
+
+  function closeDropdownFocus() {
+    closeMobileMenus()
+    setDesktopOpen(null)
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur()
+    }
+  }
+
+  function handleDesktopMenuBlur(event: FocusEvent<HTMLDivElement>) {
+    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+      setDesktopOpen(null)
+    }
   }
 
   const calculatorsActive =
@@ -129,9 +146,16 @@ export default function Navbar() {
               Home
             </Link>
 
-            <div className="group relative">
+            <div
+              className="relative"
+              onMouseEnter={() => setDesktopOpen('calculators')}
+              onMouseLeave={() => setDesktopOpen(null)}
+              onFocus={() => setDesktopOpen('calculators')}
+              onBlur={handleDesktopMenuBlur}
+            >
               <Link
                 href="/calculators"
+                onClick={closeDropdownFocus}
                 className={`flex items-center gap-1 rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   calculatorsActive
                     ? 'bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 text-white shadow-[0_14px_28px_rgba(167,139,250,0.45)] hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(167,139,250,0.55)]'
@@ -139,14 +163,25 @@ export default function Navbar() {
                 }`}
               >
                 Calculators
-                <FiChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" />
+                <FiChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${
+                    desktopOpen === 'calculators' ? 'rotate-180' : ''
+                  }`}
+                />
               </Link>
 
               <div className="pointer-events-none absolute left-0 top-full z-20 h-3 w-full" />
-              <div className="invisible absolute left-0 top-full z-20 w-80 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+              <div
+                className={`absolute left-0 top-full z-20 w-80 pt-3 transition-all duration-200 ${
+                  desktopOpen === 'calculators'
+                    ? 'visible translate-y-0 opacity-100'
+                    : 'invisible translate-y-2 opacity-0'
+                }`}
+              >
                 <div className="rounded-2xl border border-white/70 bg-white/95 p-2 shadow-[0_24px_54px_rgba(15,23,42,0.16)] backdrop-blur dark:border-white/10 dark:bg-slate-900/95 dark:shadow-[0_24px_54px_rgba(0,0,0,0.45)]">
                 <Link
                   href="/calculators"
+                  onClick={closeDropdownFocus}
                   className={`block rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${
                     pathname === '/calculators'
                       ? 'bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 text-white shadow-[0_14px_28px_rgba(167,139,250,0.45)] hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(167,139,250,0.55)]'
@@ -163,6 +198,7 @@ export default function Navbar() {
                     <Link
                       key={calculator.href}
                       href={calculator.href}
+                      onClick={closeDropdownFocus}
                       className={getDropdownLinkClasses(pathname === calculator.href)}
                     >
                       {calculator.label}
@@ -173,9 +209,16 @@ export default function Navbar() {
               </div>
             </div>
 
-            <div className="group relative">
+            <div
+              className="relative"
+              onMouseEnter={() => setDesktopOpen('tools')}
+              onMouseLeave={() => setDesktopOpen(null)}
+              onFocus={() => setDesktopOpen('tools')}
+              onBlur={handleDesktopMenuBlur}
+            >
               <Link
                 href="/tools"
+                onClick={closeDropdownFocus}
                 className={`flex items-center gap-1 rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   toolsActive
                     ? 'bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 text-white shadow-[0_14px_28px_rgba(167,139,250,0.45)] hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(167,139,250,0.55)]'
@@ -183,14 +226,25 @@ export default function Navbar() {
                 }`}
               >
                 Tools
-                <FiChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" />
+                <FiChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${
+                    desktopOpen === 'tools' ? 'rotate-180' : ''
+                  }`}
+                />
               </Link>
 
               <div className="pointer-events-none absolute left-0 top-full z-20 h-3 w-full" />
-              <div className="invisible absolute left-0 top-full z-20 w-72 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+              <div
+                className={`absolute left-0 top-full z-20 w-72 pt-3 transition-all duration-200 ${
+                  desktopOpen === 'tools'
+                    ? 'visible translate-y-0 opacity-100'
+                    : 'invisible translate-y-2 opacity-0'
+                }`}
+              >
                 <div className="rounded-2xl border border-white/70 bg-white/95 p-2 shadow-[0_24px_54px_rgba(15,23,42,0.16)] backdrop-blur dark:border-white/10 dark:bg-slate-900/95 dark:shadow-[0_24px_54px_rgba(0,0,0,0.45)]">
                   <Link
                     href="/tools"
+                    onClick={closeDropdownFocus}
                     className={`block rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${
                       pathname === '/tools'
                         ? 'bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 text-white shadow-[0_14px_28px_rgba(167,139,250,0.45)] hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(167,139,250,0.55)]'
@@ -207,6 +261,7 @@ export default function Navbar() {
                       <Link
                         key={tool.href}
                         href={tool.href}
+                        onClick={closeDropdownFocus}
                         className={getDropdownLinkClasses(pathname === tool.href)}
                       >
                         {tool.label}
