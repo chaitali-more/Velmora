@@ -127,14 +127,14 @@ export default function Navbar() {
           <Link href="/" className="shrink-0">
             <Image
               src="/images/velmora-logo-white-black.png"
-              alt="Velmora logo for technology, healthy living, and personal growth blog"
+              alt="Velmora India logo for free calculators, online tools, and healthy living blog"
               width={184}
               height={57}
               className="block h-auto w-[150px] dark:hidden sm:w-[184px]"
             />
             <Image
               src="/images/velmora-blogs-logo2.png"
-              alt="Velmora - technology, healthy living, and personal growth blog"
+              alt="Velmora dark theme logo for Indian tools, calculators, and productivity guides"
               width={184}
               height={57}
               className="hidden h-auto w-[150px] dark:block sm:w-[184px]"

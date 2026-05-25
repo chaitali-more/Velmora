@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description:
       'Create and publish a new Velmora blog post with title, excerpt, image, category, and structured article content.',
     path: '/add-blog',
-    imageAlt: 'Velmora add blog editor page',
+    imageAlt: 'Velmora India add blog editor for publishing SEO friendly articles',
     keywords: ['add blog', 'create blog post', 'Velmora editor', 'publish article'],
   }),
   robots: {

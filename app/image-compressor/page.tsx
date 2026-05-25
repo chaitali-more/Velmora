@@ -7,7 +7,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
   description:
     "Compress images online and reduce file size without losing quality. Use Velmora’s free image compressor for JPG, PNG, WebP, GIF, and more. No upload, fast, secure, and no watermark.",
   path: "/image-compressor",
-  imageAlt: "Free image compressor to reduce JPG PNG WebP file size on Velmora",
+  imageAlt: "Free image compressor India to reduce JPG PNG and WebP file size on Velmora",
   keywords: [
     "image compressor",
     "compress image online",

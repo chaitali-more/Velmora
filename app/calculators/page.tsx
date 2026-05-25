@@ -49,7 +49,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
   description:
     "Explore free fitness and health calculators including BMI, BMR, calorie, protein, macro, body fat, ideal weight, and water intake tools. Get accurate results instantly to track your health and fitness goals.",
   path: "/calculators",
-  imageAlt: "Velmora health and fitness calculators including BMI BMR calorie tools",
+  imageAlt: "Velmora India health and fitness calculators for BMI BMR calories protein macros and water intake",
   keywords: [
     "health calculators",
     "fitness calculators",

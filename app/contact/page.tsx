@@ -8,7 +8,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
   description:
     "Get in touch with Velmora for support, collaborations, feedback, or business inquiries. Reach out easily and connect with us for partnerships, questions, or project ideas.",
   path: "/contact",
-  imageAlt: "Contact Velmora for support, collaboration, and inquiries",
+  imageAlt: "Contact Velmora India for tool support collaborations and online calculator inquiries",
   keywords: [
     "contact Velmora",
     "Velmora contact",

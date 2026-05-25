@@ -626,7 +626,11 @@ export default function ImageCompressorClientPage() {
               <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
                 {images.map((image) => (
                   <div key={image.id} className="relative rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3">
-                    <img src={image.previewUrl} alt="" className="aspect-square w-full rounded-xl object-cover" />
+                    <img
+                      src={image.previewUrl}
+                      alt={`Uploaded ${image.name} preview before image compression`}
+                      className="aspect-square w-full rounded-xl object-cover"
+                    />
                     <p className="mt-2 truncate text-xs font-black text-[var(--tool-text)]">{image.name}</p>
                     <p className="mt-1 text-[11px] font-medium text-[var(--tool-muted)]">{formatBytes(image.size)}</p>
                     {image.resolutionWarning ? (
@@ -736,7 +740,7 @@ export default function ImageCompressorClientPage() {
                     >
                       <img
                         src={result.previewUrl}
-                        alt=""
+                        alt={`Compressed ${result.outputName} preview with ${saved}% smaller file size`}
                         loading="lazy"
                         className="h-[60px] w-[60px] rounded-xl object-cover"
                       />

@@ -472,7 +472,11 @@ export default function ImageConverterClientPage() {
                     key={image.id}
                     className="relative grid grid-cols-[72px_1fr] gap-3 rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3"
                   >
-                    <img src={image.previewUrl} alt="" className="h-[72px] w-[72px] rounded-xl object-cover" />
+                    <img
+                      src={image.previewUrl}
+                      alt={`Uploaded ${image.name} preview before image conversion`}
+                      className="h-[72px] w-[72px] rounded-xl object-cover"
+                    />
                     <div className="min-w-0 pr-7">
                       <span className={`inline-flex rounded-full px-2.5 py-1 text-[11px] font-black ${badgeClasses[image.detectedFormat]}`}>
                         {image.detectedFormat}
@@ -583,7 +587,11 @@ export default function ImageConverterClientPage() {
                       className="result-row grid gap-3 rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3 sm:grid-cols-[60px_1fr_auto]"
                       style={{ animationDelay: `${index * 45}ms` }}
                     >
-                      <img src={image.previewUrl} alt="" className="h-[60px] w-[60px] rounded-xl object-cover" />
+                      <img
+                        src={image.previewUrl}
+                        alt={`Converted ${image.outputName} preview from ${image.from} to ${image.to}`}
+                        className="h-[60px] w-[60px] rounded-xl object-cover"
+                      />
                       <div className="min-w-0">
                         <p className="truncate text-sm font-black text-[var(--tool-text)]">{image.outputName}</p>
                         <div className="mt-1 flex flex-wrap items-center gap-2 text-xs font-bold text-[var(--tool-muted)]">

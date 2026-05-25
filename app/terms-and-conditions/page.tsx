@@ -5,7 +5,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
   description:
     "Read Velmora’s terms and conditions to understand the rules for using our website, including tools, calculators, content, and services. Learn about user responsibilities, limitations, and legal policies.",
   path: "/terms-and-conditions",
-  imageAlt: "Velmora terms and conditions for website usage and policies",
+  imageAlt: "Velmora India terms and conditions for free tools calculators and website usage",
   keywords: [
     "terms and conditions",
     "Velmora terms and conditions",

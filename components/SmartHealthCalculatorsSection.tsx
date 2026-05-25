@@ -373,9 +373,9 @@ Get accurate insights to make smarter fitness decisions every day.
                     <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
                       {calculator.metric}
                     </p>
-                    <h3 className="mt-3 text-[clamp(2rem,10vw,2.55rem)] font-black leading-tight tracking-tight text-slate-950 dark:text-white">
+                    <div className="mt-3 text-[clamp(2rem,10vw,2.55rem)] font-black leading-tight tracking-tight text-slate-950 dark:text-white">
                       {calculator.title}
-                    </h3>
+                    </div>
                     <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-300">
                       {calculator.description}
                     </p>
@@ -474,9 +474,9 @@ Get accurate insights to make smarter fitness decisions every day.
                           <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
                             {calculator.metric}
                           </p>
-                          <h3 className="mt-3 text-3xl font-black leading-tight tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+                          <h2 className="mt-3 text-3xl font-black leading-tight tracking-tight text-slate-950 dark:text-white sm:text-4xl">
                             {calculator.title}
-                          </h3>
+                          </h2>
                           <p className="mt-5 min-h-[104px] text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg sm:leading-8">
                             {calculator.description}
                           </p>

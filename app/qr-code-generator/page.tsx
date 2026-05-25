@@ -7,7 +7,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
   description:
     "Generate free QR codes instantly for URLs, PDFs, images, and text. No signup required, no expiry, and fully customizable. Create high-quality QR codes online for business, marketing, and personal use.",
   path: "/qr-code-generator",
-  imageAlt: "Free QR code generator for URLs, PDFs, and text on Velmora",
+  imageAlt: "Free QR code generator India for website URLs PDF links and instant QR downloads on Velmora",
   keywords: [
     "free QR code generator",
     "QR code generator",

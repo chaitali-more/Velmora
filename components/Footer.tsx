@@ -75,14 +75,14 @@ export default function Footer() {
             <Link href="/" className="inline-flex">
               <Image
                 src="/images/velmora-logo-white-black.png"
-                alt="Velmora logo"
+                alt="Velmora logo for free Indian tools, health calculators, and blog guides"
                 width={184}
                 height={57}
                 className="block h-auto w-[150px] dark:hidden"
               />
               <Image
                 src="/images/velmora-blogs-logo2.png"
-                alt="Velmora logo"
+                alt="Velmora dark mode logo for Indian calculators, online tools, and blogs"
                 width={184}
                 height={57}
                 className="hidden h-auto w-[150px] dark:block"

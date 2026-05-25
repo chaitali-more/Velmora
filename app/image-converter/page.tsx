@@ -7,7 +7,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
   description:
     "Convert images to JPG, PNG, or WebP instantly with Velmora’s free image converter. No upload required, works in your browser, fast, secure, and no watermark.",
   path: "/image-converter",
-  imageAlt: "Free image converter for JPG PNG WebP on Velmora",
+  imageAlt: "Free image converter India for JPG PNG and WebP browser based conversion on Velmora",
   keywords: [
     "image converter",
     "convert image online",

@@ -148,12 +148,12 @@ function ToolRow({ tool, isOpen, onToggle }: { tool: Tool; isOpen: boolean; onTo
 
         {/* Title block */}
         <div className="flex flex-1 flex-col gap-1 sm:flex-row sm:items-center sm:gap-6">
-          <h3
+          <h2
             className="text-3xl font-black tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl"
             style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}
           >
             {tool.title}
-          </h3>
+          </h2>
 
           {/* Badges — visible only when closed */}
           <AnimatePresence>

@@ -6,7 +6,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
   description:
     "Read Velmora’s privacy policy to understand how we collect, use, and protect your data, including cookies, analytics, and tool inputs. Learn about your privacy rights and how your information is handled securely.",
   path: "/privacy-policy",
-  imageAlt: "Velmora privacy policy for data, cookies, and user privacy",
+  imageAlt: "Velmora India privacy policy for data cookies online tools and user privacy",
   keywords: [
     "privacy policy",
     "Velmora privacy policy",

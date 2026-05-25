@@ -7,7 +7,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
   description:
     "Browse the complete sitemap of Velmora, including all tools, calculators, blogs, and important pages. Easily navigate and discover free online tools, health calculators, and useful resources in one place.",
   path: "/sitemap",
-  imageAlt: "Velmora sitemap with all tools, calculators, and pages",
+  imageAlt: "Velmora India sitemap listing all free tools calculators blogs and policy pages",
   keywords: [
     "sitemap",
     "Velmora sitemap",

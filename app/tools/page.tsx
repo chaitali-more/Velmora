@@ -28,7 +28,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
   description:
     "Explore Velmora’s free online tools including QR code generator, image converter, and image compressor. Fast browser-based tools with no signup, no upload, and no watermark.",
   path: "/tools",
-  imageAlt: "Velmora free online tools including QR code generator image converter and image compressor",
+  imageAlt: "Velmora India free online tools for QR codes image converter and image compressor",
   keywords: [
     "free online tools",
     "Velmora tools",

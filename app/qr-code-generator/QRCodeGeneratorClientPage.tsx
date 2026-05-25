@@ -180,7 +180,7 @@ export default function QRCodeGeneratorClientPage() {
                   <div className="rounded-[1.75rem] border border-white/80 bg-white p-4 shadow-[0_24px_54px_rgba(15,23,42,0.18)] dark:border-white/10 dark:shadow-[0_24px_54px_rgba(0,0,0,0.45)]">
                     <img
                       src={qrCodeUrl}
-                      alt="Generated QR code"
+                      alt={`Generated ${mode === "url" ? "website URL" : "PDF link"} QR code for ${trimmedInput}`}
                       className="h-64 w-64 rounded-2xl sm:h-80 sm:w-80"
                     />
                   </div>

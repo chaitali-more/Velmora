@@ -1,14 +1,14 @@
 import type { Post } from '@/types/posts'
 import type { Metadata } from 'next'
 
-const DEFAULT_SITE_URL = 'http://localhost:3000'
+const DEFAULT_SITE_URL = 'https://velmora.com'
 
 export const siteConfig = {
   name: 'Velmora',
   description: 'A thoughtful blog about technology, life, creativity, and growth.',
   author: 'Velmora',
   publisher: 'Velmora',
-  imageAlt: 'Velmora blog covering technology, healthy living, productivity, and personal growth',
+  imageAlt: 'Velmora India blog for free online tools, health calculators, productivity, and healthy living',
   defaultOgImage: '/opengraph-image',
   twitterHandle: '@velmora',
 }
@@ -127,7 +127,7 @@ export function buildHomeMetadata(): Metadata {
           url: siteConfig.defaultOgImage,
           width: 1200,
           height: 630,
-          alt: "Velmora tools, calculators, and blog insights for tech, health, and productivity",
+          alt: "Velmora India homepage with free online tools, health calculators, and productivity blog guides",
         },
       ],
     },
@@ -174,7 +174,7 @@ export function buildStaticPageMetadata({
           url: siteConfig.defaultOgImage,
           width: 1200,
           height: 630,
-          alt: imageAlt ?? `${title} | Velmora article on technology, healthy living, and personal growth`,
+          alt: imageAlt ?? `${title} for Indian readers on Velmora tools, calculators, and blog guides`,
         },
       ],
     },
@@ -213,7 +213,7 @@ export function buildCalculatorMetadata({
       'fitness calculator',
       'nutrition calculator',
     ],
-    imageAlt: `${title} on Velmora`,
+    imageAlt: `${title} for Indian users on Velmora health and fitness calculators`,
   })
 }
 

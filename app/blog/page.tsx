@@ -9,7 +9,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
   description:
     'Browse all Velmora blog posts on technology, fitness, productivity, healthy living, and personal growth.',
   path: '/blog',
-  imageAlt: 'Insights by Velmora blog posts on technology fitness productivity and personal growth',
+  imageAlt: 'Velmora India blog posts on fitness calculators online tools productivity and healthy living',
   keywords: [
     'Velmora blog',
     'Insights by Velmora',
