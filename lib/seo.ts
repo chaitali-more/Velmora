@@ -1,7 +1,7 @@
 import type { Post } from '@/types/posts'
 import type { Metadata } from 'next'
 
-const DEFAULT_SITE_URL = 'https://velmora.com'
+const DEFAULT_SITE_URL = 'https://www.velmoranow.in'
 
 export const siteConfig = {
   name: 'Velmora',
@@ -16,14 +16,15 @@ export const siteConfig = {
 export function getSiteUrl() {
   const siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL ??
-    process.env.SITE_URL ??
-    process.env.VERCEL_PROJECT_PRODUCTION_URL
+    process.env.SITE_URL
 
   if (!siteUrl) {
     return DEFAULT_SITE_URL
   }
 
-  return siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}`
+  const absoluteSiteUrl = siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}`
+
+  return absoluteSiteUrl.replace(/\/$/, '')
 }
 
 export function buildRootMetadata(): Metadata {
