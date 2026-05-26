@@ -2,6 +2,7 @@ import type { Post } from '@/types/posts'
 import type { Metadata } from 'next'
 
 const DEFAULT_SITE_URL = 'https://www.velmoranow.in'
+const MAX_META_DESCRIPTION_LENGTH = 160
 
 export const siteConfig = {
   name: 'Velmora',
@@ -25,6 +26,23 @@ export function getSiteUrl() {
   const absoluteSiteUrl = siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}`
 
   return absoluteSiteUrl.replace(/\/$/, '')
+}
+
+function trimMetaDescription(description: string) {
+  const normalizedDescription = description.replace(/\s+/g, ' ').trim()
+
+  if (normalizedDescription.length <= MAX_META_DESCRIPTION_LENGTH) {
+    return normalizedDescription
+  }
+
+  const shortenedDescription = normalizedDescription.slice(0, MAX_META_DESCRIPTION_LENGTH + 1)
+  const lastSpaceIndex = shortenedDescription.lastIndexOf(' ')
+  const trimmedDescription =
+    lastSpaceIndex > 0
+      ? shortenedDescription.slice(0, lastSpaceIndex)
+      : shortenedDescription.slice(0, MAX_META_DESCRIPTION_LENGTH)
+
+  return trimmedDescription.replace(/[,.!?;:]+$/, '')
 }
 
 export function buildRootMetadata(): Metadata {
@@ -93,7 +111,7 @@ export function buildHomeMetadata(): Metadata {
   const title = "Velmora - Free Online Tools & Calculators"
 
   const description =
-    "Explore Velmora for free online tools like image compressor, QR code generator, and converters, along with health calculators such as BMI, calorie, and protein calculators."
+    trimMetaDescription("Explore Velmora for free online tools like image compressor, QR code generator, and converters, along with health calculators such as BMI, calorie, and protein calculators.")
 
   return {
     title,
@@ -158,9 +176,11 @@ export function buildStaticPageMetadata({
   imageAlt,
   keywords,
 }: StaticPageMetadataOptions): Metadata {
+  const metaDescription = trimMetaDescription(description)
+
   return {
     title,
-    description,
+    description: metaDescription,
     keywords,
     alternates: {
       canonical: path,
@@ -169,7 +189,7 @@ export function buildStaticPageMetadata({
       type: 'website',
       url: path,
       title,
-      description,
+      description: metaDescription,
       images: [
         {
           url: siteConfig.defaultOgImage,
@@ -182,7 +202,7 @@ export function buildStaticPageMetadata({
     twitter: {
       card: 'summary_large_image',
       title,
-      description,
+      description: metaDescription,
       images: [siteConfig.defaultOgImage],
       creator: siteConfig.twitterHandle,
       site: siteConfig.twitterHandle,
@@ -219,7 +239,7 @@ export function buildCalculatorMetadata({
 }
 
 export function buildBlogPostMetadata(post: Post): Metadata {
-  const description = post.excerpt
+  const description = trimMetaDescription(post.excerpt)
   const canonicalPath = `/blog/${post.slug}`
   const publishedTime = new Date(`${post.date}T00:00:00.000Z`).toISOString()
   const browserTitle = post.browserTitle ?? post.title

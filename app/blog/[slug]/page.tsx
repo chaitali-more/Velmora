@@ -363,8 +363,10 @@ export default async function BlogPostPage({ params }: Props) {
                   <Image
                     src={block.image.src}
                     alt={buildKeywordRichAlt(block.image.alt)}
-                    fill
-                    className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                    width={900}
+                    height={720}
+                    className="absolute inset-0 h-full w-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 768px) 100vw, 40vw"
                   />
 
                   {/* Caption as bottom overlay */}
@@ -462,8 +464,10 @@ export default async function BlogPostPage({ params }: Props) {
                 <Image
                   src={block.image}
                   alt={buildKeywordRichAlt(block.title)}
-                  fill
-                  className="object-cover scale-100 group-hover:scale-110 transition duration-700 ease-out"
+                  width={1200}
+                  height={630}
+                  className="absolute inset-0 h-full w-full object-cover scale-100 group-hover:scale-110 transition duration-700 ease-out"
+                  sizes="(max-width: 768px) 100vw, 1200px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80" />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-cyan-400/20 via-violet-400/20 to-fuchsia-300/20 blur-2xl" />

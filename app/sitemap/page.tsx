@@ -29,7 +29,7 @@ const mainPages = [
       'The main landing page of Velmora. Start from the main hub for free online tools, health calculators, and quick access to the blog.',
   },
   {
-    title: 'Fitness & Health Calculators',
+    title: 'All Fitness & Health Calculators',
     href: '/calculators',
     displayUrl: 'velmora.com/calculators',
     description:
@@ -60,7 +60,7 @@ const mainPages = [
 
 const toolPages = [
   {
-    title: 'Free Online Tools',
+    title: 'All Free Online Tools',
     href: '/tools',
     displayUrl: 'velmora.com/tools',
     description:

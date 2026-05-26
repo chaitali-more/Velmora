@@ -25,7 +25,6 @@ export default async function BlogPage() {
   await connection()
 
   const posts = await getPosts()
-  const initialPosts = posts.slice(0, 4)
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4">
@@ -53,7 +52,7 @@ export default async function BlogPage() {
         <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
       </div>
 
-      <PostList initialPosts={initialPosts} allPosts={posts} />
+      <PostList initialPosts={posts} allPosts={posts} />
     </div>
   )
 }

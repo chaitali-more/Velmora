@@ -314,7 +314,7 @@
       },
       {
         "type": "subheading",
-        "text": "Why it's great for weight loss"
+        "text": "Why vegetable poha helps with weight loss"
       },
       {
         "type": "paragraph",
@@ -345,7 +345,7 @@
       },
       {
         "type": "subheading",
-        "text": "Why it's great for weight loss"
+        "text": "Why oats upma helps with weight loss"
       },
       {
         "type": "paragraph",
@@ -381,7 +381,7 @@
       },
       {
         "type": "subheading",
-        "text": "Why it's great for weight loss"
+        "text": "Why besan chilla helps with weight loss"
       },
       {
         "type": "paragraph",
@@ -412,7 +412,7 @@
       },
       {
         "type": "subheading",
-        "text": "Why it's great for weight loss"
+        "text": "Why sprouts salad helps with weight loss"
       },
       {
         "type": "paragraph",
@@ -443,7 +443,7 @@
       },
       {
         "type": "subheading",
-        "text": "Why it's great for weight loss"
+        "text": "Why overnight oats help with weight loss"
       },
       {
         "type": "paragraph",
@@ -474,7 +474,7 @@
       },
       {
         "type": "subheading",
-        "text": "Why it's great for weight loss"
+        "text": "Why vegetable upma helps with weight loss"
       },
       {
         "type": "paragraph",
@@ -505,7 +505,7 @@
       },
       {
         "type": "subheading",
-        "text": "Why it's great for weight loss"
+        "text": "Why a banana oats smoothie helps with weight loss"
       },
       {
         "type": "paragraph",
@@ -910,7 +910,7 @@
           "Choose one habit to change (walking, eating more protein, drinking water)"
         ],
         "link": {
-          "href": "/blog/weight-loss-habits-that-actually-work",
+          "href": "/blog/calorie-calculator-guide",
           "label": "Read weight loss tips"
         }
       },
@@ -1624,7 +1624,7 @@
       {
         "type": "image_content",
         "image": {
-          "src": "bmi-calculator-weight-loss-guide",
+          "src": "/images/bmi-calculator-weight-loss-guide.png",
           "alt": "Person checking body weight on scale for ideal weight calculator India healthy range guide",
           "caption": "Track progress, not just the number"
         },
