@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import BMIForm from "@/components/bmi/BMIForm";
@@ -57,7 +57,7 @@ export default function BMIPage() {
     setBmi(null);
   };
 
-  const shareUrl = buildShareUrl("/bmi", {
+  const shareUrl = buildShareUrl("/bmi-calculator", {
     u: unit,
     w: weight,
     h: height,

@@ -4,7 +4,7 @@ import type { BMRUnitToggleProps } from "@/types/bmr";
 
 export default function UnitToggle({ unit, onChange }: BMRUnitToggleProps) {
   return (
-    <div className="mb-6 flex w-full rounded-2xl border border-white/70 bg-white/70 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_10px_24px_rgba(15,23,42,0.08)] backdrop-blur sm:inline-flex sm:w-auto dark:border-white/10 dark:bg-slate-900/80 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_10px_24px_rgba(0,0,0,0.35)]">
+    <div className="mb-6 flex w-full rounded-xl border border-white/70 bg-white/70 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_10px_24px_rgba(15,23,42,0.08)] backdrop-blur sm:inline-flex sm:w-auto dark:border-white/10 dark:bg-slate-900/80 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_10px_24px_rgba(0,0,0,0.35)]">
       {(["metric", "imperial"] as const).map((option) => {
         const isActive = unit === option;
 

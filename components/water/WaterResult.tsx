@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { WaterResultProps } from "@/types/water";
 
@@ -32,13 +32,13 @@ export default function WaterResult({ liters, glasses, activity, actions }: Wate
         </span>
       </div>
 
-      <div className="rounded-3xl border border-white/70 bg-white/80 p-5 shadow-[0_20px_60px_rgba(16,24,40,0.16)] backdrop-blur dark:border-white/10 dark:bg-slate-900/80 dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+      <div className="rounded-xl border border-white/70 bg-white/80 p-5 shadow-[0_20px_60px_rgba(16,24,40,0.16)] backdrop-blur dark:border-white/10 dark:bg-slate-900/80 dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
         <p className="text-base font-semibold text-slate-800 dark:text-slate-100">
-          💧 You should drink <span className="text-cyan-600 dark:text-cyan-300">{liters.toFixed(2)} liters</span> of water per day
+          ?? You should drink <span className="text-cyan-600 dark:text-cyan-300">{liters.toFixed(2)} liters</span> of water per day
         </p>
 
         <p className="mt-2 text-sm font-medium text-slate-600 dark:text-slate-300">
-          🥛 ≈ {glasses} glasses per day
+          ?? Ëœ {glasses} glasses per day
         </p>
 
         <div className="mt-5">

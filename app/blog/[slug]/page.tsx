@@ -48,7 +48,7 @@ export default async function BlogPostPage({ params }: Props) {
   )
 
   return (
-    <article className="mx-auto w-full max-w-7xl px-4 ">
+    <article className="mx-auto w-full max-w-7xl px-4">
 
       {/* Back */}
       <Link
@@ -73,7 +73,7 @@ export default async function BlogPostPage({ params }: Props) {
       </h1>
 
       {/* Cover Image */}
-    <div className="mb-10 overflow-hidden rounded-2xl aspect-[1200/630]">
+    <div className="mb-10 overflow-hidden rounded-xl aspect-[1200/630]">
   <Image
     src={post.image}
     alt={post.alt}
@@ -197,7 +197,7 @@ export default async function BlogPostPage({ params }: Props) {
           if (block.type === 'image') {
             return (
               <figure key={i} className="my-8">
-                <div className="overflow-hidden rounded-2xl">
+                <div className="overflow-hidden rounded-xl">
                   <Image
                     src={block.src}
                     alt={buildKeywordRichAlt(block.alt)}
@@ -259,7 +259,7 @@ export default async function BlogPostPage({ params }: Props) {
           // ─── Comparison / Data Table ──────────────────────────────────
           if (block.type === 'table') {
             return (
-              <div key={i} className="my-8 overflow-x-auto rounded-2xl border border-zinc-200 dark:border-zinc-800">
+              <div key={i} className="my-8 overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
                 <table className="w-full text-sm md:text-base border-collapse">
                   <thead>
                     <tr className="bg-zinc-100 dark:bg-zinc-800">
@@ -350,7 +350,7 @@ export default async function BlogPostPage({ params }: Props) {
                 className={`
                   group flex flex-col md:flex-row
                   ${block.reverse ? 'md:flex-row-reverse' : ''}
-                  my-10 overflow-hidden rounded-2xl
+                  my-10 overflow-hidden rounded-xl
                   border border-zinc-200 dark:border-zinc-800
                   bg-white dark:bg-zinc-900
                   shadow-sm hover:shadow-xl
@@ -363,10 +363,8 @@ export default async function BlogPostPage({ params }: Props) {
                   <Image
                     src={block.image.src}
                     alt={buildKeywordRichAlt(block.image.alt)}
-                    width={900}
-                    height={720}
-                    className="absolute inset-0 h-full w-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
-                    sizes="(max-width: 768px) 100vw, 40vw"
+                    fill
+                    className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
 
                   {/* Caption as bottom overlay */}
@@ -464,10 +462,8 @@ export default async function BlogPostPage({ params }: Props) {
                 <Image
                   src={block.image}
                   alt={buildKeywordRichAlt(block.title)}
-                  width={1200}
-                  height={630}
-                  className="absolute inset-0 h-full w-full object-cover scale-100 group-hover:scale-110 transition duration-700 ease-out"
-                  sizes="(max-width: 768px) 100vw, 1200px"
+                  fill
+                  className="object-cover scale-100 group-hover:scale-110 transition duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80" />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-cyan-400/20 via-violet-400/20 to-fuchsia-300/20 blur-2xl" />
@@ -510,8 +506,8 @@ export default async function BlogPostPage({ params }: Props) {
           if (block.type === 'cta_card') {
             return (
               <div key={i} className="group relative mt-10">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/10 via-violet-400/10 to-fuchsia-300/10 blur-xl opacity-0 group-hover:opacity-100 transition duration-500" />
-                <div className="relative rounded-2xl p-6 md:p-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm group-hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.01]">
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400/10 via-violet-400/10 to-fuchsia-300/10 blur-xl opacity-0 group-hover:opacity-100 transition duration-500" />
+                <div className="relative rounded-xl p-6 md:p-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm group-hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.01]">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs px-3 py-1 rounded-full bg-violet-100 text-violet-700 dark:bg-violet-500/20 dark:text-violet-300">
                       🔥 Recommended

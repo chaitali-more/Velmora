@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&display=swap");
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -21,4 +22,44 @@ body {
   100% {
     left: 120%;
   }
+}
+
+.image-compressor-shell,
+.image-converter-shell {
+  --tool-bg: #f4f4fa;
+  --tool-card: #ffffff;
+  --tool-border: #e5e5ef;
+  --tool-text: #111827;
+  --tool-muted: #64748b;
+  --tool-soft: #f8fafc;
+}
+
+.dark .image-compressor-shell,
+.dark .image-converter-shell {
+  --tool-bg: #0d0d1a;
+  --tool-card: #13131f;
+  --tool-border: rgba(255, 255, 255, 0.08);
+  --tool-text: #f8fafc;
+  --tool-muted: #94a3b8;
+  --tool-soft: #0d1220;
+}
+
+.compressor-range,
+.converter-range {
+  accent-color: #8b5cf6;
+}
+
+@keyframes resultIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-row {
+  animation: resultIn 0.35s ease both;
 }

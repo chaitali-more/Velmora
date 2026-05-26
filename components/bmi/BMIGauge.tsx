@@ -139,7 +139,7 @@ export default function BMIGauge({ bmi }: Props) {
     <div className="mt-7 space-y-4">
       {/* Card — adapts to light/dark */}
       <div
-        className="relative overflow-hidden rounded-2xl p-5 sm:p-6
+        className="relative overflow-hidden rounded-xl p-5 sm:p-6
           bg-white/80 border border-slate-200 shadow-lg
           dark:bg-[rgba(15,15,28,0.72)] dark:border-white/10 dark:shadow-[0_24px_64px_rgba(0,0,0,0.55)]"
         style={{

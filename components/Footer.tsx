@@ -11,10 +11,10 @@ const quickLinks = [
 ]
 
 const calculatorLinks = [
-  { href: '/bmi', label: 'BMI Calculator' },
-  { href: '/calorie', label: 'Calorie Calculator' },
-  { href: '/protein', label: 'Protein Calculator' },
-  { href: '/water', label: 'Water Intake Calculator' },
+  { href: '/bmi-calculator', label: 'BMI Calculator' },
+  { href: '/daily-calorie-needs-calculator', label: 'Calorie Calculator' },
+  { href: '/protein-calculator', label: 'Protein Calculator' },
+  { href: '/water-intake-calculator', label: 'Water Intake Calculator' },
 ]
 
 const toolLinks = [
@@ -142,7 +142,7 @@ export default function Footer() {
             return (
               <div
                 key={signal.label}
-                className="group rounded-2xl border border-slate-200 bg-slate-50/50 p-4 transition-colors hover:border-cyan-200 dark:border-white/5 dark:bg-slate-900/50 dark:hover:border-cyan-500/30"
+                className="group rounded-xl border border-slate-200 bg-slate-50/50 p-4 transition-colors hover:border-cyan-200 dark:border-white/5 dark:bg-slate-900/50 dark:hover:border-cyan-500/30"
               >
                 <div className="flex items-start gap-3">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-violet-600 text-white shadow-lg shadow-cyan-500/20">

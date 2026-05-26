@@ -21,7 +21,7 @@ const calculators = [
   {
     title: 'Protein Calculator',
     description: 'Calculate your daily protein intake based on weight, goals, and activity level for muscle gain and recovery.',
-    href: '/protein',
+    href: '/protein-calculator',
     metric: 'g/day',
     accent: 'from-cyan-300 via-sky-400 to-violet-500',
     icon: FiZap,
@@ -37,7 +37,7 @@ const calculators = [
   {
     title: 'Calorie Calculator',
     description: 'Estimate your daily calorie needs for weight loss, maintenance, or muscle gain in seconds.',
-    href: '/calorie',
+    href: '/daily-calorie-needs-calculator',
     metric: 'kcal',
     accent: 'from-blue-300 via-cyan-400 to-emerald-300',
     icon: FiActivity,
@@ -45,7 +45,7 @@ const calculators = [
   {
     title: 'BMI Calculator',
     description: 'Check your Body Mass Index (BMI) to understand if your weight is in a healthy range.',
-    href: '/bmi',
+    href: '/bmi-calculator',
     metric: 'BMI',
     accent: 'from-violet-300 via-blue-400 to-cyan-300',
     icon: FiTarget,
@@ -53,7 +53,7 @@ const calculators = [
   {
     title: 'BMR Calculator',
     description: 'Calculate your Basal Metabolic Rate (BMR) to know how many calories your body needs at rest.',
-    href: '/bmr',
+    href: '/bmr-calculator',
     metric: 'BMR',
     accent: 'from-sky-300 via-indigo-400 to-fuchsia-400',
     icon: FiThermometer,
@@ -61,7 +61,7 @@ const calculators = [
   {
     title: 'Body Fat Calculator',
     description: 'Estimate your body fat percentage to better understand your body composition and fitness level.',
-    href: '/body-fat',
+    href: '/body-fat-calculator',
     metric: '% fat',
     accent: 'from-rose-300 via-fuchsia-400 to-violet-500',
     icon: FiHeart,
@@ -69,7 +69,7 @@ const calculators = [
   {
     title: 'Ideal Weight Calculator',
     description: 'Find your ideal weight range based on height, gender, and standard health formulas.',
-    href: '/ideal-weight',
+    href: '/ideal-weight-calculator',
     metric: 'range',
     accent: 'from-indigo-300 via-violet-400 to-cyan-300',
     icon: FiTarget,
@@ -77,7 +77,7 @@ const calculators = [
   {
     title: 'Water Intake Calculator',
     description: 'Calculate how much water you should drink daily based on your body weight and activity level.',
-    href: '/water',
+    href: '/water-intake-calculator',
     metric: 'litres',
     accent: 'from-cyan-200 via-blue-400 to-violet-500',
     icon: FiDroplet,
@@ -281,9 +281,9 @@ export default function SmartHealthCalculatorsSection() {
       <div className="pointer-events-none absolute bottom-[8%] right-[6%] h-72 w-72 rounded-full bg-violet-400/25 blur-3xl dark:bg-violet-500/14" />
       <div className="pointer-events-none absolute left-[58%] top-[8%] h-40 w-40 rounded-full bg-fuchsia-300/20 blur-3xl dark:bg-fuchsia-400/10" />
 
-      <div className="relative mx-auto flex w-full max-w-7xl flex-col px-4 sm:px-6 lg:min-h-screen lg:px-8">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col px-0 sm:px-6 lg:min-h-screen lg:px-8">
         <motion.div
-          className="grid gap-8 pt-10 sm:pt-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:pt-14"
+          className="grid gap-6 pt-8 sm:gap-8 sm:pt-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:pt-14"
           animate={{
             opacity: introFade,
             y: -56 * (1 - introFade),
@@ -308,7 +308,7 @@ export default function SmartHealthCalculatorsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ delay: 0.08, duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-3 max-w-3xl text-4xl font-black tracking-tight text-slate-950 dark:text-white sm:text-6xl lg:text-7xl"
+              className="mt-3 max-w-3xl text-3xl font-black tracking-tight text-slate-950 dark:text-white min-[390px]:text-4xl sm:text-6xl lg:text-7xl"
             >
            Smart Tools for Fitness
             </motion.h2>
@@ -321,14 +321,14 @@ export default function SmartHealthCalculatorsSection() {
             transition={{ delay: 0.16, duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-xl lg:ml-auto"
           >
-            <p className="text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg lg:leading-7">
+            <p className="text-sm leading-7 text-slate-600 dark:text-slate-300 min-[390px]:text-base min-[390px]:leading-8 sm:text-lg lg:leading-7">
               Calculate calories, BMI, BMR, macros, water intake, and more with fast, easy-to-use tools.
 Get accurate insights to make smarter fitness decisions every day.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <Link
                 href="/calculators"
-                className="group relative inline-flex items-center overflow-hidden rounded-2xl border border-slate-950 bg-slate-950 px-8 py-4 text-sm font-black uppercase tracking-wide text-white shadow-[0_22px_54px_rgba(15,23,42,0.22)] transition duration-500 hover:-translate-y-1 hover:border-cyan-300/60 hover:shadow-[0_28px_70px_rgba(124,58,237,0.24)] dark:border-white/10 dark:bg-white dark:text-slate-950 dark:shadow-[0_22px_54px_rgba(0,0,0,0.36)]"
+                className="group relative inline-flex items-center overflow-hidden rounded-xl border border-slate-950 bg-slate-950 px-5 py-3.5 text-xs font-black uppercase tracking-wide text-white shadow-[0_18px_38px_rgba(15,23,42,0.2)] transition duration-500 hover:-translate-y-1 hover:border-cyan-300/60 hover:shadow-[0_28px_70px_rgba(124,58,237,0.24)] min-[390px]:px-6 sm:px-8 sm:py-4 sm:text-sm dark:border-white/10 dark:bg-white dark:text-slate-950 dark:shadow-[0_22px_54px_rgba(0,0,0,0.36)]"
               >
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 opacity-95 transition duration-500 group-hover:translate-x-0" />
                 <span className="relative flex items-center gap-2 transition duration-500 group-hover:text-white">
@@ -343,7 +343,7 @@ Get accurate insights to make smarter fitness decisions every day.
           </motion.div>
         </motion.div>
 
-        <div className="relative grid gap-5 pb-4 lg:hidden">
+        <div className="relative grid gap-4 pb-4 lg:hidden">
           {calculators.map((calculator, index) => {
             const Icon = calculator.icon
 
@@ -352,41 +352,41 @@ Get accurate insights to make smarter fitness decisions every day.
                 key={calculator.href}
                 href={calculator.href}
                 aria-label={`Open ${calculator.title}`}
-                className="group relative block overflow-hidden rounded-[1.5rem] border border-white/45 bg-white/62 p-px shadow-[0_24px_60px_rgba(15,23,42,0.2)] backdrop-blur-2xl transition duration-300 dark:border-white/[0.08] dark:bg-white/[0.06]"
+                className="group relative block overflow-hidden rounded-2xl border border-white/45 bg-white/62 p-px shadow-[0_18px_42px_rgba(15,23,42,0.18)] backdrop-blur-2xl transition duration-300 dark:border-white/[0.08] dark:bg-white/[0.06]"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${calculator.accent} opacity-35 blur-2xl transition duration-300 group-hover:opacity-55`}
                 />
-                <div className="relative min-h-[360px] rounded-[calc(1.5rem-1px)] border border-white/50 bg-white/78 p-5 dark:border-white/10 dark:bg-slate-950/76">
+                <div className="relative min-h-[292px] rounded-[calc(1rem-1px)] border border-white/50 bg-white/78 p-4 dark:border-white/10 dark:bg-slate-950/76 min-[390px]:min-h-[312px] min-[390px]:p-5">
                   <div className="flex items-center justify-between gap-4">
                     <span
-                      className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${calculator.accent} text-white shadow-[0_18px_42px_rgba(79,70,229,0.34)]`}
+                      className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${calculator.accent} text-white shadow-[0_14px_30px_rgba(79,70,229,0.3)] min-[390px]:h-14 min-[390px]:w-14`}
                     >
-                      <Icon className="h-6 w-6" />
+                      <Icon className="h-5 w-5 min-[390px]:h-6 min-[390px]:w-6" />
                     </span>
                     <span className="rounded-full border border-slate-200/80 bg-white/70 px-3 py-1.5 text-xs font-black uppercase tracking-[0.18em] text-slate-600 backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
                       0{index + 1}
                     </span>
                   </div>
 
-                  <div className="mt-8">
-                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-700 dark:text-cyan-300">
+                  <div className="mt-6 min-[390px]:mt-7">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-300 min-[390px]:text-xs">
                       {calculator.metric}
                     </p>
-                    <div className="mt-3 text-[clamp(2rem,10vw,2.55rem)] font-black leading-tight tracking-tight text-slate-950 dark:text-white">
+                    <div className="mt-2 text-[clamp(1.7rem,8.2vw,2.15rem)] font-black leading-tight tracking-tight text-slate-950 dark:text-white min-[390px]:mt-3 min-[390px]:text-[clamp(1.9rem,8vw,2.35rem)]">
                       {calculator.title}
                     </div>
-                    <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-300">
+                    <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300 min-[390px]:mt-4 min-[390px]:text-base min-[390px]:leading-7">
                       {calculator.description}
                     </p>
                   </div>
 
-                  <div className="mt-9 flex items-center justify-between border-t border-slate-200/80 pt-5 dark:border-white/10">
+                  <div className="mt-6 flex items-center justify-between border-t border-slate-200/80 pt-4 dark:border-white/10 min-[390px]:mt-8 min-[390px]:pt-5">
                     <span className="text-sm font-bold text-slate-700 dark:text-slate-200">
                       Open calculator
                     </span>
                     <span
-                      className={`inline-flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br ${calculator.accent} text-white shadow-[0_14px_34px_rgba(79,70,229,0.28)]`}
+                      className={`inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${calculator.accent} text-white shadow-[0_12px_28px_rgba(79,70,229,0.25)] min-[390px]:h-11 min-[390px]:w-11`}
                     >
                       <FiArrowUpRight className="h-5 w-5" />
                     </span>
@@ -461,7 +461,7 @@ Get accurate insights to make smarter fitness decisions every day.
                       <div className="relative min-h-[500px] rounded-[calc(2rem-1px)] border border-white/60 bg-white/78 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.88)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/76 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:min-h-[530px] sm:p-7">
                         <div className="flex items-center justify-between gap-4">
                           <span
-                            className={`inline-flex h-[60px] w-[60px] items-center justify-center rounded-2xl bg-gradient-to-br ${calculator.accent} text-white shadow-[0_18px_42px_rgba(79,70,229,0.34)] sm:h-[68px] sm:w-[68px]`}
+                            className={`inline-flex h-[60px] w-[60px] items-center justify-center rounded-xl bg-gradient-to-br ${calculator.accent} text-white shadow-[0_18px_42px_rgba(79,70,229,0.34)] sm:h-[68px] sm:w-[68px]`}
                           >
                             <Icon className="h-7 w-7 sm:h-8 sm:w-8" />
                           </span>

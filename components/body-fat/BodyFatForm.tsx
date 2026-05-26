@@ -12,7 +12,7 @@ export default function BodyFatForm({ values, errors, unit, onChange }: BodyFatF
   const weightUnit = unit === "metric" ? "kg" : "lbs";
 
   const inputClassName =
-    "w-full rounded-2xl border border-white/60 bg-white/85 px-5 py-4 pr-14 text-lg font-semibold text-slate-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_10px_30px_rgba(15,23,42,0.08)] outline-none transition placeholder:text-slate-400 focus:border-cyan-300 focus:ring-4 focus:ring-cyan-200/50 dark:border-white/10 dark:bg-slate-900/85 dark:text-slate-100 dark:placeholder:text-slate-500 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03),0_10px_30px_rgba(0,0,0,0.45)] dark:focus:border-cyan-400 dark:focus:ring-cyan-500/25";
+    "w-full rounded-xl border border-white/60 bg-white/85 px-5 py-4 pr-14 text-lg font-semibold text-slate-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_10px_30px_rgba(15,23,42,0.08)] outline-none transition placeholder:text-slate-400 focus:border-cyan-300 focus:ring-4 focus:ring-cyan-200/50 dark:border-white/10 dark:bg-slate-900/85 dark:text-slate-100 dark:placeholder:text-slate-500 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03),0_10px_30px_rgba(0,0,0,0.45)] dark:focus:border-cyan-400 dark:focus:ring-cyan-500/25";
 
   return (
     <div className="mb-6 flex flex-col gap-5">
@@ -31,7 +31,7 @@ export default function BodyFatForm({ values, errors, unit, onChange }: BodyFatF
                 type="button"
                 onClick={() => onChange("gender", option.value)}
                 aria-pressed={isActive}
-                className={`rounded-2xl border px-4 py-3 text-sm font-semibold transition ${
+                className={`rounded-xl border px-4 py-3 text-sm font-semibold transition ${
                   isActive
                     ? "border-cyan-300 bg-gradient-to-br from-cyan-400/15 to-violet-500/15 text-slate-900 shadow-[0_12px_24px_rgba(15,23,42,0.08)] dark:border-cyan-400/40 dark:text-white"
                     : "border-white/60 bg-white/75 text-slate-600 hover:text-slate-900 dark:border-white/10 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:text-white"

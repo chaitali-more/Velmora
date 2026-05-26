@@ -19,7 +19,7 @@ export default function IdealWeightResult({ result, actions }: IdealWeightResult
       </p>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-3xl border border-cyan-200/70 bg-gradient-to-br from-cyan-50 via-white to-violet-50 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.08)] dark:border-cyan-500/20 dark:bg-gradient-to-br dark:from-cyan-500/10 dark:via-slate-900/80 dark:to-violet-500/10">
+        <div className="rounded-xl border border-cyan-200/70 bg-gradient-to-br from-cyan-50 via-white to-violet-50 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.08)] dark:border-cyan-500/20 dark:bg-gradient-to-br dark:from-cyan-500/10 dark:via-slate-900/80 dark:to-violet-500/10">
           <p className="text-xs uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
             Estimated Ideal Weight
           </p>
@@ -40,7 +40,7 @@ export default function IdealWeightResult({ result, actions }: IdealWeightResult
           </p>
         </div>
 
-        <div className="rounded-3xl border border-violet-200/70 bg-gradient-to-br from-violet-50 via-white to-fuchsia-50 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.08)] dark:border-violet-500/20 dark:bg-gradient-to-br dark:from-violet-500/10 dark:via-slate-900/80 dark:to-fuchsia-500/10">
+        <div className="rounded-xl border border-violet-200/70 bg-gradient-to-br from-violet-50 via-white to-fuchsia-50 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.08)] dark:border-violet-500/20 dark:bg-gradient-to-br dark:from-violet-500/10 dark:via-slate-900/80 dark:to-fuchsia-500/10">
           <p className="text-xs uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
             Weight Range (All Formulas)
           </p>
@@ -63,7 +63,7 @@ export default function IdealWeightResult({ result, actions }: IdealWeightResult
         {result.comparisons.map((entry) => (
           <div
             key={entry.formula}
-            className={`rounded-2xl border p-4 ${
+            className={`rounded-xl border p-4 ${
               entry.isPrimary
                 ? "border-cyan-300 bg-cyan-50/90 dark:border-cyan-400/40 dark:bg-cyan-500/10"
                 : "border-white/70 bg-white/80 dark:border-white/10 dark:bg-slate-900/80"
@@ -92,7 +92,7 @@ export default function IdealWeightResult({ result, actions }: IdealWeightResult
       </div>
 
       {result.bmiReference ? (
-        <div className="rounded-2xl border border-white/70 bg-white/80 p-4 dark:border-white/10 dark:bg-slate-900/80">
+        <div className="rounded-xl border border-white/70 bg-white/80 p-4 dark:border-white/10 dark:bg-slate-900/80">
           <p className="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
             BMI healthy reference
           </p>
@@ -110,12 +110,12 @@ export default function IdealWeightResult({ result, actions }: IdealWeightResult
         </div>
       ) : null}
 
-      <div className={`rounded-2xl border p-4 text-sm leading-relaxed ${toneClasses[result.interpretation.tone]}`}>
+      <div className={`rounded-xl border p-4 text-sm leading-relaxed ${toneClasses[result.interpretation.tone]}`}>
         <p className="font-semibold">{result.interpretation.title}</p>
         <p className="mt-1">{result.interpretation.message}</p>
       </div>
 
-      <div className="rounded-2xl border border-amber-200 bg-amber-50/90 p-4 text-sm leading-relaxed text-amber-800 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200">
+      <div className="rounded-xl border border-amber-200 bg-amber-50/90 p-4 text-sm leading-relaxed text-amber-800 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200">
   These are general estimates. Your ideal weight can vary based on body type, muscle mass, and lifestyle.
       </div>
       {actions ? <div>{actions}</div> : null}

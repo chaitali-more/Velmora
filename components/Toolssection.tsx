@@ -134,7 +134,7 @@ const tools: Tool[] = [
 
 function PreviewPill({ item }: { item: ToolPreviewItem }) {
   return (
-    <div className="rounded-2xl border border-slate-200/80 bg-white/70 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur dark:border-white/10 dark:bg-white/[0.06]">
+    <div className="rounded-xl border border-slate-200/80 bg-white/70 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur dark:border-white/10 dark:bg-white/[0.06]">
       <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
         {item.label}
       </p>
@@ -183,7 +183,7 @@ function ToolRow({
         </span>
 
         <span
-          className={`hidden h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${tool.accent} text-white shadow-[0_18px_42px_rgba(79,70,229,0.3)] sm:inline-flex`}
+          className={`hidden h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${tool.accent} text-white shadow-[0_18px_42px_rgba(79,70,229,0.3)] sm:inline-flex`}
         >
           <Icon className="h-6 w-6" />
         </span>
@@ -255,7 +255,7 @@ function ToolRow({
                 <div className="mt-7 flex flex-wrap items-center gap-3">
                   <Link
                     href={tool.href}
-                    className="group/button relative inline-flex items-center overflow-hidden rounded-2xl border border-slate-950 bg-slate-950 px-6 py-3.5 text-sm font-black uppercase tracking-wide text-white shadow-[0_22px_54px_rgba(15,23,42,0.2)] transition duration-500 hover:-translate-y-1 hover:border-cyan-300/60 hover:shadow-[0_28px_70px_rgba(124,58,237,0.22)] dark:border-white/10 dark:bg-white dark:text-slate-950 dark:shadow-[0_22px_54px_rgba(0,0,0,0.36)]"
+                    className="group/button relative inline-flex items-center overflow-hidden rounded-xl border border-slate-950 bg-slate-950 px-6 py-3.5 text-sm font-black uppercase tracking-wide text-white shadow-[0_22px_54px_rgba(15,23,42,0.2)] transition duration-500 hover:-translate-y-1 hover:border-cyan-300/60 hover:shadow-[0_28px_70px_rgba(124,58,237,0.22)] dark:border-white/10 dark:bg-white dark:text-slate-950 dark:shadow-[0_22px_54px_rgba(0,0,0,0.36)]"
                   >
                     <span className={`absolute inset-0 -translate-x-full bg-gradient-to-br ${tool.accent} opacity-95 transition duration-500 group-hover/button:translate-x-0`} />
                     <span className="relative flex items-center gap-2 transition duration-500 group-hover/button:text-white">
@@ -266,7 +266,7 @@ function ToolRow({
                     </span>
                   </Link>
 
-                  <div className="inline-flex items-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-emerald-700 dark:border-emerald-400/20 dark:bg-emerald-400/10 dark:text-emerald-200">
+                  <div className="inline-flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-emerald-700 dark:border-emerald-400/20 dark:bg-emerald-400/10 dark:text-emerald-200">
                     <FiShield className="h-4 w-4" />
                     Instant, No Setup
                   </div>
@@ -354,11 +354,11 @@ Explore powerful, easy-to-use tools built for speed and simplicity.
 No clutter, no sign-ups—just instant results when you need them.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
-              <div className="inline-flex items-center gap-2 rounded-2xl border border-cyan-200/80 bg-cyan-50 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-cyan-800 dark:border-cyan-400/20 dark:bg-cyan-400/10 dark:text-cyan-100">
+              <div className="inline-flex items-center gap-2 rounded-xl border border-cyan-200/80 bg-cyan-50 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-cyan-800 dark:border-cyan-400/20 dark:bg-cyan-400/10 dark:text-cyan-100">
                 <FiZap className="h-4 w-4" />
                 {tools.length} tools live
               </div>
-              <div className="inline-flex items-center gap-2 rounded-2xl border border-violet-200/80 bg-violet-50 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-violet-800 dark:border-violet-400/20 dark:bg-violet-400/10 dark:text-violet-100">
+              <div className="inline-flex items-center gap-2 rounded-xl border border-violet-200/80 bg-violet-50 px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-violet-800 dark:border-violet-400/20 dark:bg-violet-400/10 dark:text-violet-100">
                 <FiLayers className="h-4 w-4" />
                 100% Free
               </div>
@@ -366,7 +366,7 @@ No clutter, no sign-ups—just instant results when you need them.
           </motion.div>
         </div>
 
-        <div className="relative mt-10 overflow-hidden rounded-[1.75rem] bg-white/55 shadow-[0_24px_70px_rgba(15,23,42,0.16)] backdrop-blur-2xl ring-1 ring-slate-200/55 dark:bg-slate-950/48 dark:shadow-[0_24px_70px_rgba(0,0,0,0.45)] dark:ring-white/[0.06] sm:mt-12">
+        <div className="relative mt-10 overflow-hidden rounded-xl bg-white/55 shadow-[0_24px_70px_rgba(15,23,42,0.16)] backdrop-blur-2xl ring-1 ring-slate-200/55 dark:bg-slate-950/48 dark:shadow-[0_24px_70px_rgba(0,0,0,0.45)] dark:ring-white/[0.06] sm:mt-12">
           <motion.div
             aria-hidden="true"
             style={{ scaleX: lineScale, transformOrigin: '0% 50%' }}
@@ -394,7 +394,7 @@ No clutter, no sign-ups—just instant results when you need them.
         >
           <Link
             href="/tools"
-            className="group relative inline-flex items-center overflow-hidden rounded-2xl border border-slate-950 bg-slate-950 px-7 py-3.5 text-sm font-black uppercase tracking-wide text-white shadow-[0_22px_54px_rgba(15,23,42,0.2)] transition duration-500 hover:-translate-y-1 hover:border-cyan-300/60 hover:shadow-[0_28px_70px_rgba(124,58,237,0.22)] dark:border-white/10 dark:bg-white dark:text-slate-950 dark:shadow-[0_22px_54px_rgba(0,0,0,0.36)]"
+            className="group relative inline-flex items-center overflow-hidden rounded-xl border border-slate-950 bg-slate-950 px-7 py-3.5 text-sm font-black uppercase tracking-wide text-white shadow-[0_22px_54px_rgba(15,23,42,0.2)] transition duration-500 hover:-translate-y-1 hover:border-cyan-300/60 hover:shadow-[0_28px_70px_rgba(124,58,237,0.22)] dark:border-white/10 dark:bg-white dark:text-slate-950 dark:shadow-[0_22px_54px_rgba(0,0,0,0.36)]"
           >
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 opacity-95 transition duration-500 group-hover:translate-x-0" />
             <span className="relative flex items-center gap-2 transition duration-500 group-hover:text-white">

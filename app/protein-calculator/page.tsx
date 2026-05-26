@@ -8,7 +8,7 @@ export const metadata: Metadata = buildCalculatorMetadata({
   description:
     "Calculate daily protein intake based on weight, age, and activity level. Estimate protein needs for muscle gain, weight management, and overall nutrition balance.",
 
-  path: "/protein",
+  path: "/protein-calculator",
 
   keywords: [
     // Core keywords

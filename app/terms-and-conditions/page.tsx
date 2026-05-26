@@ -26,7 +26,7 @@ const sections = [
         <p>
           By accessing or using the website at velmora.com, the &quot;Website&quot;, you agree to be bound by these Terms and Conditions, &quot;Terms&quot;. If you do not agree with any part of these Terms, please discontinue use of the Website immediately.
         </p>
-        <p className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 font-semibold text-emerald-950 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-100">
+        <p className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 font-semibold text-emerald-950 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-100">
           Simple summary: Using Velmora means you agree to these rules. No account or signup is needed. Just visiting the site counts as acceptance.
         </p>
       </>
@@ -70,7 +70,7 @@ const sections = [
     content: (
       <>
         <p>The health, fitness, and QR code tools provided on Velmora are intended for informational and convenience purposes only.</p>
-        <p className="rounded-2xl border border-amber-200 bg-amber-50 p-4 font-semibold text-amber-950 dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-100">
+        <p className="rounded-xl border border-amber-200 bg-amber-50 p-4 font-semibold text-amber-950 dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-100">
           Important: Calculator results, such as BMI, calorie needs, or ideal weight, are estimates based on general formulas. They are not a substitute for professional medical, nutritional, or healthcare advice. Always consult a qualified professional before making health-related decisions.
         </p>
         <p>
@@ -195,7 +195,7 @@ const sections = [
     content: (
       <>
         <p>If you have any questions or concerns about these Terms and Conditions, please get in touch with us:</p>
-        <dl className="mt-3 grid gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5 sm:grid-cols-2">
+        <dl className="mt-3 grid gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5 sm:grid-cols-2">
           <div>
             <dt className="font-bold text-slate-900 dark:text-white">Website</dt>
             <dd>velmora.com</dd>
@@ -212,7 +212,7 @@ const sections = [
 
 export default function TermsAndConditionsPage() {
   return (
-    <article className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-slate-900/70 sm:p-8">
+    <article className="mx-auto max-w-4xl rounded-xl border border-slate-200 bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-slate-900/70 sm:p-8">
       <p className="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Legal</p>
       <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-900 dark:text-white">Terms and Conditions</h1>
       <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">

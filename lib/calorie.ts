@@ -23,17 +23,17 @@ export const calorieActivityLevels: Record<
   light: {
     label: "Light activity",
     factor: 1.375,
-    description: "Light exercise 1–3 days/week",
+    description: "Light exercise 1 - 3 days/week",
   },
   moderate: {
     label: "Moderate activity",
     factor: 1.55,
-    description: "Exercise 3–5 days/week",
+    description: "Exercise 3 - 5 days/week",
   },
   active: {
     label: "Active",
     factor: 1.725,
-    description: "Exercise most days (6–7 days/week)",
+    description: "Exercise most days (6 - 7 days/week)",
   },
   "very-active": {
     label: "Very active",

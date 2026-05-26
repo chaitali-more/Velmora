@@ -106,7 +106,7 @@ export default function BlogsShowcaseSection() {
             <motion.div className="mt-10 flex justify-center">
               <Link
                 href="/blog"
-                className="group relative inline-flex items-center overflow-hidden rounded-2xl border border-slate-950 bg-slate-950 px-8 py-4 text-sm font-black uppercase tracking-wide text-white shadow-[0_22px_54px_rgba(15,23,42,0.22)] transition duration-500 hover:-translate-y-1 hover:border-cyan-300/60 hover:shadow-[0_28px_70px_rgba(124,58,237,0.24)] dark:border-white/10 dark:bg-white dark:text-slate-950 dark:shadow-[0_22px_54px_rgba(0,0,0,0.36)]"
+                className="group relative inline-flex items-center overflow-hidden rounded-xl border border-slate-950 bg-slate-950 px-8 py-4 text-sm font-black uppercase tracking-wide text-white shadow-[0_22px_54px_rgba(15,23,42,0.22)] transition duration-500 hover:-translate-y-1 hover:border-cyan-300/60 hover:shadow-[0_28px_70px_rgba(124,58,237,0.24)] dark:border-white/10 dark:bg-white dark:text-slate-950 dark:shadow-[0_22px_54px_rgba(0,0,0,0.36)]"
               >
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 opacity-95 transition duration-500 group-hover:translate-x-0" />
                 <span className="relative flex items-center gap-2 transition duration-500 group-hover:text-white">

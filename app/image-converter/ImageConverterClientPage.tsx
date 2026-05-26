@@ -375,59 +375,18 @@ export default function ImageConverterClientPage() {
   }
 
   return (
-    <div className="image-converter-shell relative min-h-screen overflow-x-clip rounded-[2rem] bg-[var(--tool-bg)] px-3 py-5 font-['DM_Sans',Arial,sans-serif] text-[var(--tool-text)] transition-colors sm:px-4 md:px-8">
-      <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&display=swap");
-
-        .image-converter-shell {
-          --tool-bg: #f4f4fa;
-          --tool-card: #ffffff;
-          --tool-border: #e5e5ef;
-          --tool-text: #111827;
-          --tool-muted: #64748b;
-          --tool-soft: #f8fafc;
-        }
-
-        .dark .image-converter-shell {
-          --tool-bg: #0d0d1a;
-          --tool-card: #13131f;
-          --tool-border: rgba(255, 255, 255, 0.08);
-          --tool-text: #f8fafc;
-          --tool-muted: #94a3b8;
-          --tool-soft: #0d1220;
-        }
-
-        .converter-range {
-          accent-color: #8b5cf6;
-        }
-
-        @keyframes resultIn {
-          from {
-            opacity: 0;
-            transform: translateY(14px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .result-row {
-          animation: resultIn 0.35s ease both;
-        }
-      `}</style>
-
+    <div className="image-converter-shell relative min-h-screen overflow-x-clip bg-transparent px-0 py-0 font-['DM_Sans',Arial,sans-serif] text-[var(--tool-text)] transition-colors sm:rounded-[2rem] sm:bg-[var(--tool-bg)] sm:px-4 sm:py-5 md:px-8">
       {toast ? (
-        <div className="fixed right-4 top-24 z-50 max-w-sm rounded-2xl border border-rose-400/30 bg-rose-500 px-4 py-3 text-sm font-bold text-white shadow-[0_18px_38px_rgba(244,63,94,0.25)]">
+        <div className="fixed right-4 top-24 z-50 max-w-sm rounded-xl border border-rose-400/30 bg-rose-500 px-4 py-3 text-sm font-bold text-white shadow-[0_18px_38px_rgba(244,63,94,0.25)]">
           {toast.message}
         </div>
       ) : null}
 
-      <div className="mx-auto w-full max-w-7xl pt-2">
+      <div className="mx-auto w-full max-w-7xl pt-0 sm:pt-2">
         <div className="grid gap-4 lg:grid-cols-[1fr_1.08fr] lg:gap-5">
-          <section className="rounded-[20px] border border-[var(--tool-border)] bg-[var(--tool-card)] p-5 shadow-[0_18px_48px_rgba(15,23,42,0.14)] transition-colors sm:p-6">
+          <section className="rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-card)] p-5 shadow-[0_12px_28px_rgba(15,23,42,0.12)] transition-colors sm:rounded-[20px] sm:p-6 sm:shadow-[0_18px_48px_rgba(15,23,42,0.14)]">
             <p className="text-xs font-bold uppercase tracking-[0.1em] text-[var(--tool-muted)]">Free Tool</p>
-            <h1 className="mt-2 text-3xl font-black tracking-tight text-[var(--tool-text)]">Image Converter</h1>
+            <h1 className="mt-2 text-2xl font-black tracking-tight text-[var(--tool-text)] sm:text-3xl">Image Converter</h1>
             <p className="mt-2 text-sm text-[var(--tool-muted)]">
               Convert up to {MAX_IMAGES} images at a time to JPG, PNG, or WebP in your browser.
             </p>
@@ -454,7 +413,7 @@ export default function ImageConverterClientPage() {
               }}
               onDragLeave={() => setIsDragging(false)}
               onDrop={handleDrop}
-              className={`mt-6 flex min-h-56 cursor-pointer flex-col items-center justify-center rounded-[20px] border-2 border-dashed px-5 py-8 text-center transition ${
+              className={`mt-5 flex min-h-44 cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-4 py-6 text-center transition sm:mt-6 sm:min-h-56 sm:rounded-[20px] sm:px-5 sm:py-8 ${
                 isDragging
                   ? "border-fuchsia-400 bg-fuchsia-400/10 shadow-[0_0_0_4px_rgba(200,80,192,0.18)]"
                   : "border-slate-300/80 bg-[var(--tool-soft)] hover:border-fuchsia-400 hover:shadow-[0_0_0_4px_rgba(200,80,192,0.12)] dark:border-white/15"
@@ -470,7 +429,7 @@ export default function ImageConverterClientPage() {
                 {images.map((image) => (
                   <div
                     key={image.id}
-                    className="relative grid grid-cols-[72px_1fr] gap-3 rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3"
+                    className="relative grid grid-cols-[72px_1fr] gap-3 rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3"
                   >
                     <img
                       src={image.previewUrl}
@@ -499,7 +458,7 @@ export default function ImageConverterClientPage() {
 
             <div className="mt-6">
               <p className="text-xs font-bold uppercase tracking-[0.1em] text-[var(--tool-muted)]">Convert To</p>
-              <div className="mt-3 grid grid-cols-3 gap-2 rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-1.5">
+              <div className="mt-3 grid grid-cols-3 gap-2 rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-1.5">
                 {(["jpg", "png", "webp"] as const).map((format) => (
                   <button
                     key={format}
@@ -517,7 +476,7 @@ export default function ImageConverterClientPage() {
               </div>
 
               {activeTip && !tipDismissed ? (
-                <div className="mt-3 flex items-start gap-2 rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] px-3 py-2 text-xs italic text-[var(--tool-muted)]">
+                <div className="mt-3 flex items-start gap-2 rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] px-3 py-2 text-xs italic text-[var(--tool-muted)]">
                   <span className="text-cyan-400">✦</span>
                   <p className="flex-1">{activeTip}</p>
                   <button type="button" onClick={() => setTipDismissed(true)} aria-label="Dismiss recommendation">
@@ -549,7 +508,7 @@ export default function ImageConverterClientPage() {
                 type="button"
                 onClick={handleConvert}
                 disabled={isProcessing}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] py-4 text-base font-black text-white shadow-[0_14px_28px_rgba(127,119,221,0.4)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] py-4 text-base font-black text-white shadow-[0_14px_28px_rgba(127,119,221,0.4)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {isProcessing ? <FiRefreshCw className="h-5 w-5 animate-spin" /> : <FiImage className="h-5 w-5" />}
                 {isProcessing ? "Converting..." : "Convert All"}
@@ -557,23 +516,23 @@ export default function ImageConverterClientPage() {
               <button
                 type="button"
                 onClick={reset}
-                className="rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] py-4 text-base font-black text-[var(--tool-muted)] shadow-[0_12px_22px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:text-[var(--tool-text)]"
+                className="rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] py-4 text-base font-black text-[var(--tool-muted)] shadow-[0_12px_22px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:text-[var(--tool-text)]"
               >
                 Reset
               </button>
             </div>
           </section>
 
-          <section className="rounded-[20px] border border-[var(--tool-border)] bg-[var(--tool-card)] p-5 shadow-[0_20px_52px_rgba(15,23,42,0.16)] transition-colors sm:p-6">
-            <div className="mb-5 inline-flex rounded-full bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] px-4 py-2 text-sm font-black text-white shadow-[0_14px_28px_rgba(127,119,221,0.35)]">
+          <section className="rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-card)] p-5 shadow-[0_12px_30px_rgba(15,23,42,0.12)] transition-colors sm:rounded-[20px] sm:p-6 sm:shadow-[0_20px_52px_rgba(15,23,42,0.16)]">
+            <div className="mb-4 inline-flex rounded-full bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] px-3 py-2 text-xs font-black text-white shadow-[0_10px_22px_rgba(127,119,221,0.32)] sm:mb-5 sm:px-4 sm:text-sm sm:shadow-[0_14px_28px_rgba(127,119,221,0.35)]">
               Result Panel
             </div>
 
             {converted.length === 0 ? (
-              <div className="flex min-h-[520px] flex-col items-center justify-center rounded-[20px] border border-dashed border-cyan-300/60 bg-[radial-gradient(circle_at_8%_94%,rgba(124,58,237,0.14),transparent_30%),radial-gradient(circle_at_96%_0%,rgba(34,211,238,0.18),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.95)_0%,rgba(248,250,252,0.8)_100%)] px-5 py-16 text-center dark:border-cyan-400/25 dark:bg-[radial-gradient(circle_at_8%_94%,rgba(109,40,217,0.34),transparent_30%),radial-gradient(circle_at_96%_0%,rgba(8,145,178,0.36),transparent_34%),linear-gradient(135deg,#0b1020_0%,#101827_100%)]">
+              <div className="flex min-h-[300px] flex-col items-center justify-center rounded-2xl border border-dashed border-cyan-300/60 bg-[radial-gradient(circle_at_8%_94%,rgba(124,58,237,0.14),transparent_30%),radial-gradient(circle_at_96%_0%,rgba(34,211,238,0.18),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.95)_0%,rgba(248,250,252,0.8)_100%)] px-4 py-8 text-center sm:min-h-[520px] sm:rounded-[20px] sm:px-5 sm:py-16 dark:border-cyan-400/25 dark:bg-[radial-gradient(circle_at_8%_94%,rgba(109,40,217,0.34),transparent_30%),radial-gradient(circle_at_96%_0%,rgba(8,145,178,0.36),transparent_34%),linear-gradient(135deg,#0b1020_0%,#101827_100%)]">
                 <FiFile className="h-12 w-12 text-cyan-400" />
-                <h2 className="mt-7 text-3xl font-black text-[var(--tool-text)] sm:text-4xl">Ready to convert</h2>
-                <p className="mt-5 max-w-md text-base font-medium leading-relaxed text-[var(--tool-muted)] sm:text-lg">
+                <h2 className="mt-5 text-2xl font-black text-[var(--tool-text)] sm:mt-7 sm:text-4xl">Ready to convert</h2>
+                <p className="mt-3 max-w-md text-sm font-medium leading-relaxed text-[var(--tool-muted)] sm:mt-5 sm:text-lg">
                   Upload images and click Convert. Your files will appear here.
                 </p>
               </div>
@@ -584,7 +543,7 @@ export default function ImageConverterClientPage() {
                   return (
                     <div
                       key={image.id}
-                      className="result-row grid gap-3 rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3 sm:grid-cols-[60px_1fr_auto]"
+                      className="result-row grid gap-3 rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3 sm:grid-cols-[60px_1fr_auto]"
                       style={{ animationDelay: `${index * 45}ms` }}
                     >
                       <img
@@ -625,7 +584,7 @@ export default function ImageConverterClientPage() {
                   <button
                     type="button"
                     onClick={downloadAll}
-                    className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] py-4 text-base font-black text-white shadow-[0_14px_28px_rgba(127,119,221,0.4)] transition hover:-translate-y-0.5"
+                    className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] py-4 text-base font-black text-white shadow-[0_14px_28px_rgba(127,119,221,0.4)] transition hover:-translate-y-0.5"
                   >
                     <FiDownload className="h-5 w-5" />
                     Download All as ZIP

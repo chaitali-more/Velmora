@@ -38,11 +38,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white min-h-screen">
         <ScrollToTop />
         <Navbar />
-        <main className="mx-auto w-full max-w-7xl px-4 py-12">
+        <main className="mx-auto w-full max-w-7xl px-3 py-6 sm:px-4 sm:py-12">
           {children}
         </main>
         <Footer />

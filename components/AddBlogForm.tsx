@@ -10,7 +10,7 @@ type AddBlogFormProps = {
 function StatusMessage({ status, message, slug }: Omit<AddBlogFormProps, 'totalPosts'>) {
   if (status === 'success') {
     return (
-      <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+      <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
         Blog added successfully. View it at <a className="font-semibold underline" href={`/blog/${slug}`}>/blog/{slug}</a>.
       </div>
     )
@@ -18,7 +18,7 @@ function StatusMessage({ status, message, slug }: Omit<AddBlogFormProps, 'totalP
 
   if (status === 'error') {
     return (
-      <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+      <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
         {message || 'Please fill every required field and try again.'}
       </div>
     )
@@ -48,43 +48,43 @@ export default function AddBlogForm({ totalPosts, status, message, slug }: AddBl
         <div className="grid gap-5 md:grid-cols-2">
           <label className="space-y-2">
             <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Title</span>
-            <input name="title" required className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
+            <input name="title" required className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
           </label>
 
           <label className="space-y-2">
             <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Browser title</span>
-            <input name="browserTitle" className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
+            <input name="browserTitle" className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
           </label>
 
           <label className="space-y-2">
             <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Slug</span>
-            <input name="slug" placeholder="leave blank to auto-create from title" className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
+            <input name="slug" placeholder="leave blank to auto-create from title" className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
           </label>
 
           <label className="space-y-2">
             <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Date</span>
-            <input name="date" type="date" className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
+            <input name="date" type="date" className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
           </label>
 
           <label className="space-y-2">
             <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Category</span>
-            <input name="category" required className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
+            <input name="category" required className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
           </label>
 
           <label className="space-y-2">
             <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Image URL or path</span>
-            <input name="image" required placeholder="/images/your-post.png" className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
+            <input name="image" required placeholder="/images/your-post.png" className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
           </label>
         </div>
 
         <label className="mt-5 block space-y-2">
           <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Image alt text</span>
-          <input name="alt" required className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
+          <input name="alt" required className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
         </label>
 
         <label className="mt-5 block space-y-2">
           <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Excerpt</span>
-          <textarea name="excerpt" required rows={3} className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
+          <textarea name="excerpt" required rows={3} className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200" />
         </label>
 
         <label className="mt-5 block space-y-2">
@@ -94,7 +94,7 @@ export default function AddBlogForm({ totalPosts, status, message, slug }: AddBl
             required
             rows={14}
             placeholder="Write your post here. Separate paragraphs with a blank line."
-            className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm leading-6 outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200"
+            className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm leading-6 outline-none transition focus:border-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:focus:border-zinc-200"
           />
         </label>
 

@@ -56,7 +56,7 @@ export default function ResultActions({
   };
 
   return (
-    <div className="rounded-2xl border border-white/70 bg-white/80 p-4 dark:border-white/10 dark:bg-slate-900/80">
+    <div className="rounded-xl border border-white/70 bg-white/80 p-4 dark:border-white/10 dark:bg-slate-900/80">
       <div className="flex flex-wrap items-center gap-3">
         <button
           type="button"

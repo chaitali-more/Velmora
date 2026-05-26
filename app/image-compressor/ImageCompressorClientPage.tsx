@@ -501,51 +501,10 @@ export default function ImageCompressorClientPage() {
   const levelBand = getLevelBand(level);
 
   return (
-    <div className="image-compressor-shell relative min-h-screen overflow-x-clip rounded-[2rem] bg-[var(--tool-bg)] px-3 py-5 font-['DM_Sans',Arial,sans-serif] text-[var(--tool-text)] transition-colors sm:px-4 md:px-8">
-      <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&display=swap");
-
-        .image-compressor-shell {
-          --tool-bg: #f4f4fa;
-          --tool-card: #ffffff;
-          --tool-border: #e5e5ef;
-          --tool-text: #111827;
-          --tool-muted: #64748b;
-          --tool-soft: #f8fafc;
-        }
-
-        .dark .image-compressor-shell {
-          --tool-bg: #0d0d1a;
-          --tool-card: #13131f;
-          --tool-border: rgba(255, 255, 255, 0.08);
-          --tool-text: #f8fafc;
-          --tool-muted: #94a3b8;
-          --tool-soft: #0d1220;
-        }
-
-        .compressor-range {
-          accent-color: #8b5cf6;
-        }
-
-        @keyframes resultIn {
-          from {
-            opacity: 0;
-            transform: translateY(14px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .result-row {
-          animation: resultIn 0.35s ease both;
-        }
-      `}</style>
-
+    <div className="image-compressor-shell relative min-h-screen overflow-x-clip bg-transparent px-0 py-0 font-['DM_Sans',Arial,sans-serif] text-[var(--tool-text)] transition-colors sm:rounded-[2rem] sm:bg-[var(--tool-bg)] sm:px-4 sm:py-5 md:px-8">
       {toast ? (
         <div
-          className={`fixed right-4 top-24 z-50 max-w-sm rounded-2xl border px-4 py-3 text-sm font-bold text-white shadow-[0_18px_38px_rgba(15,23,42,0.22)] ${
+          className={`fixed right-4 top-24 z-50 max-w-sm rounded-xl border px-4 py-3 text-sm font-bold text-white shadow-[0_18px_38px_rgba(15,23,42,0.22)] ${
             toast.type === "success"
               ? "border-emerald-400/30 bg-emerald-500"
               : toast.type === "warning"
@@ -557,11 +516,11 @@ export default function ImageCompressorClientPage() {
         </div>
       ) : null}
 
-      <div className="mx-auto w-full max-w-7xl pt-2">
+      <div className="mx-auto w-full max-w-7xl pt-0 sm:pt-2">
         <div className="grid gap-4 lg:grid-cols-[1fr_1.08fr] lg:gap-5">
-          <section className="rounded-[20px] border border-[var(--tool-border)] bg-[var(--tool-card)] p-5 shadow-[0_18px_48px_rgba(15,23,42,0.14)] transition-colors sm:p-6">
+          <section className="rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-card)] p-5 shadow-[0_12px_28px_rgba(15,23,42,0.12)] transition-colors sm:rounded-[20px] sm:p-6 sm:shadow-[0_18px_48px_rgba(15,23,42,0.14)]">
             <p className="text-xs font-bold uppercase tracking-[0.1em] text-[var(--tool-muted)]">Free Tool</p>
-            <h1 className="mt-2 text-3xl font-black tracking-tight text-[var(--tool-text)]">Image Compressor</h1>
+            <h1 className="mt-2 text-2xl font-black tracking-tight text-[var(--tool-text)] sm:text-3xl">Image Compressor</h1>
             <p className="mt-2 text-sm text-[var(--tool-muted)]">
               Reduce image file sizes locally with smart resizing and browser-based compression.
             </p>
@@ -595,7 +554,7 @@ export default function ImageCompressorClientPage() {
               }}
               onDragLeave={() => setIsDragging(false)}
               onDrop={handleDrop}
-              className={`mt-6 flex min-h-56 cursor-pointer flex-col items-center justify-center rounded-[20px] border-2 border-dashed px-5 py-8 text-center transition ${
+              className={`mt-5 flex min-h-44 cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-4 py-6 text-center transition sm:mt-6 sm:min-h-56 sm:rounded-[20px] sm:px-5 sm:py-8 ${
                 isDragging
                   ? "border-fuchsia-400 bg-fuchsia-400/10 shadow-[0_0_0_4px_rgba(200,80,192,0.18)]"
                   : "border-[rgba(127,119,221,0.5)] bg-[var(--tool-soft)] hover:border-fuchsia-400 hover:bg-fuchsia-400/5 hover:shadow-[0_0_0_4px_rgba(200,80,192,0.12)]"
@@ -606,7 +565,7 @@ export default function ImageCompressorClientPage() {
               <p className="mt-2 text-sm font-medium text-[var(--tool-muted)]">Supports JPG, PNG, WebP, BMP, GIF</p>
             </div>
 
-            <div className="mt-4 rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-4">
+            <div className="mt-4 rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-4">
               <div className="flex flex-wrap items-center justify-between gap-2 text-sm font-black">
                 <span className={getCounterClass(images.length)}>{images.length}/10 images selected</span>
                 <span className="text-[var(--tool-muted)]">Total size: {formatMb(totalSize)} MB / 100 MB</span>
@@ -625,7 +584,7 @@ export default function ImageCompressorClientPage() {
             {images.length > 0 ? (
               <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
                 {images.map((image) => (
-                  <div key={image.id} className="relative rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3">
+                  <div key={image.id} className="relative rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3">
                     <img
                       src={image.previewUrl}
                       alt={`Uploaded ${image.name} preview before image compression`}
@@ -675,7 +634,7 @@ export default function ImageCompressorClientPage() {
             </div>
 
             {isCompressing ? (
-              <div className="mt-5 rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-4">
+              <div className="mt-5 rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-4">
                 <div className="flex flex-wrap justify-between gap-2 text-sm font-bold text-[var(--tool-muted)]">
                   <span>{progressMessage}</span>
                   <span>{estimatedRemaining}</span>
@@ -695,7 +654,7 @@ export default function ImageCompressorClientPage() {
                 onClick={handleCompress}
                 disabled={isCompressing || images.length === 0}
                 title={images.length === 0 ? "Select images to compress" : undefined}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] py-4 text-base font-black text-white shadow-[0_14px_28px_rgba(127,119,221,0.4)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] py-4 text-base font-black text-white shadow-[0_14px_28px_rgba(127,119,221,0.4)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isCompressing ? <FiRefreshCw className="h-5 w-5 animate-spin" /> : <FiImage className="h-5 w-5" />}
                 {isCompressing ? "Compressing..." : "Compress All"}
@@ -704,29 +663,29 @@ export default function ImageCompressorClientPage() {
                 type="button"
                 onClick={reset}
                 disabled={isCompressing}
-                className="min-h-12 rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] py-4 text-base font-black text-[var(--tool-muted)] shadow-[0_12px_22px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:text-[var(--tool-text)] disabled:cursor-not-allowed disabled:opacity-60"
+                className="min-h-12 rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] py-4 text-base font-black text-[var(--tool-muted)] shadow-[0_12px_22px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:text-[var(--tool-text)] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 Reset
               </button>
             </div>
           </section>
 
-          <section className="rounded-[20px] border border-[var(--tool-border)] bg-[var(--tool-card)] p-5 shadow-[0_20px_52px_rgba(15,23,42,0.16)] transition-colors sm:p-6">
-            <div className="mb-5 inline-flex rounded-full bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] px-4 py-2 text-sm font-black text-white shadow-[0_14px_28px_rgba(127,119,221,0.35)]">
+          <section className="rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-card)] p-5 shadow-[0_12px_30px_rgba(15,23,42,0.12)] transition-colors sm:rounded-[20px] sm:p-6 sm:shadow-[0_20px_52px_rgba(15,23,42,0.16)]">
+            <div className="mb-4 inline-flex rounded-full bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] px-3 py-2 text-xs font-black text-white shadow-[0_10px_22px_rgba(127,119,221,0.32)] sm:mb-5 sm:px-4 sm:text-sm sm:shadow-[0_14px_28px_rgba(127,119,221,0.35)]">
               Result Panel
             </div>
 
             {results.length === 0 ? (
-              <div className="flex min-h-[520px] flex-col items-center justify-center rounded-[20px] border border-dashed border-cyan-300/60 bg-[radial-gradient(circle_at_8%_94%,rgba(124,58,237,0.14),transparent_30%),radial-gradient(circle_at_96%_0%,rgba(34,211,238,0.18),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.95)_0%,rgba(248,250,252,0.8)_100%)] px-5 py-16 text-center dark:border-cyan-400/25 dark:bg-[radial-gradient(circle_at_8%_94%,rgba(109,40,217,0.34),transparent_30%),radial-gradient(circle_at_96%_0%,rgba(8,145,178,0.36),transparent_34%),linear-gradient(135deg,#0b1020_0%,#101827_100%)]">
+              <div className="flex min-h-[300px] flex-col items-center justify-center rounded-2xl border border-dashed border-cyan-300/60 bg-[radial-gradient(circle_at_8%_94%,rgba(124,58,237,0.14),transparent_30%),radial-gradient(circle_at_96%_0%,rgba(34,211,238,0.18),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.95)_0%,rgba(248,250,252,0.8)_100%)] px-4 py-8 text-center sm:min-h-[520px] sm:rounded-[20px] sm:px-5 sm:py-16 dark:border-cyan-400/25 dark:bg-[radial-gradient(circle_at_8%_94%,rgba(109,40,217,0.34),transparent_30%),radial-gradient(circle_at_96%_0%,rgba(8,145,178,0.36),transparent_34%),linear-gradient(135deg,#0b1020_0%,#101827_100%)]">
                 <FiFile className="h-12 w-12 text-cyan-400" />
-                <h2 className="mt-7 text-3xl font-black text-[var(--tool-text)] sm:text-4xl">Ready to compress</h2>
-                <p className="mt-5 max-w-md text-base font-medium leading-relaxed text-[var(--tool-muted)] sm:text-lg">
+                <h2 className="mt-5 text-2xl font-black text-[var(--tool-text)] sm:mt-7 sm:text-4xl">Ready to compress</h2>
+                <p className="mt-3 max-w-md text-sm font-medium leading-relaxed text-[var(--tool-muted)] sm:mt-5 sm:text-lg">
                   Upload images and click Compress. Your files will appear here.
                 </p>
               </div>
             ) : (
               <div className="space-y-3">
-                <div className="rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-4 text-sm font-black text-[var(--tool-text)]">
+                <div className="rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-4 text-sm font-black text-[var(--tool-text)]">
                   Compressed {results.length} images - Total saved: {formatBytes(totalSaved)} ({savedPercent}%)
                 </div>
 
@@ -735,7 +694,7 @@ export default function ImageCompressorClientPage() {
                   return (
                     <div
                       key={result.id}
-                      className="result-row grid gap-3 rounded-2xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3 sm:grid-cols-[60px_1fr_auto]"
+                      className="result-row grid gap-3 rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3 sm:grid-cols-[60px_1fr_auto]"
                       style={{ animationDelay: `${index * 45}ms` }}
                     >
                       <img
@@ -779,7 +738,7 @@ export default function ImageCompressorClientPage() {
                   onClick={downloadAll}
                   disabled={results.length === 0}
                   title={results.length === 0 ? "Compress images before downloading ZIP" : undefined}
-                  className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] py-4 text-base font-black text-white shadow-[0_14px_28px_rgba(127,119,221,0.4)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#00C6FF] via-[#7F77DD] to-[#C850C0] py-4 text-base font-black text-white shadow-[0_14px_28px_rgba(127,119,221,0.4)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <FiDownload className="h-5 w-5" />
                   Download All as ZIP

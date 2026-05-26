@@ -11,7 +11,7 @@ export default function BMRResult({ result, actions }: BMRResultProps & { action
       <p className="text-xs uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Your BMR Result</p>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-3xl border border-cyan-200/70 bg-gradient-to-br from-cyan-50 via-white to-violet-50 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.08)] dark:border-cyan-500/20 dark:bg-gradient-to-br dark:from-cyan-500/10 dark:via-slate-900/80 dark:to-violet-500/10">
+        <div className="rounded-xl border border-cyan-200/70 bg-gradient-to-br from-cyan-50 via-white to-violet-50 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.08)] dark:border-cyan-500/20 dark:bg-gradient-to-br dark:from-cyan-500/10 dark:via-slate-900/80 dark:to-violet-500/10">
           <p className="text-xs uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">BMR (Calories at Rest)</p>
           <div className="mt-3 flex items-end gap-2">
             <span className="bg-gradient-to-br from-slate-900 to-slate-700 bg-clip-text text-5xl font-black leading-none text-transparent sm:text-5xl dark:from-slate-100 dark:to-slate-300">
@@ -24,7 +24,7 @@ export default function BMRResult({ result, actions }: BMRResultProps & { action
           </p>
         </div>
 
-        <div className="rounded-3xl border border-violet-200/70 bg-gradient-to-br from-violet-50 via-white to-fuchsia-50 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.08)] dark:border-violet-500/20 dark:bg-gradient-to-br dark:from-violet-500/10 dark:via-slate-900/80 dark:to-fuchsia-500/10">
+        <div className="rounded-xl border border-violet-200/70 bg-gradient-to-br from-violet-50 via-white to-fuchsia-50 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.08)] dark:border-violet-500/20 dark:bg-gradient-to-br dark:from-violet-500/10 dark:via-slate-900/80 dark:to-fuchsia-500/10">
           <p className="text-xs uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">TDEE (Daily Calories Needed)</p>
           <div className="mt-3 flex items-end gap-2">
             <span className="bg-gradient-to-br from-slate-900 to-slate-700 bg-clip-text text-5xl font-black leading-none text-transparent sm:text-5xl dark:from-slate-100 dark:to-slate-300">
@@ -41,11 +41,11 @@ export default function BMRResult({ result, actions }: BMRResultProps & { action
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">
-        <div className="rounded-2xl border border-white/70 bg-white/80 p-4 dark:border-white/10 dark:bg-slate-900/80">
+        <div className="rounded-xl border border-white/70 bg-white/80 p-4 dark:border-white/10 dark:bg-slate-900/80">
           <p className="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Calculation Method</p>
           <p className="mt-2 text-lg font-bold text-slate-900 dark:text-slate-100">{formulaLabels[result.formula]}</p>
         </div>
-        <div className="rounded-2xl border border-white/70 bg-white/80 p-4 dark:border-white/10 dark:bg-slate-900/80">
+        <div className="rounded-xl border border-white/70 bg-white/80 p-4 dark:border-white/10 dark:bg-slate-900/80">
           <p className="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Activity factor</p>
           <p className="mt-2 text-lg font-bold text-slate-900 dark:text-slate-100">
             {activityMeta ? `${activityMeta.label} (${activityMeta.factor}x)` : "Not selected"}
@@ -56,7 +56,7 @@ export default function BMRResult({ result, actions }: BMRResultProps & { action
         </div>
       </div>
 
-      <div className="rounded-2xl border border-amber-200 bg-amber-50/90 p-4 text-sm leading-relaxed text-amber-800 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200">
+      <div className="rounded-xl border border-amber-200 bg-amber-50/90 p-4 text-sm leading-relaxed text-amber-800 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200">
         These numbers are estimates. Your actual calorie needs may vary based on your body, lifestyle, and health.
       </div>
       {actions ? <div>{actions}</div> : null}

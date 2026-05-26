@@ -30,7 +30,7 @@ const sections = [
         <p>
           Your privacy is important to us. This Privacy Policy explains what information is collected when you visit our website, how we use it, and your rights regarding that information.
         </p>
-        <p className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 font-semibold text-emerald-950 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-100">
+        <p className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 font-semibold text-emerald-950 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-100">
           Simple summary: Velmora does not require any account registration or login. We do not collect your name, email, or personal details through any signup form.
         </p>
       </>
@@ -169,7 +169,7 @@ const sections = [
     content: (
       <>
         <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please reach out to us:</p>
-        <dl className="mt-3 grid gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5 sm:grid-cols-2">
+        <dl className="mt-3 grid gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5 sm:grid-cols-2">
           <div>
             <dt className="font-bold text-slate-900 dark:text-white">Website</dt>
             <dd>velmora.com</dd>
@@ -186,7 +186,7 @@ const sections = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <article className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-slate-900/70 sm:p-8">
+    <article className="mx-auto max-w-4xl rounded-xl border border-slate-200 bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-slate-900/70 sm:p-8">
       <p className="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Legal</p>
       <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-900 dark:text-white">Privacy Policy</h1>
       <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">

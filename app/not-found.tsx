@@ -68,7 +68,7 @@ function HelpfulPageCard({
   return (
     <Link
       href={href}
-      className="group block rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-cyan-300 hover:shadow-[0_18px_40px_rgba(15,23,42,0.1)] dark:border-white/10 dark:bg-slate-900/70 dark:hover:border-cyan-400/40"
+      className="group block rounded-xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-cyan-300 hover:shadow-[0_18px_40px_rgba(15,23,42,0.1)] dark:border-white/10 dark:bg-slate-900/70 dark:hover:border-cyan-400/40"
     >
       <h2 className="text-lg font-black text-slate-900 transition group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300">
         {title}
@@ -81,7 +81,7 @@ function HelpfulPageCard({
 
 export default function NotFound() {
   return (
-    <article className="mx-auto max-w-5xl rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-slate-900/70 sm:p-8">
+    <article className="mx-auto max-w-5xl rounded-xl border border-slate-200 bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-slate-900/70 sm:p-8">
       <p className="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">404</p>
       <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-900 dark:text-white">Page Not Found</h1>
       <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">

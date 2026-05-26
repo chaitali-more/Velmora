@@ -5,10 +5,10 @@ const DEFAULT_SITE_URL = 'https://www.velmoranow.in'
 const MAX_META_DESCRIPTION_LENGTH = 160
 
 export const siteConfig = {
-  name: 'Velmora',
+  name: 'Velmora Now',
   description: 'A thoughtful blog about technology, life, creativity, and growth.',
-  author: 'Velmora',
-  publisher: 'Velmora',
+  author: 'Velmora Now',
+  publisher: 'Velmora Now',
   imageAlt: 'Velmora India blog for free online tools, health calculators, productivity, and healthy living',
   defaultOgImage: '/opengraph-image',
   twitterHandle: '@velmora',
@@ -108,16 +108,17 @@ export function buildRootMetadata(): Metadata {
 }
 
 export function buildHomeMetadata(): Metadata {
-  const title = "Velmora - Free Online Tools & Calculators"
+  const title = "Velmora Now - Free Online Tools & Calculators"
 
   const description =
-    trimMetaDescription("Explore Velmora for free online tools like image compressor, QR code generator, and converters, along with health calculators such as BMI, calorie, and protein calculators.")
-
+trimMetaDescription(
+      "Access online tools including image compressor, QR code generator, and converters, along with BMI, calorie, and protein calculators for daily use."
+    )
   return {
     title,
     description,
     keywords: [
-      "Velmora",
+      "Velmora","Velmora Now", "velmoranow",
       "free online tools",
       "image compressor",
       "QR code generator",
@@ -131,7 +132,38 @@ export function buildHomeMetadata(): Metadata {
       "productivity blog",
       "personal growth",
       "online utilities",
-      "free tools website"
+      "free tools website",
+      // Core keywords
+      "online calculators",
+      "image compressor",
+      "qr code generator",
+      "image converter",
+
+      // Long-tail (high ranking potential)
+      "online image compressor and converter",
+      "qr code generator for links and pdf",
+      "health calculators bmi calorie protein",
+      "online tools for daily use",
+      "browser based image tools",
+      "fitness calculators for daily tracking",
+      "online utility tools website",
+      "multiple calculators in one place",
+      "web tools for productivity and health",
+      "online tools without software",
+
+      // Intent-based keywords
+      "use online tools",
+      "access free calculators",
+      "generate qr code online",
+      "compress image online",
+      "calculate bmi and calories",
+
+      // Supporting SEO keywords
+      "web based tools",
+      "digital utility tools",
+      "image optimization tools",
+      "health tracking calculators",
+      "online productivity utilities"
     ],
     alternates: {
       canonical: "/",

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { BMIResultProps } from "@/types/bmi";
 import BMIGauge from "./BMIGauge";

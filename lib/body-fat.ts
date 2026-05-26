@@ -137,7 +137,7 @@ export function getCalorieInsight(category: BodyFatCategory) {
       return "You are very lean. Maintaining your current routine is usually better than trying to lose more fat.";
 
     case "Fitness":
-      return "You’re in a good range. Maintain your diet and activity or make small changes based on your goals.";
+      return "Youâ€™re in a good range. Maintain your diet and activity or make small changes based on your goals.";
 
     case "Average":
       return "A few small changes in diet and regular exercise can help you reduce body fat over time.";
