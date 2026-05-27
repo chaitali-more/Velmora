@@ -165,7 +165,7 @@ export default function Footer() {
               &copy; {new Date().getFullYear()} Velmora. All rights reserved.
             </p>
             <p className="max-w-md text-center text-[10px] leading-relaxed text-slate-400 dark:text-slate-600 md:text-right">
-              Disclaimer: Information provided on Velmora is for general educational purposes only and does not constitute professional medical, legal, or financial advice.
+              <strong>Disclaimer:</strong> Information provided on Velmora is for general educational purposes only and does not constitute professional medical, legal, or financial advice.
             </p>
           </div>
         </div>

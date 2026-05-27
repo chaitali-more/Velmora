@@ -74,10 +74,15 @@ export function buildRootMetadata(): Metadata {
     robots: {
       index: true,
       follow: true,
+      'max-image-preview': 'large',
       googleBot: {
         index: true,
         follow: true,
+        'max-image-preview': 'large',
       },
+    },
+    other: {
+      bingbot: 'index, follow',
     },
     openGraph: {
       type: 'website',

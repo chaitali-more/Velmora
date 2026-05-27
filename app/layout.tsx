@@ -4,6 +4,7 @@ import './globals.css'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import ScrollToTop from '@/components/ScrollToTop'
+import StructuredDataHead from '@/components/StructuredDataHead'
 import { buildRootMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = {
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white min-h-screen">
+        <StructuredDataHead />
         <ScrollToTop />
         <Navbar />
         <main className="mx-auto w-full max-w-7xl px-3 py-6 sm:px-4 sm:py-12">

@@ -358,14 +358,14 @@ export default function Navbar() {
           <Link href="/" onClick={closeMobileMenus} className="shrink-0">
             <Image
               src="/images/velmora-logo-white-black.png"
-              alt="Velmora India logo for free calculators, online tools, and healthy living blog"
+              alt="Velmora mobile menu logo for free calculators and online tools"
               width={154}
               height={48}
               className="block h-auto w-[145px] dark:hidden"
             />
             <Image
               src="/images/velmora-blogs-logo2.png"
-              alt="Velmora dark theme logo for Indian tools, calculators, and productivity guides"
+              alt="Velmora mobile dark menu logo for health calculators and productivity guides"
               width={154}
               height={48}
               className="hidden h-auto w-[145px] dark:block"
