@@ -40,6 +40,19 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-69LPY8KKCH" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-69LPY8KKCH');
+            `,
+          }}
+        />
+      </head>
       <body className="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white min-h-screen">
         <StructuredDataHead />
         <ScrollToTop />
