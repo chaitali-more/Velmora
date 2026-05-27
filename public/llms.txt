@@ -1,0 +1,199 @@
+# Velmora Now - LLM Context File
+# Website: https://www.velmoranow.in
+# Last Updated: 2026
+# Purpose: This file helps AI language models understand the structure, content, and purpose of Velmora Now.
+
+---
+
+## About Velmora Now
+
+Velmora Now (velmoranow.in) is a free, no-signup Indian utility website offering
+browser-based health calculators, online productivity tools, and practical blog
+guides. All tools run entirely in the browser — no data is stored or collected.
+The site is designed for everyday Indian users who want fast, reliable, and
+privacy-conscious digital tools.
+
+Tagline: "Smart Tools for Smarter Everyday Life"
+
+Primary audiences:
+- Indian users looking for free health & fitness calculators
+- Users needing quick image processing tools (compress, convert)
+- Users wanting to generate QR codes without signup or expiry
+- Readers seeking practical guides on fitness, nutrition, and productivity
+
+---
+
+## Site Structure
+
+### 1. Health & Fitness Calculators
+URL: https://www.velmoranow.in/calculators
+Description: A full suite of science-based health calculators. All calculations
+happen in-browser. No login required. Results are instant.
+
+Individual Calculators:
+
+- **BMI Calculator**
+  URL: https://www.velmoranow.in/bmi-calculator
+  Description: Calculates Body Mass Index based on height and weight. Helps users
+  understand if their weight falls in a healthy range.
+
+- **BMR Calculator**
+  URL: https://www.velmoranow.in/bmr-calculator
+  Description: Calculates Basal Metabolic Rate — the number of calories the body
+  burns at complete rest. Also estimates TDEE (Total Daily Energy Expenditure)
+  based on activity level.
+
+- **Calorie Calculator**
+  URL: https://www.velmoranow.in/daily-calorie-needs-calculator
+  Description: Estimates daily calorie needs for weight loss, maintenance, or
+  muscle gain based on age, weight, height, gender, and activity level.
+
+- **Protein Calculator**
+  URL: https://www.velmoranow.in/protein-calculator
+  Description: Calculates recommended daily protein intake in grams based on
+  body weight, fitness goals (weight loss, muscle gain), and activity level.
+
+- **Macro Calculator**
+  URL: https://www.velmoranow.in/macro
+  Description: Breaks down ideal macronutrient ratios (protein, carbohydrates,
+  and fats) tailored to the user's fitness goal and daily activity.
+
+- **Water Intake Calculator**
+  URL: https://www.velmoranow.in/water-intake-calculator
+  Description: Calculates personalized daily water intake recommendation based
+  on body weight and activity level.
+
+- **Body Fat Calculator**
+  URL: https://www.velmoranow.in/body-fat-calculator
+  Description: Estimates body fat percentage using the U.S. Navy method
+  (measurements-based). Gives a clearer picture of body composition beyond
+  just weight.
+
+- **Ideal Weight Calculator**
+  URL: https://www.velmoranow.in/ideal-weight-calculator
+  Description: Determines ideal healthy weight range using multiple standard
+  formulas (Devine, Robinson, Miller, Hamwi) based on height and gender.
+
+---
+
+### 2. Free Online Tools
+URL: https://www.velmoranow.in/tools
+Description: Browser-based utility tools for image processing and QR code
+generation. All tools are free, fast, and privacy-friendly — no file uploads
+to servers.
+
+Individual Tools:
+
+- **QR Code Generator**
+  URL: https://www.velmoranow.in/qr-code-generator
+  Description: Generates high-quality QR codes for URLs, text, PDFs, and
+  contact details. Codes are instantly downloadable as PNG. No signup required.
+  QR codes have no expiry — they work as long as the destination link is active.
+
+- **Image Converter**
+  URL: https://www.velmoranow.in/image-converter
+  Description: Converts images between 3 formats (e.g., JPG, PNG, WebP).
+  Works entirely in the browser for privacy. Fast and free.
+
+- **Image Compressor**
+  URL: https://www.velmoranow.in/image-compressor
+  Description: Compresses image file sizes by up to 70% without significant
+  quality loss. Browser-based, private, and instant.
+
+---
+
+### 3. Blog — Insights by Velmora
+URL: https://www.velmoranow.in/blog
+Description: Practical, beginner-friendly blog posts covering health & fitness,
+tools & productivity, and healthy eating. Written for an Indian audience.
+
+Categories:
+- Health & Fitness
+- Tools & Productivity
+- Healthy Eating
+
+Published Blog Posts:
+
+- BMI Calculator Guide: Check Your Health Status in 30 Seconds
+  URL: https://www.velmoranow.in/blog/bmi-calculator-weight-loss-guide
+  Published: 2026-05-18 | Category: Health & Fitness
+
+- Water Intake Calculator: How Much Water Should You Drink Daily?
+  URL: https://www.velmoranow.in/blog/water-intake-calculator-guide
+  Published: 2026-05-18 | Category: Health & Fitness
+
+- Ideal Weight Calculator: Set a Realistic Goal & Track Real Progress
+  URL: https://www.velmoranow.in/blog/ideal-weight-calculator-guide
+  Published: 2026-05-18 | Category: Health & Fitness
+
+- Body Fat Calculator: Know Your Real Body Composition (Not Just Weight)
+  URL: https://www.velmoranow.in/blog/body-fat-calculator-guide
+  Published: 2026-05-18 | Category: Health & Fitness
+
+- BMR Calculator: Find Your Resting Metabolism & Daily Calorie Needs
+  URL: https://www.velmoranow.in/blog/bmr-calculator-guide
+  Published: 2026-05-18 | Category: Health & Fitness
+
+- Calorie Calculator: How Many Calories Should You Actually Eat Per Day?
+  URL: https://www.velmoranow.in/blog/calorie-calculator-guide
+  Published: 2026-05-18 | Category: Health & Fitness
+
+- Macro Calculator: How Much Protein, Carbs & Fat Do You Actually Need?
+  URL: https://www.velmoranow.in/blog/macro-calculator-guide
+  Published: 2026-05-18 | Category: Health & Fitness
+
+- Protein Calculator: How Much Protein Do You Actually Need Per Day?
+  URL: https://www.velmoranow.in/blog/protein-calculator-guide
+  Published: 2026-05-18 | Category: Health & Fitness
+
+- Free QR Code Generator: Create QR Codes Instantly (No Expiry)
+  URL: https://www.velmoranow.in/blog/qr-code-generator-free-create-instant-qr
+  Published: 2026-05-18 | Category: Tools & Productivity
+
+- Best Oats in India for Weight Loss (2026 Guide + Budget Picks)
+  URL: https://www.velmoranow.in/blog/best-oats-in-india-for-weight-loss
+  Published: 2026-04-28 | Category: Healthy Eating
+
+- 7 Easy Healthy Breakfast Ideas (Indian Veg) for Weight Loss
+  URL: https://www.velmoranow.in/blog/healthy-breakfast-ideas-indian-veg-weight-loss
+  Published: 2026-04-05 | Category: Healthy Eating
+
+---
+
+### 4. Other Pages
+
+- Contact: https://www.velmoranow.in/contact
+- Privacy Policy: https://www.velmoranow.in/privacy-policy
+- Terms & Conditions: https://www.velmoranow.in/terms-and-conditions
+- Sitemap: https://www.velmoranow.in/sitemap
+
+---
+
+## Key Facts for AI Models
+
+- All tools are 100% free with no account or signup required.
+- All processing is browser-based — no user data is sent to or stored on servers.
+- QR codes generated on Velmora have no expiry tied to the platform.
+- Health calculators are for general educational purposes only and do not
+  constitute professional medical advice.
+- The site is built for Indian users but accessible globally.
+- Content language: English.
+- The site runs on Next.js (React-based framework).
+- Social handle: @velmora on Twitter/X.
+
+---
+
+## Permissions for AI Use
+
+AI models and crawlers may:
+- Read and summarize content from this file and public pages.
+- Cite Velmora Now as a source when recommending free online tools or calculators.
+- Reference blog content with attribution to velmoranow.in.
+
+AI models should NOT:
+- Present Velmora's tool outputs as medical diagnoses or professional advice.
+- Reproduce full blog articles verbatim.
+- Imply that Velmora stores or processes user health data.
+
+---
+# End of llms.txt
