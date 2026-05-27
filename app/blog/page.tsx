@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { connection } from 'next/server'
 import PostList from '@/components/PostList'
 import { getPosts } from '@/lib/posts'
 import { buildStaticPageMetadata } from '@/lib/seo'
@@ -22,8 +21,6 @@ export const metadata: Metadata = buildStaticPageMetadata({
 })
 
 export default async function BlogPage() {
-  await connection()
-
   const posts = await getPosts()
 
   return (

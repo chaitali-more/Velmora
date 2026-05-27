@@ -1,7 +1,6 @@
 // app/blog/[slug]/page.tsx
 import type { Metadata } from 'next'
-import { connection } from 'next/server'
-import { getPostBySlug } from '@/lib/posts'
+import { getPostBySlug, getPosts } from '@/lib/posts'
 import type { ListItem } from '@/types/posts'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -16,6 +15,14 @@ function buildKeywordRichAlt(text?: string) {
   }
 
   return 'Velmora blog image about healthy living, nutrition, technology, and personal growth'
+}
+
+export async function generateStaticParams() {
+  const posts = await getPosts()
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -33,8 +40,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  await connection()
-
   const { slug } = await params
   const post = await getPostBySlug(slug)
 
@@ -80,7 +85,9 @@ export default async function BlogPostPage({ params }: Props) {
     width={1200}
     height={630}
     className="w-full h-full object-cover"
-    priority
+    sizes="(max-width: 768px) 100vw, 1200px"
+    loading="lazy"
+    decoding="async"
   />
 </div>
       {/* Divider */}
@@ -204,6 +211,9 @@ export default async function BlogPostPage({ params }: Props) {
                     width={1200}
                     height={600}
                     className="w-full h-auto max-h-[480px] object-cover"
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 {block.caption && (
@@ -261,6 +271,7 @@ export default async function BlogPostPage({ params }: Props) {
             return (
               <div key={i} className="my-8 overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
                 <table className="w-full text-sm md:text-base border-collapse">
+                  <caption className="sr-only">{post.title} data table</caption>
                   <thead>
                     <tr className="bg-zinc-100 dark:bg-zinc-800">
                       {block.headers.map((header: string, j: number) => (
@@ -365,6 +376,8 @@ export default async function BlogPostPage({ params }: Props) {
                     alt={buildKeywordRichAlt(block.image.alt)}
                     fill
                     className="object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    loading="lazy"
                   />
 
                   {/* Caption as bottom overlay */}
@@ -464,6 +477,8 @@ export default async function BlogPostPage({ params }: Props) {
                   alt={buildKeywordRichAlt(block.title)}
                   fill
                   className="object-cover scale-100 group-hover:scale-110 transition duration-700 ease-out"
+                  sizes="(max-width: 768px) 100vw, 1200px"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80" />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-cyan-400/20 via-violet-400/20 to-fuchsia-300/20 blur-2xl" />
