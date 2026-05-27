@@ -147,7 +147,8 @@ export default function Navbar() {
     href === '/blog' ? pathname === '/blog' || pathname.startsWith('/blog/') : pathname === href
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-slate-200/70 bg-slate-100/88 shadow-[0_10px_28px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/10 dark:bg-[#030712]/92 dark:shadow-[0_10px_30px_rgba(0,0,0,0.28)]">
+    <>
+      <nav className="sticky top-0 z-50 border-b border-slate-200/70 bg-slate-100/88 shadow-[0_10px_28px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/10 dark:bg-[#030712]/92 dark:shadow-[0_10px_30px_rgba(0,0,0,0.28)]">
       <div className="mx-auto max-w-7xl px-3 py-2.5 sm:px-4 sm:py-3">
         <div className="flex items-center justify-between gap-3">
           <Link href="/" className="shrink-0">
@@ -336,11 +337,11 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-
       </div>
+      </nav>
 
       <div
-        className={`fixed inset-0 z-[60] bg-slate-950/78 backdrop-blur-md transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 z-[80] bg-slate-950/78 backdrop-blur-md transition-opacity duration-300 lg:hidden ${
           mobileOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={closeMobileMenus}
@@ -348,7 +349,7 @@ export default function Navbar() {
       />
 
       <aside
-        className={`fixed right-0 top-0 z-[70] flex h-dvh w-[min(88vw,390px)] flex-col border-l border-white/70 bg-white shadow-[-24px_0_70px_rgba(15,23,42,0.22)] transition-transform duration-300 ease-out dark:border-white/10 dark:bg-[#070b16] dark:shadow-[-24px_0_70px_rgba(0,0,0,0.55)] lg:hidden ${
+        className={`fixed inset-y-0 right-0 z-[90] flex h-[100dvh] max-h-[100dvh] w-[min(88vw,390px)] flex-col overflow-hidden overscroll-contain border-l border-white/70 bg-white shadow-[-24px_0_70px_rgba(15,23,42,0.22)] transition-transform duration-300 ease-out dark:border-white/10 dark:bg-[#070b16] dark:shadow-[-24px_0_70px_rgba(0,0,0,0.55)] lg:hidden ${
           mobileOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         aria-hidden={!mobileOpen}
@@ -381,7 +382,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4">
           <div className="rounded-2xl border border-cyan-200/70 bg-gradient-to-br from-cyan-50 via-white to-violet-50 p-4 dark:border-cyan-400/15 dark:from-cyan-400/10 dark:via-slate-900 dark:to-violet-500/10">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-200">Velmora</p>
             <p className="mt-1 text-sm font-medium leading-relaxed text-slate-600 dark:text-slate-300">
@@ -541,6 +542,6 @@ export default function Navbar() {
           </div>
         </div>
       </aside>
-    </nav>
+    </>
   )
 }

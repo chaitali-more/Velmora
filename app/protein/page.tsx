@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { buildCalculatorMetadata } from "@/lib/seo";
-import ProteinClientPage from "../protein-calculator/ProteinClientPage";
+import ProteinClientPage from "./ProteinClientPage";
 
 export const metadata: Metadata = buildCalculatorMetadata({
   title: "Protein Calculator - Daily Protein Intake by Weight",
