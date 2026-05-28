@@ -14,7 +14,7 @@ const staticRoutes = [
   { path: '/terms-and-conditions', priority: 0.3, changeFrequency: 'yearly' },
   { path: '/sitemap', priority: 0.4, changeFrequency: 'monthly' },
   { path: '/protein-calculator', priority: 0.8, changeFrequency: 'monthly' },
-  { path: '/macro', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/macro-calculator', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/daily-calorie-needs-calculator', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/bmi-calculator', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/bmr-calculator', priority: 0.8, changeFrequency: 'monthly' },

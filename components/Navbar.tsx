@@ -10,7 +10,7 @@ const calculatorLinks = [
   { href: '/bmi-calculator', label: 'BMI Calculator' },
   { href: '/bmr-calculator', label: 'BMR Calculator' },
   { href: '/protein-calculator', label: 'Protein Calculator' },
-  { href: '/macro', label: 'Macro Calculator' },
+  { href: '/macro-calculator', label: 'Macro Calculator' },
   { href: '/water-intake-calculator', label: 'Water Intake Calculator' },
   { href: '/daily-calorie-needs-calculator', label: 'Calorie Calculator' },
   { href: '/body-fat-calculator', label: 'Body Fat Calculator' },

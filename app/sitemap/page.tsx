@@ -99,8 +99,8 @@ const calculatorPages = [
   },
   {
     title: 'Macro Calculator',
-    href: '/macro',
-    displayUrl: 'velmora.com/macro',
+    href: '/macro-calculator',
+    displayUrl: 'velmora.com/macro-calculator',
     description:
       'Breaks down your ideal daily intake of carbohydrates, proteins, and fats based on your calorie goal and body composition, a handy guide for anyone tracking their nutrition.',
   },

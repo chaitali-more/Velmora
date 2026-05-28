@@ -3053,7 +3053,7 @@
       {
         "type": "cta_inline",
         "text": "Calculate your perfect macro split in 60 seconds",
-        "link": "https://velmora.com/macro"
+        "link": "https://velmora.com/macro-calculator"
       },
       {
         "type": "divider"
@@ -3198,7 +3198,7 @@
       },
       {
         "type": "note",
-        "text": "Stop eating randomly. Use our free Macro Calculator to get your personalised protein, carbs & fat targets today: https://velmora.com/macro - No sign-up. Instant results. Five diet plan options."
+        "text": "Stop eating randomly. Use our free Macro Calculator to get your personalised protein, carbs & fat targets today: https://velmora.com/macro-calculator - No sign-up. Instant results. Five diet plan options."
       },
       {
         "type": "divider"
@@ -3292,7 +3292,7 @@
         "title": "Find your perfect protein, carbs & fat split - in 60 seconds",
         "description": "Enter your age, weight, height, activity level, and goal. Choose from Balanced, High Protein, Low Carb, Low Fat, or a fully Custom plan. Get your personalised macro targets instantly - for free.",
         "buttonText": "Calculate My Macros Now",
-        "link": "https://velmora.com/macro"
+        "link": "https://velmora.com/macro-calculator"
       },
       {
         "type": "divider"
@@ -3315,7 +3315,7 @@
       },
       {
         "type": "note",
-        "text": "Click here to calculate your daily macros now: https://velmora.com/macro - Protein. Carbs. Fat. Your goal. Your numbers. Free."
+        "text": "Click here to calculate your daily macros now: https://velmora.com/macro-calculator - Protein. Carbs. Fat. Your goal. Your numbers. Free."
       }
     ]
   },

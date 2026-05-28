@@ -8,7 +8,7 @@ export const metadata: Metadata = buildCalculatorMetadata({
   description:
     "Calculate daily macros including calories, protein, carbs, and fat based on body metrics and goals. Estimate macro split for weight management and nutrition planning.",
 
-  path: "/macro",
+  path: "/macro-calculator",
 
   keywords: [
     // Core keywords

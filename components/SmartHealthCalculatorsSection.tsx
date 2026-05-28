@@ -29,7 +29,7 @@ const calculators = [
   {
     title: 'Macro Calculator',
     description: 'Find the right balance of protein, carbs, and fats based on your fitness goals and daily activity.',
-    href: '/macro',
+    href: '/macro-calculator',
     metric: 'P/C/F',
     accent: 'from-fuchsia-300 via-violet-400 to-cyan-400',
     icon: FiBarChart2,

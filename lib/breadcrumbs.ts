@@ -25,7 +25,7 @@ const SEGMENT_LABELS: Record<string, string> = {
   'ideal-weight-calculator': 'Ideal Weight Calculator',
   'image-compressor': 'Image Compressor',
   'image-converter': 'Image Converter',
-  macro: 'Macro Calculator',
+  'macro-calculator': 'Macro Calculator',
   'privacy-policy': 'Privacy Policy',
   protein: 'Protein Calculator',
   'protein-calculator': 'Protein Calculator',

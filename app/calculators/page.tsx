@@ -10,7 +10,7 @@ const calculators = [
   },
   {
     name: "Macro Calculator",
-    href: "/macro",
+    href: "/macro-calculator",
     description: "Calculate daily protein, carbs, fat, and calories with balanced or custom macro splits.",
   },
   {

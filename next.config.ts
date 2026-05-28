@@ -48,6 +48,15 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      {
+        source: '/macro',
+        destination: '/macro-calculator',
+        permanent: true,
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       {

@@ -96,7 +96,7 @@ Protein Intake Calculator, Daily Protein Calculator
 
 Macro Calculator
 URL:
-https://www.velmoranow.in/macro
+https://www.velmoranow.in/macro-calculator
 
 Purpose:
 Calculates ideal macronutrient split for protein, carbs, and fats.

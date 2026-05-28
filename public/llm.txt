@@ -54,7 +54,7 @@ Individual Calculators:
   body weight, fitness goals (weight loss, muscle gain), and activity level.
 
 - **Macro Calculator**
-  URL: https://www.velmoranow.in/macro
+  URL: https://www.velmoranow.in/macro-calculator
   Description: Breaks down ideal macronutrient ratios (protein, carbohydrates,
   and fats) tailored to the user's fitness goal and daily activity.
 

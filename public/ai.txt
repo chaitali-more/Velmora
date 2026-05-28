@@ -50,7 +50,7 @@ Protein Calculator
 https://www.velmoranow.in/protein-calculator
 
 Macro Calculator
-https://www.velmoranow.in/macro
+https://www.velmoranow.in/macro-calculator
 
 Water Intake Calculator
 https://www.velmoranow.in/water-intake-calculator
