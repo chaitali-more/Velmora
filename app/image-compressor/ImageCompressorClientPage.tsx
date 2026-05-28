@@ -105,12 +105,6 @@ function getLevelBand(level: number) {
   return "High";
 }
 
-function getScaleForLevel(level: number) {
-  if (level <= 3) return 0.95 - (level - 1) * 0.025;
-  if (level <= 6) return 0.85 - (level - 4) * 0.025;
-  return 0.75 - (level - 7) * 0.05;
-}
-
 function getQualityForLevel(level: number) {
   if (level <= 3) return 0.95 - (level - 1) * 0.025;
   if (level <= 6) return 0.85 - (level - 4) * 0.05;
@@ -221,13 +215,9 @@ async function compressImage(image: SelectedImage, level: number): Promise<Compr
   }
 
   const loadedImage = await loadImage(image.file);
-  const scale = getScaleForLevel(level);
   const quality = getQualityForLevel(level);
-  const longSide = Math.max(image.width, image.height);
-  const targetLongSide = Math.max(MIN_DIMENSION, Math.round(longSide * scale));
-  const ratio = targetLongSide / longSide;
-  const width = Math.max(MIN_DIMENSION, Math.round(image.width * ratio));
-  const height = Math.max(MIN_DIMENSION, Math.round(image.height * ratio));
+  const width = image.width;
+  const height = image.height;
   const canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;
@@ -522,7 +512,7 @@ export default function ImageCompressorClientPage() {
             <p className="text-xs font-bold uppercase tracking-[0.1em] text-[var(--tool-muted)]">Free Tool</p>
             <h1 className="mt-2 text-2xl font-black tracking-tight text-[var(--tool-text)] sm:text-3xl">Image Compressor</h1>
             <p className="mt-2 text-sm text-[var(--tool-muted)]">
-              Reduce image file sizes locally with smart resizing and browser-based compression.
+              Reduce image file sizes locally with browser-based compression while keeping original dimensions.
             </p>
 
             <input
