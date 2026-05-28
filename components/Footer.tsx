@@ -162,7 +162,7 @@ export default function Footer() {
         <div className="mt-10 border-t border-slate-200 pt-8 dark:border-white/10">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <p className="text-xs text-slate-500 dark:text-slate-500">
-              &copy; {new Date().getFullYear()} Velmora. All rights reserved.
+              &copy; {new Date().getFullYear()} Velmora Now. All rights reserved.
             </p>
             <p className="max-w-md text-center text-[10px] leading-relaxed text-slate-400 dark:text-slate-600 md:text-right">
               <strong>Disclaimer:</strong> Information provided on Velmora is for general educational purposes only and does not constitute professional medical, legal, or financial advice.
