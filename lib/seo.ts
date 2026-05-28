@@ -11,6 +11,11 @@ export const siteConfig = {
   publisher: 'Velmora Now',
   imageAlt: 'Velmora India blog for free online tools, health calculators, productivity, and healthy living',
   defaultOgImage: '/opengraph-image',
+  randomOgImages: [
+    '/velmora-now-og-image.png',
+    '/velmora-now-og-image-free-tools.png',
+    '/velmora-now-og-image-smart-tools.png',
+  ],
   twitterHandle: '@velmora',
 }
 
@@ -45,7 +50,19 @@ function trimMetaDescription(description: string) {
   return trimmedDescription.replace(/[,.!?;:]+$/, '')
 }
 
+function getRandomOgImage() {
+  const imageIndex = Math.floor(Math.random() * siteConfig.randomOgImages.length)
+
+  return siteConfig.randomOgImages[imageIndex] ?? siteConfig.defaultOgImage
+}
+
+function getStaticPageOgImage(path: string) {
+  return path.startsWith('/blog') ? siteConfig.defaultOgImage : getRandomOgImage()
+}
+
 export function buildRootMetadata(): Metadata {
+  const ogImage = getRandomOgImage()
+
   return {
     metadataBase: new URL(getSiteUrl()),
     title: {
@@ -93,7 +110,7 @@ export function buildRootMetadata(): Metadata {
       url: '/',
       images: [
         {
-          url: siteConfig.defaultOgImage,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: siteConfig.imageAlt,
@@ -106,7 +123,7 @@ export function buildRootMetadata(): Metadata {
       description: siteConfig.description,
       creator: siteConfig.twitterHandle,
       site: siteConfig.twitterHandle,
-      images: [siteConfig.defaultOgImage],
+      images: [ogImage],
     },
     category: 'technology',
   }
@@ -114,6 +131,7 @@ export function buildRootMetadata(): Metadata {
 
 export function buildHomeMetadata(): Metadata {
   const title = "Velmora Now - Free Online Tools & Calculators"
+  const ogImage = getRandomOgImage()
 
   const description =
 trimMetaDescription(
@@ -180,7 +198,7 @@ trimMetaDescription(
       description,
       images: [
         {
-          url: siteConfig.defaultOgImage,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: "Velmora India homepage with free online tools, health calculators, and productivity blog guides",
@@ -191,7 +209,7 @@ trimMetaDescription(
       card: "summary_large_image",
       title,
       description,
-      images: [siteConfig.defaultOgImage],
+      images: [ogImage],
       creator: siteConfig.twitterHandle,
       site: siteConfig.twitterHandle,
     },
@@ -214,6 +232,7 @@ export function buildStaticPageMetadata({
   keywords,
 }: StaticPageMetadataOptions): Metadata {
   const metaDescription = trimMetaDescription(description)
+  const ogImage = getStaticPageOgImage(path)
 
   return {
     title,
@@ -229,7 +248,7 @@ export function buildStaticPageMetadata({
       description: metaDescription,
       images: [
         {
-          url: siteConfig.defaultOgImage,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: imageAlt ?? `${title} for Indian readers on Velmora tools, calculators, and blog guides`,
@@ -240,7 +259,7 @@ export function buildStaticPageMetadata({
       card: 'summary_large_image',
       title,
       description: metaDescription,
-      images: [siteConfig.defaultOgImage],
+      images: [ogImage],
       creator: siteConfig.twitterHandle,
       site: siteConfig.twitterHandle,
     },
