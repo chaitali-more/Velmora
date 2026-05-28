@@ -125,7 +125,7 @@ const tools: Tool[] = [
   ],
 
   preview: [
-    { label: 'Formats', value: 'JPG, PNG, WebP, GIF' },
+    { label: 'Formats', value: 'JPG, PNG, WebP' },
     { label: 'Control', value: 'Compression level slider' },
     { label: 'Processing', value: 'Runs locally (no upload)' },
   ],

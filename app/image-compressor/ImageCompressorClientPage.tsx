@@ -13,7 +13,7 @@ import {
   FiX,
 } from "react-icons/fi";
 
-type ImageFormat = "JPG" | "PNG" | "WebP" | "BMP" | "GIF";
+type ImageFormat = "JPG" | "PNG" | "WebP";
 type ToastType = "success" | "error" | "warning";
 
 type SelectedImage = {
@@ -62,30 +62,20 @@ declare global {
   }
 }
 
-const MAX_IMAGES = 10;
+const MAX_IMAGES = 20;
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 const MAX_TOTAL_SIZE = 100 * 1024 * 1024;
 const MAX_ZIP_SIZE = 200 * 1024 * 1024;
 const MIN_DIMENSION = 10;
 const MAX_DIMENSION = 10000;
-const SMALL_FILE_SIZE = 100 * 1024;
+const SMALL_FILE_SIZE = 24 * 1024;
 
-const supportedMimeTypes = new Set(["image/jpeg", "image/png", "image/webp", "image/bmp", "image/gif"]);
+const supportedMimeTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
 
 const formatFromMime: Record<string, ImageFormat> = {
   "image/jpeg": "JPG",
   "image/png": "PNG",
   "image/webp": "WebP",
-  "image/bmp": "BMP",
-  "image/gif": "GIF",
-};
-
-const mimeFromFormat: Record<ImageFormat, string> = {
-  JPG: "image/jpeg",
-  PNG: "image/png",
-  WebP: "image/webp",
-  BMP: "image/png",
-  GIF: "image/png",
 };
 
 function formatBytes(bytes: number) {
@@ -111,16 +101,31 @@ function getQualityForLevel(level: number) {
   return 0.75 - (level - 7) * 0.05;
 }
 
-function getOutputName(name: string, format: ImageFormat) {
-  if (format === "BMP" || format === "GIF") {
-    return `${name.replace(/\.[^/.]+$/, "")}.png`;
-  }
-  return name;
+function getFormatFromMime(mime: string): ImageFormat {
+  return formatFromMime[mime] ?? "PNG";
+}
+
+function getExtensionForMime(mime: string) {
+  if (mime === "image/jpeg") return "jpg";
+  if (mime === "image/webp") return "webp";
+  return "png";
+}
+
+function getOutputName(name: string, mime: string) {
+  return `${name.replace(/\.[^/.]+$/, "")}.${getExtensionForMime(mime)}`;
+}
+
+function getCandidateQualities(level: number) {
+  const preferredQuality = getQualityForLevel(level);
+  const floorQuality = Math.max(0.62, preferredQuality - 0.12);
+  const qualities = [0.92, 0.86, 0.8, 0.74, 0.68, 0.62].filter((quality) => quality >= floorQuality);
+
+  return Array.from(new Set([preferredQuality, ...qualities])).sort((a, b) => b - a);
 }
 
 function getCounterClass(count: number) {
-  if (count >= 10) return "text-rose-600 dark:text-rose-300";
-  if (count >= 8) return "text-amber-600 dark:text-amber-300";
+  if (count >= MAX_IMAGES) return "text-rose-600 dark:text-rose-300";
+  if (count >= Math.floor(MAX_IMAGES * 0.8)) return "text-amber-600 dark:text-amber-300";
   if (count >= 1) return "text-emerald-600 dark:text-emerald-300";
   return "text-[var(--tool-muted)]";
 }
@@ -215,7 +220,6 @@ async function compressImage(image: SelectedImage, level: number): Promise<Compr
   }
 
   const loadedImage = await loadImage(image.file);
-  const quality = getQualityForLevel(level);
   const width = image.width;
   const height = image.height;
   const canvas = document.createElement("canvas");
@@ -236,18 +240,38 @@ async function compressImage(image: SelectedImage, level: number): Promise<Compr
   context.imageSmoothingQuality = "high";
   context.drawImage(loadedImage, 0, 0, width, height);
 
-  const mime = mimeFromFormat[image.format];
-  const blob = await canvasToBlob(canvas, mime, image.format === "PNG" ? undefined : quality);
-  const finalBlob = blob.size > image.size ? image.file : blob;
+  const candidateMimes =
+    image.format === "JPG"
+      ? ["image/jpeg", "image/webp"]
+      : image.format === "WebP"
+        ? ["image/webp"]
+        : ["image/webp", "image/png"];
+  const candidates: Array<{ blob: Blob; mime: string }> = [];
+
+  for (const mime of candidateMimes) {
+    if (mime === "image/png") {
+      candidates.push({ blob: await canvasToBlob(canvas, mime), mime });
+      continue;
+    }
+
+    for (const quality of getCandidateQualities(level)) {
+      candidates.push({ blob: await canvasToBlob(canvas, mime, quality), mime });
+    }
+  }
+
+  const bestCandidate = candidates.reduce((best, candidate) => (candidate.blob.size < best.blob.size ? candidate : best));
+  const finalCandidate = bestCandidate.blob.size < image.size ? bestCandidate : { blob: image.file, mime: image.type };
+  const finalBlob = finalCandidate.blob;
+  const finalFormat = getFormatFromMime(finalCandidate.mime);
 
   return {
     id: `${image.id}-${Date.now()}`,
-    outputName: finalBlob === image.file ? image.name : getOutputName(image.name, image.format),
+    outputName: finalBlob === image.file ? image.name : getOutputName(image.name, finalCandidate.mime),
     originalSize: image.size,
     compressedSize: finalBlob.size,
     previewUrl: URL.createObjectURL(finalBlob),
     blob: finalBlob,
-    format: image.format,
+    format: finalFormat,
     width: image.width,
     height: image.height,
     compressedWidth: width,
@@ -307,7 +331,7 @@ export default function ImageCompressorClientPage() {
 
   async function prepareFile(file: File): Promise<SelectedImage | null> {
     if (!supportedMimeTypes.has(file.type)) {
-      showToast("Unsupported file format. Only JPG, PNG, WebP, BMP, GIF allowed.");
+      showToast("Unsupported file format. Only JPG, PNG, WebP allowed.");
       return null;
     }
 
@@ -348,7 +372,7 @@ export default function ImageCompressorClientPage() {
 
   async function addFiles(files: FileList | File[]) {
     if (images.length >= MAX_IMAGES) {
-      showToast("Maximum 10 images per batch. Please remove an image first.");
+      showToast("Maximum 20 images per batch. Please remove an image first.");
       return;
     }
 
@@ -358,7 +382,7 @@ export default function ImageCompressorClientPage() {
 
     for (const file of incoming) {
       if (images.length + prepared.length >= MAX_IMAGES) {
-        showToast("Maximum 10 images per batch. Please remove an image first.");
+        showToast("Maximum 20 images per batch. Please remove an image first.");
         break;
       }
 
@@ -518,22 +542,22 @@ export default function ImageCompressorClientPage() {
             <input
               ref={inputRef}
               type="file"
-              accept="image/jpeg,image/png,image/webp,image/bmp,image/gif"
+              accept="image/jpeg,image/png,image/webp"
               multiple
               disabled={!canAddMore}
               className="hidden"
               onChange={handleInputChange}
-              title={!canAddMore ? "Maximum 10 images per batch. Please remove an image first." : undefined}
+              title={!canAddMore ? "Maximum 20 images per batch. Please remove an image first." : undefined}
             />
 
             <div
               role="button"
               tabIndex={0}
               aria-disabled={!canAddMore}
-              title={!canAddMore ? "Maximum 10 images per batch. Please remove an image first." : undefined}
+              title={!canAddMore ? "Maximum 20 images per batch. Please remove an image first." : undefined}
               onClick={() => {
                 if (canAddMore) inputRef.current?.click();
-                else showToast("Maximum 10 images per batch. Please remove an image first.");
+                else showToast("Maximum 20 images per batch. Please remove an image first.");
               }}
               onKeyDown={(event) => {
                 if ((event.key === "Enter" || event.key === " ") && canAddMore) inputRef.current?.click();
@@ -552,12 +576,12 @@ export default function ImageCompressorClientPage() {
             >
               <FiUploadCloud className="h-12 w-12 text-cyan-400" />
               <p className="mt-4 text-base font-black text-[var(--tool-text)]">Drag & drop images here or click to browse</p>
-              <p className="mt-2 text-sm font-medium text-[var(--tool-muted)]">Supports JPG, PNG, WebP, BMP, GIF</p>
+              <p className="mt-2 text-sm font-medium text-[var(--tool-muted)]">Supports JPG, PNG, WebP</p>
             </div>
 
             <div className="mt-4 rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-4">
               <div className="flex flex-wrap items-center justify-between gap-2 text-sm font-black">
-                <span className={getCounterClass(images.length)}>{images.length}/10 images selected</span>
+                <span className={getCounterClass(images.length)}>{images.length}/20 images selected</span>
                 <span className="text-[var(--tool-muted)]">Total size: {formatMb(totalSize)} MB / 100 MB</span>
               </div>
               <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
@@ -567,7 +591,10 @@ export default function ImageCompressorClientPage() {
                 />
               </div>
               <p className="mt-3 rounded-xl bg-white/70 px-3 py-2 text-xs font-bold text-[var(--tool-muted)] dark:bg-slate-950/60">
-                Free plan: Max 10 images, 50MB per file, 100MB total per batch
+                Compress up to 20 images simultaneously with powerful AI-quality optimization.
+              </p>
+              <p className="mt-2 rounded-xl bg-white/70 px-3 py-2 text-xs font-bold text-[var(--tool-muted)] dark:bg-slate-950/60">
+                Upload up to 20 images at once. 50MB per file, 100MB total per batch.
               </p>
             </div>
 
@@ -616,6 +643,9 @@ export default function ImageCompressorClientPage() {
                 onChange={(event) => setLevel(Number(event.target.value))}
                 className="compressor-range mt-3 w-full"
               />
+              <p className="mt-2 text-xs font-bold text-[var(--tool-muted)]">
+                Auto-picks the smallest same-dimension result that avoids excessive visible quality loss.
+              </p>
               <div className="mt-2 grid grid-cols-3 text-xs font-bold text-[var(--tool-muted)]">
                 <span>Low (1-3)</span>
                 <span className="text-center">Medium (4-6)</span>
@@ -714,7 +744,7 @@ export default function ImageCompressorClientPage() {
                       <button
                         type="button"
                         onClick={() => downloadBlob(result.blob, result.outputName)}
-                        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-cyan-300/50 px-4 py-2 text-sm font-black text-cyan-600 transition hover:-translate-y-0.5 hover:bg-cyan-400/10 dark:text-cyan-200"
+                        className="inline-flex h-11 items-center justify-center gap-2 self-center rounded-xl border border-cyan-300/50 px-4 text-sm font-black text-cyan-600 transition hover:-translate-y-0.5 hover:bg-cyan-400/10 dark:text-cyan-200"
                       >
                         <FiDownload className="h-4 w-4" />
                         Download

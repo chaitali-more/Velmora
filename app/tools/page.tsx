@@ -19,7 +19,7 @@ const tools = [
     name: "Image Compressor",
     href: "/image-compressor",
     description:
-      "Reduce image file size for JPG, PNG, WebP, GIF, and more with browser-based compression and ZIP downloads.",
+      "Reduce image file size for JPG, PNG, and WebP with browser-based compression and ZIP downloads.",
   },
 ] as const;
 export const metadata: Metadata = buildStaticPageMetadata({

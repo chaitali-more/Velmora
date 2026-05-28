@@ -85,7 +85,7 @@ const toolPages = [
     href: '/image-compressor',
     displayUrl: 'velmora.com/image-compressor',
     description:
-      'Reduce JPG, PNG, WebP, GIF, and other image file sizes with Velmoraâ€™s free image compressor. Compress images locally in your browser, compare saved size, and download individual files or a ZIP.',
+      'Reduce JPG, PNG, and WebP image file sizes with Velmoraâ€™s free image compressor. Compress images locally in your browser, compare saved size, and download individual files or a ZIP.',
   },
 ]
 

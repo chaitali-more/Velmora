@@ -38,7 +38,7 @@ const helpfulPages = [
     href: '/image-compressor',
     displayUrl: 'velmora.com/image-compressor',
     description:
-      'Compress images and reduce file size for JPG, PNG, WebP, GIF, and more using Velmora’s free browser-based image compressor.',
+      'Compress images and reduce file size for JPG, PNG, and WebP using Velmora’s free browser-based image compressor.',
   },
   {
     title: 'Fitness & Health Calculators',
