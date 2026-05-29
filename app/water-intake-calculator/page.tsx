@@ -34,14 +34,14 @@ export const metadata: Metadata = buildCalculatorMetadata({
     "find daily hydration needs",
     "check water requirement",
     "estimate water intake per day",
-    "hydration level calculation",
+    "water intake calculator per day",
 
     // Supporting SEO keywords
     "daily hydration levels",
-    "water consumption guidelines",
-    "body hydration calculation",
-    "fluid intake recommendation",
-    "health hydration tracking"
+    "free water intake calculator to lose weight",
+    "water intake calculator for fat loss",
+    "recommended water intake in litres calculator",
+    "daily water intake calculator kg"
   ],
 });
 

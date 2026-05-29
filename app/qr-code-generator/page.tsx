@@ -16,8 +16,10 @@ description:
     "qr code generator",
     "generate qr code online",
     "create qr code",
-    "qr code maker",
+    "qr code generator for free",
     "qr code tool",
+    "qr code generator for location free",
+    "qr code generator for link",
 
     // Long-tail (high ranking potential)
     "qr code generator for url",
@@ -33,17 +35,17 @@ description:
 
     // Intent-based keywords
     "create qr code online",
-    "download qr code",
+    "qr code generator for location",
     "convert link to qr code",
     "make qr code for sharing",
     "qr code for marketing materials",
 
     // Supporting SEO keywords
-    "qr code format generator",
-    "qr code usage for business",
-    "qr code creation tool",
-    "digital qr code generator",
-    "online qr code utility"
+    "qr code generator for image",
+    "qr code generator for pdf",
+    "qr code generator for video",
+    "qr code generator for google form",
+    "qr code generator for google reviews"
   ],
 });
 

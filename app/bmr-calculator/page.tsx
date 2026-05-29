@@ -37,11 +37,12 @@ export const metadata: Metadata = buildCalculatorMetadata({
     "calorie requirement by body metrics",
 
     // Supporting SEO keywords
-    "bmr formula",
-    "rmr vs bmr difference",
-    "energy expenditure calculation",
-    "metabolic rate estimation",
-    "fitness calorie calculation"
+    "bmr calculator for men",
+    "bmr calculator for women",
+    "bmr calculator for weight loss",
+    "bmr calculator for weight gain",
+    "bmr calculator for fat loss",
+    "bmr calculator for women to lose weight"
   ],
 });
 

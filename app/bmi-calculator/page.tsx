@@ -38,11 +38,14 @@ export const metadata: Metadata = buildCalculatorMetadata({
     "health status by bmi",
 
     // Supporting SEO keywords
-    "bmi formula",
-    "bmi range chart india",
+    "bmi calculator for women",
+    "bmi calculator for men",
     "normal bmi for men and women",
-    "fitness bmi calculation",
-    "weight category based on bmi"
+    "bmi calculator for indian",
+    "bmi calculator for women indian",
+    "bmi calculator for women in kg",
+    "bmi calculator for men in kg",
+    "bmi calculator for infants in kg and cm"
   ],
 });
 
