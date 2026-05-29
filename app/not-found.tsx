@@ -4,52 +4,52 @@ const helpfulPages = [
   {
     title: 'Home',
     href: '/',
-    displayUrl: 'velmora.com/',
+    displayUrl: 'www.velmoranow.in/',
     description: 'Return to the main Velmora page and continue exploring tools, calculators, and blog articles.',
   },
   {
     title: 'Sitemap',
     href: '/sitemap',
-    displayUrl: 'velmora.com/sitemap',
+    displayUrl: 'www.velmoranow.in/sitemap',
     description: 'View a complete overview of Velmora pages, tools, calculators, and legal links.',
   },
   {
     title: 'QR Code Generator',
     href: '/qr-code-generator',
-    displayUrl: 'velmora.com/qr-code-generator',
+    displayUrl: 'www.velmoranow.in/qr-code-generator',
     description: 'Create a free QR code from any website URL or PDF link with no signup, no watermark, and no expiry from Velmora.',
   },
   {
     title: 'Free Online Tools',
     href: '/tools',
-    displayUrl: 'velmora.com/tools',
+    displayUrl: 'www.velmoranow.in/tools',
     description:
       'Browse Velmora’s tools hub for QR code generation, image conversion, image compression, and other no-signup browser utilities.',
   },
   {
     title: 'Image Converter',
     href: '/image-converter',
-    displayUrl: 'velmora.com/image-converter',
+    displayUrl: 'www.velmoranow.in/image-converter',
     description:
       'Convert images to JPG, PNG, or WebP online in your browser. Fast, secure, no upload required, and no watermark.',
   },
   {
     title: 'Image Compressor',
     href: '/image-compressor',
-    displayUrl: 'velmora.com/image-compressor',
+    displayUrl: 'www.velmoranow.in/image-compressor',
     description:
       'Compress images and reduce file size for JPG, PNG, and WebP using Velmora’s free browser-based image compressor.',
   },
   {
     title: 'Fitness & Health Calculators',
     href: '/calculators',
-    displayUrl: 'velmora.com/calculators',
+    displayUrl: 'www.velmoranow.in/calculators',
     description: 'Explore Velmora calculators for BMI, BMR, calories, protein, macros, body fat, ideal weight, and water intake.',
   },
   {
     title: 'Contact',
     href: '/contact',
-    displayUrl: 'velmora.com/contact',
+    displayUrl: 'www.velmoranow.in/contact',
     description: 'Reach out to the Velmora team with questions, suggestions, feedback, or general enquiries.',
   },
 ]

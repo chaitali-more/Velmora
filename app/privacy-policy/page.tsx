@@ -25,7 +25,7 @@ const sections = [
     content: (
       <>
         <p>
-          Welcome to Velmora (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;). We operate the website velmora.com, which provides free tools including health and fitness calculators, a QR code generator, and a blog with articles on technology and everyday life.
+          Welcome to Velmora (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;). We operate the website www.velmoranow.in, which provides free tools including health and fitness calculators, a QR code generator, and a blog with articles on technology and everyday life.
         </p>
         <p>
           Your privacy is important to us. This Privacy Policy explains what information is collected when you visit our website, how we use it, and your rights regarding that information.
@@ -172,11 +172,11 @@ const sections = [
         <dl className="mt-3 grid gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5 sm:grid-cols-2">
           <div>
             <dt className="font-bold text-slate-900 dark:text-white">Website</dt>
-            <dd>velmora.com</dd>
+            <dd>www.velmoranow.in</dd>
           </div>
           <div>
             <dt className="font-bold text-slate-900 dark:text-white">Contact page</dt>
-            <dd>velmora.com/contact</dd>
+            <dd>www.velmoranow.in/contact</dd>
           </div>
         </dl>
       </>
@@ -190,7 +190,7 @@ export default function PrivacyPolicyPage() {
       <p className="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Legal</p>
       <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-900 dark:text-white">Privacy Policy</h1>
       <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
-        Effective date: May 20, 2025 <span aria-hidden="true"> | </span> Last updated: May 20, 2025 <span aria-hidden="true"> | </span> Applies to: velmora.com
+        Effective date: May 20, 2025 <span aria-hidden="true"> | </span> Last updated: May 20, 2025 <span aria-hidden="true"> | </span> Applies to: www.velmoranow.in
       </p>
 
       <div className="mt-8 space-y-6 text-sm leading-7 text-slate-600 dark:text-slate-300">

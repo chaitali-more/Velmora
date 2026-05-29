@@ -1071,7 +1071,7 @@
       {
         "type": "cta_inline",
         "text": "Get your personalized water intake target",
-        "link": "https://velmora.com/water-intake-calculator"
+        "link": "/water-intake-calculator"
       },
       {
         "type": "divider"
@@ -1238,7 +1238,7 @@
           "Add flavor with lemon, cucumber, or mint if plain water feels boring"
         ],
         "link": {
-          "href": "https://velmora.com/water-intake-calculator",
+          "href": "/water-intake-calculator",
           "label": "Calculate your water intake now"
         }
       },
@@ -1298,7 +1298,7 @@
         "title": "Get your personalized water intake target in 10 seconds",
         "description": "Stop guessing how much water you need. Enter your weight and activity level, and get a hydration plan tailored to you.",
         "buttonText": "Use water intake calculator",
-        "link": "https://velmora.com/water-intake-calculator"
+        "link": "/water-intake-calculator"
       },
       {
         "type": "divider"
@@ -1591,7 +1591,7 @@
       {
         "type": "cta_inline",
         "text": "Calculate your ideal weight instantly",
-        "link": "https://velmora.com/ideal-weight-calculator"
+        "link": "/ideal-weight-calculator"
       },
       {
         "type": "divider"
@@ -1724,7 +1724,7 @@
         "title": "Find your ideal weight in 30 seconds",
         "description": "Enter your age, height, and gender. See how different formulas calculate your target weight and get a realistic range to aim for.",
         "buttonText": "Use ideal weight calculator",
-        "link": "https://velmora.com/ideal-weight-calculator"
+        "link": "/ideal-weight-calculator"
       },
       {
         "type": "divider"
@@ -1859,7 +1859,7 @@
       {
         "type": "cta_inline",
         "text": "Calculate your body fat percentage now",
-        "link": "https://velmora.com/body-fat-calculator"
+        "link": "/body-fat-calculator"
       },
       {
         "type": "divider"
@@ -1939,7 +1939,7 @@
           "Above 25% (Men) / Above 35% (Women): Overweight, higher health risk"
         ],
         "link": {
-          "href": "https://velmora.com/body-fat-calculator",
+          "href": "/body-fat-calculator",
           "label": "Get your body fat percentage"
         }
       },
@@ -2105,7 +2105,7 @@
         "title": "Calculate your body fat percentage in 2 minutes",
         "description": "Get your measurements (neck, waist, hip, height) and let our calculator show you your real body composition using the U.S. Navy method.",
         "buttonText": "Calculate body fat % now",
-        "link": "https://velmora.com/body-fat-calculator"
+        "link": "/body-fat-calculator"
       },
       {
         "type": "divider"
@@ -2206,7 +2206,7 @@
       {
         "type": "cta_inline",
         "text": "Calculate your BMR and TDEE now",
-        "link": "https://velmora.com/bmr-calculator"
+        "link": "/bmr-calculator"
       },
       {
         "type": "divider"
@@ -2366,7 +2366,7 @@
           "Sleep: Poor sleep can lower BMR by 10-15%"
         ],
         "link": {
-          "href": "https://velmora.com/bmr-calculator",
+          "href": "/bmr-calculator",
           "label": "Calculate your BMR now"
         }
       },
@@ -2524,7 +2524,7 @@
         "title": "Calculate your BMR and daily calorie needs in 60 seconds",
         "description": "Enter your age, weight, height, and activity level. Get your personalized BMR and TDEE to guide your weight loss or muscle gain.",
         "buttonText": "Calculate BMR now",
-        "link": "https://velmora.com/bmr-calculator"
+        "link": "/bmr-calculator"
       },
       {
         "type": "divider"
@@ -2668,7 +2668,7 @@
       {
         "type": "cta_inline",
         "text": "Calculate your exact daily calorie needs right now",
-        "link": "https://velmora.com/daily-calorie-needs-calculator"
+        "link": "/daily-calorie-needs-calculator"
       },
       {
         "type": "divider"
@@ -2683,7 +2683,7 @@
       },
       {
         "type": "note",
-        "text": "Stop guessing your calories. Use our free Calorie Calculator here: https://velmora.com/daily-calorie-needs-calculator - Takes less than 60 seconds. No sign-up needed."
+        "text": "Stop guessing your calories. Use our free Calorie Calculator here: https://www.velmoranow.in/daily-calorie-needs-calculator - Takes less than 60 seconds. No sign-up needed."
       },
       {
         "type": "paragraph",
@@ -2876,7 +2876,7 @@
         "title": "Find out exactly how many calories you need - in 60 seconds",
         "description": "Enter your age, weight, height, gender, and activity level. Get your personalised BMR, maintenance calories, weight loss target, and muscle gain target - all for free.",
         "buttonText": "Calculate My Calories Now",
-        "link": "https://velmora.com/daily-calorie-needs-calculator"
+        "link": "/daily-calorie-needs-calculator"
       },
       {
         "type": "divider"
@@ -2899,7 +2899,7 @@
       },
       {
         "type": "note",
-        "text": "Click here to calculate your daily calories now: https://velmora.com/daily-calorie-needs-calculator - Free. Instant. No sign-up. Just results."
+        "text": "Click here to calculate your daily calories now: https://www.velmoranow.in/daily-calorie-needs-calculator - Free. Instant. No sign-up. Just results."
       }
     ]
   },
@@ -3053,7 +3053,7 @@
       {
         "type": "cta_inline",
         "text": "Calculate your perfect macro split in 60 seconds",
-        "link": "https://velmora.com/macro-calculator"
+        "link": "/macro-calculator"
       },
       {
         "type": "divider"
@@ -3198,7 +3198,7 @@
       },
       {
         "type": "note",
-        "text": "Stop eating randomly. Use our free Macro Calculator to get your personalised protein, carbs & fat targets today: https://velmora.com/macro-calculator - No sign-up. Instant results. Five diet plan options."
+        "text": "Stop eating randomly. Use our free Macro Calculator to get your personalised protein, carbs & fat targets today: https://www.velmoranow.in/macro-calculator - No sign-up. Instant results. Five diet plan options."
       },
       {
         "type": "divider"
@@ -3292,7 +3292,7 @@
         "title": "Find your perfect protein, carbs & fat split - in 60 seconds",
         "description": "Enter your age, weight, height, activity level, and goal. Choose from Balanced, High Protein, Low Carb, Low Fat, or a fully Custom plan. Get your personalised macro targets instantly - for free.",
         "buttonText": "Calculate My Macros Now",
-        "link": "https://velmora.com/macro-calculator"
+        "link": "/macro-calculator"
       },
       {
         "type": "divider"
@@ -3315,7 +3315,7 @@
       },
       {
         "type": "note",
-        "text": "Click here to calculate your daily macros now: https://velmora.com/macro-calculator - Protein. Carbs. Fat. Your goal. Your numbers. Free."
+        "text": "Click here to calculate your daily macros now: https://www.velmoranow.in/macro-calculator - Protein. Carbs. Fat. Your goal. Your numbers. Free."
       }
     ]
   },
@@ -3473,7 +3473,7 @@
       {
         "type": "cta_inline",
         "text": "Find your daily protein target in 60 seconds - free",
-        "link": "https://velmora.com/protein-calculator"
+        "link": "/protein-calculator"
       },
       {
         "type": "divider"
@@ -3488,7 +3488,7 @@
       },
       {
         "type": "note",
-        "text": "Stop guessing your protein. Use our free Protein Calculator to get your exact daily target: https://velmora.com/protein-calculator - Personalised to your weight, goal, and activity level. Instant results."
+        "text": "Stop guessing your protein. Use our free Protein Calculator to get your exact daily target: https://www.velmoranow.in/protein-calculator - Personalised to your weight, goal, and activity level. Instant results."
       },
       {
         "type": "divider"
@@ -3685,7 +3685,7 @@
         "title": "Find out exactly how much protein your body needs - in 60 seconds",
         "description": "Enter your age, weight, height, activity level, and goal. Get your personalised daily protein target, minimum and maximum range, and protein calories - completely free.",
         "buttonText": "Calculate My Protein Now",
-        "link": "https://velmora.com/protein-calculator"
+        "link": "/protein-calculator"
       },
       {
         "type": "divider"
@@ -3708,7 +3708,7 @@
       },
       {
         "type": "note",
-        "text": "Click here to calculate your daily protein needs now: https://velmora.com/protein-calculator - Minimum. Recommended. Maximum. Your personalised range. Free."
+        "text": "Click here to calculate your daily protein needs now: https://www.velmoranow.in/protein-calculator - Minimum. Recommended. Maximum. Your personalised range. Free."
       }
     ]
   },
@@ -3789,7 +3789,7 @@
       {
         "type": "cta_inline",
         "text": "Create your QR code instantly here:",
-        "link": "https://velmora.com/qr-code-generator"
+        "link": "/qr-code-generator"
       },
       {
         "type": "divider"
@@ -3842,7 +3842,7 @@
         "title": "Generate your QR code in seconds",
         "description": "Paste your link and create a QR code instantly. No signup. No expiry. Works everywhere.",
         "buttonText": "Generate QR Code Now",
-        "link": "https://velmora.com/qr-code-generator"
+        "link": "/qr-code-generator"
       },
       {
         "type": "paragraph",

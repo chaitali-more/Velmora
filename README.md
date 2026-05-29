@@ -14,7 +14,7 @@ pnpm dev
 bun dev
 ```
 
-Open [https://velmora.com](https://velmora.com) with your browser to see the live site.
+Open [https://www.velmoranow.in](https://www.velmoranow.in) with your browser to see the live site.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

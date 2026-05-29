@@ -24,7 +24,7 @@ const sections = [
     content: (
       <>
         <p>
-          By accessing or using the website at velmora.com, the &quot;Website&quot;, you agree to be bound by these Terms and Conditions, &quot;Terms&quot;. If you do not agree with any part of these Terms, please discontinue use of the Website immediately.
+          By accessing or using the website at www.velmoranow.in, the &quot;Website&quot;, you agree to be bound by these Terms and Conditions, &quot;Terms&quot;. If you do not agree with any part of these Terms, please discontinue use of the Website immediately.
         </p>
         <p className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 font-semibold text-emerald-950 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-100">
           Simple summary: Using Velmora means you agree to these rules. No account or signup is needed. Just visiting the site counts as acceptance.
@@ -198,11 +198,11 @@ const sections = [
         <dl className="mt-3 grid gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5 sm:grid-cols-2">
           <div>
             <dt className="font-bold text-slate-900 dark:text-white">Website</dt>
-            <dd>velmora.com</dd>
+            <dd>www.velmoranow.in</dd>
           </div>
           <div>
             <dt className="font-bold text-slate-900 dark:text-white">Contact page</dt>
-            <dd>velmora.com/contact</dd>
+            <dd>www.velmoranow.in/contact</dd>
           </div>
         </dl>
       </>
@@ -216,7 +216,7 @@ export default function TermsAndConditionsPage() {
       <p className="text-xs uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Legal</p>
       <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-900 dark:text-white">Terms and Conditions</h1>
       <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
-        Effective date: May 20, 2025 <span aria-hidden="true"> | </span> Last updated: May 20, 2025 <span aria-hidden="true"> | </span> Applies to: velmora.com
+        Effective date: May 20, 2025 <span aria-hidden="true"> | </span> Last updated: May 20, 2025 <span aria-hidden="true"> | </span> Applies to: www.velmoranow.in
       </p>
 
       <div className="mt-8 space-y-6 text-sm leading-7 text-slate-600 dark:text-slate-300">
