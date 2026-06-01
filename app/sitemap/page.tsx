@@ -85,7 +85,7 @@ const toolPages = [
     href: '/image-compressor',
     displayUrl: 'www.velmoranow.in/image-compressor',
     description:
-      'Reduce JPG, PNG, and WebP image file sizes with Velmoraâ€™s free image compressor. Compress images locally in your browser, compare saved size, and download individual files or a ZIP.',
+      "Reduce JPG, PNG, and WebP image file sizes with Velmora's free image compressor. Compress images locally in your browser, compare saved size, and download individual files or a ZIP.",
   },
 ]
 
@@ -194,7 +194,7 @@ export default function SitemapPage() {
       <section className="mt-10">
         <h2 className="text-xl font-black text-slate-900 dark:text-white">Free Online Tools</h2>
         <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
-          Use Velmoraâ€™s privacy-minded browser tools for QR codes, image conversion, and image compression. These tools are built for fast everyday tasks with no login, no watermark, and no unnecessary upload step.
+          Use Velmora's privacy-minded browser tools for QR codes, image conversion, and image compression. These tools are built for fast everyday tasks with no login, no watermark, and no unnecessary upload step.
         </p>
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           {toolPages.map((page) => (
