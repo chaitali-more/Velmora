@@ -59,6 +59,8 @@ type JSZipFile = {
 declare global {
   interface Window {
     JSZip?: new () => JSZipFile;
+    pako?: any;
+    UPNG?: any;
   }
 }
 
@@ -189,6 +191,49 @@ async function ensureJSZip() {
   return window.JSZip;
 }
 
+async function ensureUPNG() {
+  if (window.UPNG) return window.UPNG;
+
+  if (!window.pako) {
+    await new Promise<void>((resolve, reject) => {
+      const existing = document.querySelector<HTMLScriptElement>("script[data-pako]");
+      if (existing) {
+        existing.addEventListener("load", () => resolve(), { once: true });
+        existing.addEventListener("error", () => reject(new Error("Unable to load compression helper library (pako).")), { once: true });
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = "https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js";
+      script.async = true;
+      script.dataset.pako = "true";
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error("Unable to load compression helper library (pako)."));
+      document.body.appendChild(script);
+    });
+  }
+
+  await new Promise<void>((resolve, reject) => {
+    const existing = document.querySelector<HTMLScriptElement>("script[data-upng]");
+    if (existing) {
+      existing.addEventListener("load", () => resolve(), { once: true });
+      existing.addEventListener("error", () => reject(new Error("Unable to load PNG optimizer library (UPNG).")), { once: true });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/upng-js/2.1.0/UPNG.min.js";
+    script.async = true;
+    script.dataset.upng = "true";
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("Unable to load PNG optimizer library (UPNG)."));
+    document.body.appendChild(script);
+  });
+
+  if (!window.UPNG) throw new Error("PNG optimizer library (UPNG) is unavailable.");
+  return window.UPNG;
+}
+
 function downloadBlob(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
@@ -240,33 +285,68 @@ async function compressImage(image: SelectedImage, level: number): Promise<Compr
   context.imageSmoothingQuality = "high";
   context.drawImage(loadedImage, 0, 0, width, height);
 
-  const candidateMimes =
-    image.format === "JPG"
-      ? ["image/jpeg", "image/webp"]
-      : image.format === "WebP"
-        ? ["image/webp"]
-        : ["image/webp", "image/png"];
-  const candidates: Array<{ blob: Blob; mime: string }> = [];
+  let finalBlob: Blob = image.file;
+  let finalMime: string = image.type;
 
-  for (const mime of candidateMimes) {
-    if (mime === "image/png") {
-      candidates.push({ blob: await canvasToBlob(canvas, mime), mime });
-      continue;
+  if (image.format === "PNG") {
+    try {
+      const UPNG = await ensureUPNG();
+      const imgData = context.getImageData(0, 0, width, height);
+      const buffer = imgData.data.buffer;
+
+      // Map level 1-10 to cnum (0 for lossless, or 256 down to 16 for lossy)
+      let cnum = 0;
+      if (level === 1) {
+        cnum = 0; // Lossless
+      } else {
+        const cnumMap: Record<number, number> = {
+          2: 256,
+          3: 192,
+          4: 128,
+          5: 96,
+          6: 64,
+          7: 48,
+          8: 32,
+          9: 24,
+          10: 16
+        };
+        cnum = cnumMap[level] || 96;
+      }
+
+      const compressedBuffer = UPNG.encode([buffer], width, height, cnum);
+      const compressedBlob = new Blob([new Uint8Array(compressedBuffer)], { type: "image/png" });
+
+      if (compressedBlob.size < image.size) {
+        finalBlob = compressedBlob;
+      }
+    } catch (e) {
+      console.error("UPNG compression failed, falling back to canvas toBlob:", e);
+      const canvasBlob = await canvasToBlob(canvas, "image/png");
+      if (canvasBlob.size < image.size) {
+        finalBlob = canvasBlob;
+      }
     }
-
-    for (const quality of getCandidateQualities(level)) {
-      candidates.push({ blob: await canvasToBlob(canvas, mime, quality), mime });
+  } else if (image.format === "JPG") {
+    const quality = getQualityForLevel(level);
+    const compressedBlob = await canvasToBlob(canvas, "image/jpeg", quality);
+    if (compressedBlob.size < image.size) {
+      finalBlob = compressedBlob;
+      finalMime = "image/jpeg";
+    }
+  } else if (image.format === "WebP") {
+    const quality = getQualityForLevel(level);
+    const compressedBlob = await canvasToBlob(canvas, "image/webp", quality);
+    if (compressedBlob.size < image.size) {
+      finalBlob = compressedBlob;
+      finalMime = "image/webp";
     }
   }
 
-  const bestCandidate = candidates.reduce((best, candidate) => (candidate.blob.size < best.blob.size ? candidate : best));
-  const finalCandidate = bestCandidate.blob.size < image.size ? bestCandidate : { blob: image.file, mime: image.type };
-  const finalBlob = finalCandidate.blob;
-  const finalFormat = getFormatFromMime(finalCandidate.mime);
+  const finalFormat = getFormatFromMime(finalMime);
 
   return {
     id: `${image.id}-${Date.now()}`,
-    outputName: finalBlob === image.file ? image.name : getOutputName(image.name, finalCandidate.mime),
+    outputName: finalBlob === image.file ? image.name : getOutputName(image.name, finalMime),
     originalSize: image.size,
     compressedSize: finalBlob.size,
     previewUrl: URL.createObjectURL(finalBlob),

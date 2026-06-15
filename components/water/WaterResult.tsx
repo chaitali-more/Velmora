@@ -34,14 +34,14 @@ export default function WaterResult({ liters, glasses, activity, actions }: Wate
 
       <div className="rounded-xl border border-white/70 bg-white/80 p-5 shadow-[0_20px_60px_rgba(16,24,40,0.16)] backdrop-blur dark:border-white/10 dark:bg-slate-900/80 dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
         <p className="text-base font-semibold text-slate-800 dark:text-slate-100">
-          ?? You should drink <span className="text-cyan-600 dark:text-cyan-300">{liters.toFixed(2)} liters</span> of water per day
+           You should drink <span className="text-cyan-600 dark:text-cyan-300">{liters.toFixed(2)} liters</span> of water per day
         </p>
 
         <p className="mt-2 text-sm font-medium text-slate-600 dark:text-slate-300">
-          ?? Ëœ {glasses} glasses per day
+         {glasses} glasses per day
         </p>
 
-        <div className="mt-5">
+        {/* <div className="mt-5">
           <div className="mb-2 flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
             <span>Daily Target Progress</span>
             <span>{Math.round(progress)}%</span>
@@ -52,7 +52,7 @@ export default function WaterResult({ liters, glasses, activity, actions }: Wate
               style={{ width: `${progress}%` }}
             />
           </div>
-        </div>
+        </div> */}
       </div>
       {actions ? <div>{actions}</div> : null}
     </div>

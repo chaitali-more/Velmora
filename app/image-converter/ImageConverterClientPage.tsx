@@ -538,47 +538,35 @@ export default function ImageConverterClientPage() {
               </div>
             ) : (
               <div className="space-y-3">
-                {converted.map((image, index) => {
-                  const saved = Math.max(0, Math.round((1 - image.convertedSize / image.originalSize) * 100));
-                  return (
-                    <div
-                      key={image.id}
-                      className="result-row grid gap-3 rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3 sm:grid-cols-[60px_1fr_auto]"
-                      style={{ animationDelay: `${index * 45}ms` }}
-                    >
-                      <img
-                        src={image.previewUrl}
-                        alt={`Converted ${image.outputName} preview from ${image.from} to ${image.to}`}
-                        className="h-[60px] w-[60px] rounded-xl object-cover"
-                      />
-                      <div className="min-w-0">
-                        <p className="truncate text-sm font-black text-[var(--tool-text)]">{image.outputName}</p>
-                        <div className="mt-1 flex flex-wrap items-center gap-2 text-xs font-bold text-[var(--tool-muted)]">
-                          <span>{image.from}</span>
-                          <FiArrowRight className="h-3.5 w-3.5" />
-                          <span>{image.to === "jpg" ? "JPG" : image.to === "png" ? "PNG" : "WebP"}</span>
-                        </div>
-                        <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-[var(--tool-muted)]">
-                          <span>
-                            {formatBytes(image.originalSize)} <FiArrowRight className="mx-1 inline h-3.5 w-3.5" />{" "}
-                            {formatBytes(image.convertedSize)}
-                          </span>
-                          <span className="rounded-full bg-emerald-400/15 px-2 py-1 font-black text-emerald-600 ring-1 ring-emerald-400/30 dark:text-emerald-200">
-                            saved {saved}%
-                          </span>
-                        </div>
+                {converted.map((image, index) => (
+                  <div
+                    key={image.id}
+                    className="result-row grid gap-3 rounded-xl border border-[var(--tool-border)] bg-[var(--tool-soft)] p-3 sm:grid-cols-[60px_1fr_auto]"
+                    style={{ animationDelay: `${index * 45}ms` }}
+                  >
+                    <img
+                      src={image.previewUrl}
+                      alt={`Converted ${image.outputName} preview from ${image.from} to ${image.to}`}
+                      className="h-[60px] w-[60px] rounded-xl object-cover"
+                    />
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-black text-[var(--tool-text)]">{image.outputName}</p>
+                      <div className="mt-1 flex flex-wrap items-center gap-2 text-xs font-bold text-[var(--tool-muted)]">
+                        <span>{image.from}</span>
+                        <FiArrowRight className="h-3.5 w-3.5" />
+                        <span>{image.to === "jpg" ? "JPG" : image.to === "png" ? "PNG" : "WebP"}</span>
                       </div>
-                      <button
-                        type="button"
-                        onClick={() => downloadBlob(image.blob, image.outputName)}
-                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-cyan-300/50 px-4 py-2 text-sm font-black text-cyan-600 transition hover:-translate-y-0.5 hover:bg-cyan-400/10 dark:text-cyan-200"
-                      >
-                        <FiDownload className="h-4 w-4" />
-                        Download
-                      </button>
                     </div>
-                  );
-                })}
+                    <button
+                      type="button"
+                      onClick={() => downloadBlob(image.blob, image.outputName)}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl border border-cyan-300/50 px-4 py-2 text-sm font-black text-cyan-600 transition hover:-translate-y-0.5 hover:bg-cyan-400/10 dark:text-cyan-200"
+                    >
+                      <FiDownload className="h-4 w-4" />
+                      Download
+                    </button>
+                  </div>
+                ))}
 
                 {converted.length > 1 ? (
                   <button
