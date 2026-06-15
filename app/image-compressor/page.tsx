@@ -14,6 +14,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
     "Image compressor to reduce JPG PNG and WebP file size for web and storage use",
 
   keywords: [
+    "chaitali more frontend developer",
     // Core keywords
     "image compressor",
     "compress image online",

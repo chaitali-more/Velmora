@@ -34,6 +34,7 @@ export const metadata: Metadata = buildStaticPageMetadata({
     "Free online tools for QR code generation and image conversion and compression",
 
   keywords: [
+    "chaitali more frontend developer",
     // Core keywords
     "free online tools",
     "online tools",

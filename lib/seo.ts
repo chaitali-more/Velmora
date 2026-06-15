@@ -86,7 +86,8 @@ export function buildRootMetadata(): Metadata {
       'Healthy Breakfast Ideas',
       'Weight Loss',
       'Best Oats in India',
-      'Oats'
+      'Oats',
+      'chaitali more frontend developer'
     ],
     robots: {
       index: true,
@@ -142,6 +143,7 @@ trimMetaDescription(
     description,
     keywords: [
       "Velmora","Velmora Now", "velmoranow",
+      "chaitali more frontend developer",
       "free online tools",
       "image compressor",
       "QR code generator",
@@ -289,6 +291,7 @@ export function buildCalculatorMetadata({
       'health calculator',
       'fitness calculator',
       'nutrition calculator',
+      'chaitali more frontend developer',
     ],
     imageAlt: `${title} for Indian users on Velmora health and fitness calculators`,
   })
