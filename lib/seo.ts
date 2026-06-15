@@ -6,7 +6,7 @@ const MAX_META_DESCRIPTION_LENGTH = 160
 
 export const siteConfig = {
   name: 'Velmora Now',
-  description: 'A thoughtful blog about technology, life, creativity, and growth.',
+  description: 'Free online tools and calculators for health, fitness, productivity, and daily web utilities.',
   author: 'Velmora Now',
   publisher: 'Velmora Now',
   imageAlt: 'Velmora India blog for free online tools, health calculators, productivity, and healthy living',
