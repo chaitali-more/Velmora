@@ -78,6 +78,12 @@ export function buildRootMetadata(): Metadata {
     },
     keywords: [
       'Velmora',
+      'Velmora Now',
+      'velmoranow',
+      'velmore',
+      'velmore now',
+      'velmorenow',
+      'Velmore Now',
       'blog',
       'technology',
       'lifestyle',
@@ -143,6 +149,7 @@ trimMetaDescription(
     description,
     keywords: [
       "Velmora","Velmora Now", "velmoranow",
+      "velmore", "velmore now", "velmorenow", "Velmore Now",
       "chaitali more frontend developer",
       "free online tools",
       "image compressor",
@@ -236,10 +243,31 @@ export function buildStaticPageMetadata({
   const metaDescription = trimMetaDescription(description)
   const ogImage = getStaticPageOgImage(path)
 
+  const mergedKeywords = keywords
+    ? [
+        ...keywords,
+        'Velmora',
+        'Velmora Now',
+        'velmoranow',
+        'velmore',
+        'velmore now',
+        'velmorenow',
+        'Velmore Now',
+      ]
+    : [
+        'Velmora',
+        'Velmora Now',
+        'velmoranow',
+        'velmore',
+        'velmore now',
+        'velmorenow',
+        'Velmore Now',
+      ]
+
   return {
     title,
     description: metaDescription,
-    keywords,
+    keywords: mergedKeywords,
     alternates: {
       canonical: path,
     },
@@ -291,6 +319,8 @@ export function buildCalculatorMetadata({
       'health calculator',
       'fitness calculator',
       'nutrition calculator',
+      'velmore calculator',
+      'velmorenow calculator',
       'chaitali more frontend developer',
     ],
     imageAlt: `${title} for Indian users on Velmora health and fitness calculators`,

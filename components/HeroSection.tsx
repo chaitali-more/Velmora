@@ -351,6 +351,17 @@ export default function HeroSection() {
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         />
 
+        {/* Brand Chip */}
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, scale: 0.9 }}
+          animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
+          transition={{ delay: 0.05, duration: 0.5 }}
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 px-4 py-1.5 text-xs font-black uppercase tracking-[0.2em] text-cyan-600 dark:border-cyan-400/25 dark:bg-cyan-950/20 dark:text-cyan-200"
+        >
+          <span className="flex h-2 w-2 rounded-full bg-cyan-500 animate-pulse" />
+          Velmora Now
+        </motion.div>
+
         {/* 3D title */}
         <motion.h1
           initial={reduceMotion ? false : { opacity: 0, y: 32 }}
@@ -374,7 +385,7 @@ export default function HeroSection() {
           transition={{ delay: 0.22, duration: 0.76, ease }}
           className="mt-5 max-w-3xl text-base font-medium leading-8 text-slate-600 dark:text-slate-300 sm:text-lg"
         >
-          Discover powerful calculators, smart utility tools, and insightful blogs across fitness, technology, and productivity — everything you need to make better decisions, every day.
+          Velmora Now is your go-to platform for free online calculators, utility tools, and health trackers. Discover powerful calculators, smart utilities, and blogs across fitness, technology, and productivity to help you make better decisions, every day.
         </motion.p>
 
         <motion.div
