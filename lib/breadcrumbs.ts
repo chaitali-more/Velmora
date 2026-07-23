@@ -33,6 +33,10 @@ const SEGMENT_LABELS: Record<string, string> = {
   sitemap: 'Sitemap',
   'terms-and-conditions': 'Terms and Conditions',
   'water-intake-calculator': 'Water Intake Calculator',
+  'word-counter': 'Word Counter',
+  'text-case-converter': 'Text Case Converter',
+  'password-generator': 'Password Generator',
+  'percentage-calculator': 'Percentage Calculator',
 }
 
 function cleanPathname(pathname: string) {

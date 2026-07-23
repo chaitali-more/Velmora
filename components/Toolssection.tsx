@@ -6,11 +6,15 @@ import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } fr
 import {
   FiArrowUpRight,
   FiCheckCircle,
+  FiFileText,
   FiGrid,
   FiImage,
   FiLayers,
+  FiLock,
   FiMinimize2,
+  FiPercent,
   FiShield,
+  FiType,
   FiZap,
 } from 'react-icons/fi'
 
@@ -129,7 +133,111 @@ const tools: Tool[] = [
     { label: 'Control', value: 'Compression level slider' },
     { label: 'Processing', value: 'Runs locally (no upload)' },
   ],
-}
+},
+  {
+    number: '04',
+    title: 'Word Counter',
+    tagline: 'Count words, characters, sentences, and paragraphs in real time with estimated reading & speaking times.',
+    href: '/tools/word-counter',
+    icon: FiFileText,
+    accent: 'from-purple-300 via-violet-400 to-indigo-400',
+    glow: 'bg-purple-400/25 dark:bg-purple-500/14',
+    metric: 'Instant',
+    features: [
+      'Real-time word & char counting',
+      'Reading & speaking time',
+      'Sentence & paragraph stats',
+      '100% private in-browser'
+    ],
+    badges: [
+      'Instant',
+      'Private',
+      'Free'
+    ],
+    preview: [
+      { label: 'Metrics', value: 'Words, Chars, Sentences' },
+      { label: 'Estimates', value: 'Reading & Speaking time' },
+      { label: 'Privacy', value: '100% Client-side' },
+    ],
+  },
+  {
+    number: '05',
+    title: 'Text Case Converter',
+    tagline: 'Convert text between UPPERCASE, lowercase, Title Case, Sentence case, alternating, and inverse case instantly.',
+    href: '/tools/text-case-converter',
+    icon: FiType,
+    accent: 'from-pink-300 via-rose-400 to-violet-500',
+    glow: 'bg-pink-400/25 dark:bg-pink-500/14',
+    metric: '6 Cases',
+    features: [
+      'UPPERCASE & lowercase',
+      'Title Case & Sentence case',
+      'aLtErNaTiNg & InVeRsE CaSe',
+      'Instant in-place conversion'
+    ],
+    badges: [
+      'Instant',
+      'Private',
+      'Free'
+    ],
+    preview: [
+      { label: 'Options', value: '6 Case Modes' },
+      { label: 'Speed', value: 'Instant transform' },
+      { label: 'Privacy', value: '100% Client-side' },
+    ],
+  },
+  {
+    number: '06',
+    title: 'Password Generator',
+    tagline: 'Generate strong, customizable, cryptographically secure passwords locally in your browser.',
+    href: '/tools/password-generator',
+    icon: FiLock,
+    accent: 'from-emerald-300 via-teal-400 to-cyan-500',
+    glow: 'bg-emerald-400/25 dark:bg-emerald-500/14',
+    metric: 'Crypto Safe',
+    features: [
+      'Cryptographically secure RNG',
+      'Custom length 4 to 64 chars',
+      'Symbols, numbers, letters',
+      'Strength score meter'
+    ],
+    badges: [
+      'Secure',
+      'Private',
+      'Free'
+    ],
+    preview: [
+      { label: 'Security', value: 'window.crypto RNG' },
+      { label: 'Length', value: '4 to 64 characters' },
+      { label: 'Privacy', value: '100% Client-side' },
+    ],
+  },
+  {
+    number: '07',
+    title: 'Percentage Calculator',
+    tagline: 'Calculate percentages, percentage increase/decrease, and percentage changes instantly.',
+    href: '/tools/percentage-calculator',
+    icon: FiPercent,
+    accent: 'from-violet-400 via-fuchsia-400 to-cyan-400',
+    glow: 'bg-violet-400/25 dark:bg-violet-500/14',
+    metric: 'Instant Math',
+    features: [
+      'What is X% of Y',
+      'X is what % of Y',
+      'Percentage increase/decrease',
+      'X% change of a number'
+    ],
+    badges: [
+      'Instant',
+      'Private',
+      'Free'
+    ],
+    preview: [
+      { label: 'Speed', value: 'Instant keystroke' },
+      { label: 'Modes', value: '4 Math Modes' },
+      { label: 'Privacy', value: '100% Client-side' },
+    ],
+  }
 ]
 
 function PreviewPill({ item }: { item: ToolPreviewItem }) {

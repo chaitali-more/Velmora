@@ -29,6 +29,10 @@ const toolLinks = [
   { href: '/qr-code-generator', label: 'QR Code Generator' },
   { href: '/image-converter', label: 'Image Converter' },
   { href: '/image-compressor', label: 'Image Compressor' },
+  { href: '/tools/word-counter', label: 'Word Counter' },
+  { href: '/tools/text-case-converter', label: 'Text Case Converter' },
+  { href: '/tools/password-generator', label: 'Password Generator' },
+  { href: '/tools/percentage-calculator', label: 'Percentage Calculator' },
 ]
 
 const THEME_CHANGE_EVENT = 'velmora-theme-change'

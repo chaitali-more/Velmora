@@ -21,6 +21,10 @@ const toolLinks = [
   { href: '/qr-code-generator', label: 'QR Generator' },
   { href: '/image-converter', label: 'Converter' },
   { href: '/image-compressor', label: 'Compressor' },
+  { href: '/tools/word-counter', label: 'Word Counter' },
+  { href: '/tools/text-case-converter', label: 'Case Converter' },
+  { href: '/tools/password-generator', label: 'Password Generator' },
+  { href: '/tools/percentage-calculator', label: 'Percentage Calculator' },
   { href: '/tools', label: 'All Tools' },
 ]
 

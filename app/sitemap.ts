@@ -24,6 +24,10 @@ const staticRoutes = [
   { path: '/qr-code-generator', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/image-converter', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/image-compressor', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/tools/word-counter', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/tools/text-case-converter', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/tools/password-generator', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/tools/percentage-calculator', priority: 0.8, changeFrequency: 'monthly' },
 ] as const
 
 function absoluteUrl(path: string) {

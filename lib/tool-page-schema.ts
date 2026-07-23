@@ -150,6 +150,65 @@ const toolPageSchemaConfigs: Record<string, ToolPageSchemaConfig> = {
       'Works across desktop, tablet, and mobile browsers',
     ],
   },
+  '/tools/word-counter': {
+    path: '/tools/word-counter',
+    name: 'Word Counter & Character Counter',
+    description:
+      'Free online word counter and character counter tool. Instantly count words, characters, sentences, and paragraphs. Get reading time estimates.',
+    applicationCategory: ['UtilitiesApplication', 'Text Tools', 'Productivity'],
+    featureList: [
+      'Real-time word and character counting',
+      'Count with and without spaces',
+      'Sentence and paragraph counting',
+      'Reading and speaking time estimates',
+      '100% private browser-based tool',
+    ],
+  },
+  '/tools/text-case-converter': {
+    path: '/tools/text-case-converter',
+    name: 'Text Case Converter',
+    description:
+      'Free online text case converter tool. Instantly convert text to UPPERCASE, lowercase, Title Case, Sentence case, alternating case, and inverse case.',
+    applicationCategory: ['UtilitiesApplication', 'Text Tools', 'Productivity'],
+    featureList: [
+      'Instant case conversion',
+      'Supports UPPERCASE, lowercase, Title Case, and Sentence case',
+      'Fun aLtErNaTiNg cAsE and InVeRsE CaSe options',
+      'Real-time word and character count stats',
+      '100% private browser-based tool',
+    ],
+  },
+  '/tools/password-generator': {
+    path: '/tools/password-generator',
+    name: 'Password Generator',
+    description:
+      'Free online secure random password generator. Create strong, customizable passwords with letters, numbers, and symbols. 100% private.',
+    applicationCategory: ['UtilitiesApplication', 'Security', 'Productivity'],
+    featureList: [
+      'Cryptographically secure random password generation',
+      'Customizable password length from 4 to 64 characters',
+      'Toggle uppercase, lowercase, numbers, and special symbols',
+      'Option to exclude ambiguous characters (0, O, 1, l, I)',
+      'Real-time password strength score meter',
+      '100% browser-based private generation with no server logging',
+    ],
+  },
+  '/tools/percentage-calculator': {
+    path: '/tools/percentage-calculator',
+    name: 'Percentage Calculator',
+    description:
+      'Free online percentage calculator. Calculate percentages, percentage increase/decrease, and percentage change instantly.',
+    applicationCategory: ['UtilitiesApplication', 'FinanceApplication', 'MathTools'],
+    featureList: [
+      'What is X% of Y calculation',
+      'X is what percent of Y calculation',
+      'Percentage increase and decrease calculation',
+      'X% increase or decrease of a starting number',
+      'Real-time keystroke instant updates',
+      'Numeric inputMode for mobile keypads',
+      '100% private browser-based tool',
+    ],
+  },
 }
 
 function absoluteUrl(path: string) {

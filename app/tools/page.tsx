@@ -21,6 +21,30 @@ const tools = [
     description:
       "Reduce image file size for JPG, PNG, and WebP with browser-based compression and ZIP downloads.",
   },
+  {
+    name: "Word Counter & Character Counter",
+    href: "/tools/word-counter",
+    description:
+      "Count words, characters, sentences, paragraphs, and estimate reading/speaking time in real-time with 100% browser privacy.",
+  },
+  {
+    name: "Text Case Converter",
+    href: "/tools/text-case-converter",
+    description:
+      "Instantly convert text to UPPERCASE, lowercase, Title Case, Sentence case, alternating case, and inverse case.",
+  },
+  {
+    name: "Password Generator",
+    href: "/tools/password-generator",
+    description:
+      "Generate strong, customizable, cryptographically secure passwords locally in your browser with zero data logging.",
+  },
+  {
+    name: "Percentage Calculator",
+    href: "/tools/percentage-calculator",
+    description:
+      "Calculate percentages, percentage increase/decrease, and percentage changes instantly in real time.",
+  },
 ] as const;
 export const metadata: Metadata = buildStaticPageMetadata({
   title: "Free Online Tools - QR Code Generator, Image Tools",
