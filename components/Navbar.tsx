@@ -320,9 +320,6 @@ export default function Navbar() {
                           <FiActivity className="h-3.5 w-3.5 text-cyan-600 dark:text-cyan-400" />
                           Health & Fitness Calculators
                         </span>
-                        <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                          Free, browser-based health, fitness, and nutrition calculators. Instant private results.
-                        </p>
                       </div>
                       <Link
                         href="/calculators"
@@ -412,9 +409,6 @@ export default function Navbar() {
                           <FiTool className="h-3.5 w-3.5 text-violet-600 dark:text-cyan-400" />
                           Free Online Developer & Web Utilities
                         </span>
-                        <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                          100% Client-side local browser tools. Zero data logging or server uploads.
-                        </p>
                       </div>
                       <Link
                         href="/tools"
