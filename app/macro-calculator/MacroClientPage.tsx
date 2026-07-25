@@ -5,6 +5,7 @@ import MacroResult from "@/components/macro/MacroResult";
 import MacroSliders from "@/components/macro/MacroSliders";
 import MacroTabs from "@/components/macro/MacroTabs";
 import FAQSection from "@/components/calculators/FAQSection";
+import RelatedCalculators from "@/components/calculators/RelatedCalculators";
 import ResultPlaceholder from "@/components/calculators/ResultPlaceholder";
 import { macroFaqs } from "@/data/calculator-faqs";
 import { macroPlans } from "@/lib/macro";
@@ -94,6 +95,7 @@ export default function MacroPage() {
       </div>
       <div className="mx-auto w-full max-w-7xl">
         <FAQSection items={macroFaqs} />
+        <RelatedCalculators currentPath="/macro-calculator" />
       </div>
     </div>
   );

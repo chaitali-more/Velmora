@@ -209,6 +209,70 @@ const toolPageSchemaConfigs: Record<string, ToolPageSchemaConfig> = {
       '100% private browser-based tool',
     ],
   },
+  '/tools/emi-calculator': {
+    path: '/tools/emi-calculator',
+    name: 'EMI Calculator',
+    description:
+      'Free online EMI calculator. Calculate monthly loan EMI, total interest payable, total payment, and view year-by-year amortization schedule for home, car, or personal loans.',
+    applicationCategory: ['UtilitiesApplication', 'FinanceApplication', 'Calculator'],
+    featureList: [
+      'Calculate monthly EMI, total interest, and total payment',
+      'Synced slider and numeric inputs for loan amount, interest rate, and tenure',
+      'Supports tenure calculation in both Years and Months',
+      'Interactive pie chart breakdown of principal vs. interest',
+      'Year-by-year collapsible amortization schedule table',
+      'Numeric inputMode for mobile keypads',
+      '100% private browser-based tool',
+    ],
+  },
+  '/tools/json-formatter': {
+    path: '/tools/json-formatter',
+    name: 'JSON Formatter & Validator',
+    description:
+      'Free online JSON Formatter and Validator. Instantly beautify, minify, and validate JSON code with real-time error detection, line numbers, and syntax highlighting.',
+    applicationCategory: ['UtilitiesApplication', 'Developer Tools', 'Productivity'],
+    featureList: [
+      'Real-time syntax validation with line numbers and error reasons',
+      'Beautify JSON with 2 spaces, 4 spaces, or tab indentation',
+      'Minify JSON to single line compressed output',
+      'Syntax highlighting for keys, strings, numbers, booleans, and null',
+      'Upload .json files directly into the editor',
+      'Auto-format on paste trigger',
+      'Character, line, and file size statistics',
+      '100% private browser-based tool with zero server uploads',
+    ],
+  },
+  '/tools/json-validator': {
+    path: '/tools/json-validator',
+    name: 'JSON Validator',
+    description:
+      'Free online JSON validator. Instantly check JSON syntax, detect errors with exact line & column numbers, and debug JSON code. 100% private in browser.',
+    applicationCategory: ['UtilitiesApplication', 'Developer Tools', 'Productivity'],
+    featureList: [
+      'Debounced real-time JSON syntax validation',
+      'Exact error line and column calculation',
+      'Plain-English debugging explanations for common syntax mistakes',
+      'Red line number gutter error highlighting',
+      'Root structure type and key/item count statistics',
+      'Upload .json files directly',
+      '100% private browser-based validation with zero server uploads',
+    ],
+  },
+  '/tools/slug-generator': {
+    path: '/tools/slug-generator',
+    name: 'Slug Generator',
+    description:
+      'Free online slug generator tool. Convert any title or text into a clean, SEO-friendly URL slug with instant live updates, custom separators, and max length control.',
+    applicationCategory: ['UtilitiesApplication', 'Developer Tools', 'SEO Tools'],
+    featureList: [
+      'Real-time live URL slug generation',
+      'Custom separator choice (hyphen vs. underscore)',
+      'Lowercase toggle and special character removal',
+      'Word-boundary truncation with custom max length limit',
+      'Example placeholder preview and copy to clipboard',
+      '100% private browser-based generation with zero server uploads',
+    ],
+  },
 }
 
 function absoluteUrl(path: string) {

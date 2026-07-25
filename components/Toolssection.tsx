@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } fr
 import {
   FiArrowUpRight,
   FiCheckCircle,
+  FiDollarSign,
   FiFileText,
   FiGrid,
   FiImage,
@@ -235,6 +236,32 @@ const tools: Tool[] = [
     preview: [
       { label: 'Speed', value: 'Instant keystroke' },
       { label: 'Modes', value: '4 Math Modes' },
+      { label: 'Privacy', value: '100% Client-side' },
+    ],
+  },
+  {
+    number: '08',
+    title: 'EMI Calculator',
+    tagline: 'Calculate monthly loan EMI, total interest payable, and full repayment schedule with breakdown charts.',
+    href: '/tools/emi-calculator',
+    icon: FiDollarSign,
+    accent: 'from-cyan-400 via-violet-500 to-fuchsia-500',
+    glow: 'bg-cyan-400/25 dark:bg-cyan-500/14',
+    metric: 'Loan Math',
+    features: [
+      'Monthly EMI & interest stats',
+      'Synced slider & number inputs',
+      'Interactive pie chart',
+      'Yearly amortization schedule'
+    ],
+    badges: [
+      'Instant',
+      'Private',
+      'Free'
+    ],
+    preview: [
+      { label: 'Charts', value: 'Interactive Pie breakdown' },
+      { label: 'Schedule', value: 'Yearly Amortization' },
       { label: 'Privacy', value: '100% Client-side' },
     ],
   }

@@ -1,6 +1,7 @@
 "use client";
 
 import FAQSection from "@/components/calculators/FAQSection";
+import RelatedCalculators from "@/components/calculators/RelatedCalculators";
 import ResultActions from "@/components/calculators/ResultActions";
 import ResultPlaceholder from "@/components/calculators/ResultPlaceholder";
 import BodyFatForm from "@/components/body-fat/BodyFatForm";
@@ -106,6 +107,7 @@ export default function BodyFatPage() {
       </div>
       <div className="mx-auto w-full max-w-7xl">
         <FAQSection items={bodyFatFaqs} />
+        <RelatedCalculators currentPath="/body-fat-calculator" />
       </div>
     </div>
   );

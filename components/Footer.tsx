@@ -15,6 +15,8 @@ const calculatorLinks = [
   { href: '/daily-calorie-needs-calculator', label: 'Calorie Calculator' },
   { href: '/protein-calculator', label: 'Protein Calculator' },
   { href: '/water-intake-calculator', label: 'Water Intake Calculator' },
+  { href: '/bmr-calculator', label: 'BMR Calculator' },
+  { href: '/calculators', label: 'All Calculators' },
 ]
 
 const toolLinks = [
@@ -23,8 +25,6 @@ const toolLinks = [
   { href: '/image-compressor', label: 'Compressor' },
   { href: '/tools/word-counter', label: 'Word Counter' },
   { href: '/tools/text-case-converter', label: 'Case Converter' },
-  { href: '/tools/password-generator', label: 'Password Generator' },
-  { href: '/tools/percentage-calculator', label: 'Percentage Calculator' },
   { href: '/tools', label: 'All Tools' },
 ]
 
@@ -166,7 +166,16 @@ export default function Footer() {
         <div className="mt-10 border-t border-slate-200 pt-8 dark:border-white/10">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <p className="text-xs text-slate-500 dark:text-slate-500">
-              &copy; {new Date().getFullYear()} Velmora Now. All rights reserved. Designed by Chaitali More.
+              &copy; {new Date().getFullYear()} Velmora Now. All rights reserved. Developed by{' '}
+              <a
+                href="https://www.chaitalimore.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-slate-700 underline decoration-slate-300 underline-offset-4 transition hover:text-cyan-600 dark:text-slate-300 dark:decoration-slate-700 dark:hover:text-cyan-400"
+              >
+                Chaitali More
+              </a>
+              .
             </p>
             <p className="max-w-md text-center text-[10px] leading-relaxed text-slate-400 dark:text-slate-600 md:text-right">
               <strong>Disclaimer:</strong> Information provided on Velmora is for general educational purposes only and does not constitute professional medical, legal, or financial advice.

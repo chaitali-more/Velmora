@@ -45,6 +45,30 @@ const tools = [
     description:
       "Calculate percentages, percentage increase/decrease, and percentage changes instantly in real time.",
   },
+  {
+    name: "EMI Calculator",
+    href: "/tools/emi-calculator",
+    description:
+      "Calculate monthly loan EMI, total interest payable, and full repayment schedule with interactive breakdown charts.",
+  },
+  {
+    name: "JSON Formatter & Validator",
+    href: "/tools/json-formatter",
+    description:
+      "Beautify, minify, and validate JSON code with real-time error detection, line numbers, syntax highlighting, and 100% browser privacy.",
+  },
+  {
+    name: "JSON Validator",
+    href: "/tools/json-validator",
+    description:
+      "Check JSON syntax, detect errors with exact line and column numbers, and get plain-English debugging tips instantly.",
+  },
+  {
+    name: "Slug Generator",
+    href: "/tools/slug-generator",
+    description:
+      "Convert any title or phrase into a clean, SEO-friendly URL slug with instant live updates, custom separators, and max length control.",
+  },
 ] as const;
 export const metadata: Metadata = buildStaticPageMetadata({
   title: "Free Online Tools - QR Code Generator, Image Tools",

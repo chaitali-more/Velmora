@@ -10,6 +10,7 @@ import {
   FiRotateCcw,
   FiShield,
 } from "react-icons/fi";
+import RelatedTools from "@/components/tools/RelatedTools";
 
 type CalcMode = "mode1" | "mode2" | "mode3" | "mode4";
 
@@ -535,6 +536,7 @@ export default function PercentageCalculatorClientPage() {
                 })}
               </div>
             </section>
+            <RelatedTools currentPath="/tools/percentage-calculator" />
           </main>
         </div>
       </div>

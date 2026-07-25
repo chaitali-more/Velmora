@@ -12,6 +12,7 @@ import {
   FiUploadCloud,
   FiX,
 } from "react-icons/fi";
+import RelatedTools from "@/components/tools/RelatedTools";
 
 type ImageFormat = "JPG" | "PNG" | "WebP";
 type ToastType = "success" | "error" | "warning";
@@ -852,6 +853,7 @@ export default function ImageCompressorClientPage() {
           <FiShield className="h-4 w-4 text-emerald-400" />
           Your images never leave your device. All compression happens locally in your browser.
         </p>
+        <RelatedTools currentPath="/image-compressor" />
       </div>
     </div>
   );

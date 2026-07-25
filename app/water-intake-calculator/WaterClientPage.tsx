@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import FAQSection from "@/components/calculators/FAQSection";
+import RelatedCalculators from "@/components/calculators/RelatedCalculators";
 import ResultActions from "@/components/calculators/ResultActions";
 import ResultPlaceholder from "@/components/calculators/ResultPlaceholder";
 import WaterForm from "@/components/water/WaterForm";
@@ -163,6 +164,7 @@ export default function WaterPage() {
       </div>
       <div className="mx-auto w-full max-w-7xl">
         <FAQSection items={waterFaqs} />
+        <RelatedCalculators currentPath="/water-intake-calculator" />
       </div>
     </div>
   );

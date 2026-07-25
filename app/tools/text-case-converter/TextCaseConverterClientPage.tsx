@@ -9,6 +9,7 @@ import {
   FiShield,
   FiTrash2,
 } from "react-icons/fi";
+import RelatedTools from "@/components/tools/RelatedTools";
 
 type CaseType =
   | "uppercase"
@@ -370,6 +371,7 @@ export default function TextCaseConverterClientPage() {
                 })}
               </div>
             </section>
+            <RelatedTools currentPath="/tools/text-case-converter" />
           </main>
         </div>
       </div>

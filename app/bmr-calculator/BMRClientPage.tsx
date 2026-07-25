@@ -1,6 +1,7 @@
 "use client";
 
 import FAQSection from "@/components/calculators/FAQSection";
+import RelatedCalculators from "@/components/calculators/RelatedCalculators";
 import ResultActions from "@/components/calculators/ResultActions";
 import ResultPlaceholder from "@/components/calculators/ResultPlaceholder";
 import BMRForm from "@/components/bmr/BMRForm";
@@ -105,6 +106,7 @@ export default function BMRPage() {
       </div>
       <div className="mx-auto w-full max-w-7xl">
         <FAQSection items={bmrFaqs} />
+        <RelatedCalculators currentPath="/bmr-calculator" />
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import ProteinForm from "@/components/protein/ProteinForm";
 import ProteinResult from "@/components/protein/ProteinResult";
 import FAQSection from "@/components/calculators/FAQSection";
+import RelatedCalculators from "@/components/calculators/RelatedCalculators";
 import ResultPlaceholder from "@/components/calculators/ResultPlaceholder";
 import { proteinFaqs } from "@/data/calculator-faqs";
 import { proteinActivityLevels, proteinGoals } from "@/lib/protein";
@@ -73,6 +74,7 @@ export default function ProteinPage() {
       </div>
       <div className="mx-auto w-full max-w-7xl">
         <FAQSection items={proteinFaqs} />
+        <RelatedCalculators currentPath="/protein-calculator" />
       </div>
     </div>
   );

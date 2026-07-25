@@ -37,6 +37,10 @@ const SEGMENT_LABELS: Record<string, string> = {
   'text-case-converter': 'Text Case Converter',
   'password-generator': 'Password Generator',
   'percentage-calculator': 'Percentage Calculator',
+  'emi-calculator': 'EMI Calculator',
+  'json-formatter': 'JSON Formatter',
+  'json-validator': 'JSON Validator',
+  'slug-generator': 'Slug Generator',
 }
 
 function cleanPathname(pathname: string) {

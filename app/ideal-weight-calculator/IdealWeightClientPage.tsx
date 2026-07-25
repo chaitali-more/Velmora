@@ -1,6 +1,7 @@
 "use client";
 
 import FAQSection from "@/components/calculators/FAQSection";
+import RelatedCalculators from "@/components/calculators/RelatedCalculators";
 import ResultActions from "@/components/calculators/ResultActions";
 import ResultPlaceholder from "@/components/calculators/ResultPlaceholder";
 import IdealWeightForm from "@/components/ideal-weight/IdealWeightForm";
@@ -101,6 +102,7 @@ export default function IdealWeightPage() {
       </div>
       <div className="mx-auto w-full max-w-7xl">
         <FAQSection items={idealWeightFaqs} />
+        <RelatedCalculators currentPath="/ideal-weight-calculator" />
       </div>
     </div>
   );

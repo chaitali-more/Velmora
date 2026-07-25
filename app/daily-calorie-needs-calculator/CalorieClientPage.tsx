@@ -1,6 +1,7 @@
 "use client";
 
 import FAQSection from "@/components/calculators/FAQSection";
+import RelatedCalculators from "@/components/calculators/RelatedCalculators";
 import ResultActions from "@/components/calculators/ResultActions";
 import ResultPlaceholder from "@/components/calculators/ResultPlaceholder";
 import CalorieForm from "@/components/calorie/CalorieForm";
@@ -105,6 +106,7 @@ export default function CaloriePage() {
       </div>
       <div className="mx-auto w-full max-w-7xl">
         <FAQSection items={calorieFaqs} />
+        <RelatedCalculators currentPath="/daily-calorie-needs-calculator" />
       </div>
     </div>
   );

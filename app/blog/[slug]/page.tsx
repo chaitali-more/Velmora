@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { buildBlogPostMetadata } from '@/lib/seo'
+import { buildBlogArticleSchema, buildFAQSchema, serializeJsonLd } from '@/lib/site-schema'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -49,11 +50,25 @@ export default async function BlogPostPage({ params }: Props) {
   const readingTime = Math.ceil(
     post.content
       .filter((b) => b.type === 'paragraph')
-      .reduce((acc, b) => acc + b.text.length, 0) / 200
+      .reduce((acc, b) => acc + (b.type === 'paragraph' ? b.text.length : 0), 0) / 200
   )
+
+  const articleSchema = buildBlogArticleSchema(post)
+  const faqBlock = post.content.find((b) => b.type === 'faq') as { type: 'faq'; items: { question: string; answer: string }[] } | undefined
+  const faqSchema = faqBlock?.items ? buildFAQSchema(faqBlock.items) : null
 
   return (
     <article className="mx-auto w-full max-w-7xl px-4">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqSchema) }}
+        />
+      )}
 
       {/* Back */}
       <Link
@@ -127,10 +142,9 @@ export default async function BlogPostPage({ params }: Props) {
             return (
               <p
                 key={i}
-                className="text-zinc-700 dark:text-zinc-300 leading-relaxed text-base md:text-lg"
-              >
-                {block.text}
-              </p>
+                className="text-zinc-700 dark:text-zinc-300 leading-relaxed text-base md:text-lg [&_a]:text-cyan-600 dark:[&_a]:text-cyan-400 [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-cyan-500"
+                dangerouslySetInnerHTML={{ __html: block.text }}
+              />
             )
           }
 
@@ -141,23 +155,30 @@ export default async function BlogPostPage({ params }: Props) {
                 key={i}
                 className="list-disc pl-6 space-y-2 text-zinc-700 dark:text-zinc-300 text-base md:text-lg"
               >
-                {block.items.map((item: ListItem, j: number) => (
-                  <li key={j}>
-                    {typeof item === 'string' || !item.href ? (
-                      typeof item === 'string' ? item : item.text
-                    ) : (
+                {block.items.map((item: ListItem, j: number) => {
+                  if (typeof item === 'string') {
+                    return (
+                      <li
+                        key={j}
+                        className="[&_a]:text-cyan-600 dark:[&_a]:text-cyan-400 [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-cyan-500"
+                        dangerouslySetInnerHTML={{ __html: item }}
+                      />
+                    )
+                  }
+                  return (
+                    <li key={j}>
                       <a
                         href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer sponsored"
-                        className="underline decoration-zinc-300/10 underline-offset-4 transition hover:text-zinc-900 hover:decoration-zinc-500 dark:decoration-zinc-600 dark:hover:text-white"
+                        target={item.href.startsWith('http') ? '_blank' : undefined}
+                        rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="text-cyan-600 dark:text-cyan-400 underline underline-offset-4 transition hover:text-cyan-500"
                         aria-label={item.label ?? item.text}
                       >
                         {item.text}
                       </a>
-                    )}
-                  </li>
-                ))}
+                    </li>
+                  )
+                })}
               </ul>
             )
           }
@@ -169,23 +190,30 @@ export default async function BlogPostPage({ params }: Props) {
                 key={i}
                 className="list-decimal pl-6 space-y-2 text-zinc-700 dark:text-zinc-300 text-base md:text-lg"
               >
-                {block.items.map((item: ListItem, j: number) => (
-                  <li key={j}>
-                    {typeof item === 'string' || !item.href ? (
-                      typeof item === 'string' ? item : item.text
-                    ) : (
+                {block.items.map((item: ListItem, j: number) => {
+                  if (typeof item === 'string') {
+                    return (
+                      <li
+                        key={j}
+                        className="[&_a]:text-cyan-600 dark:[&_a]:text-cyan-400 [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-cyan-500"
+                        dangerouslySetInnerHTML={{ __html: item }}
+                      />
+                    )
+                  }
+                  return (
+                    <li key={j}>
                       <a
                         href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer sponsored"
-                        className="underline decoration-zinc-300 underline-offset-4 transition hover:text-zinc-900 hover:decoration-zinc-500 dark:decoration-zinc-600 dark:hover:text-white"
+                        target={item.href.startsWith('http') ? '_blank' : undefined}
+                        rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="text-cyan-600 dark:text-cyan-400 underline underline-offset-4 transition hover:text-cyan-500"
                         aria-label={item.label ?? item.text}
                       >
                         {item.text}
                       </a>
-                    )}
-                  </li>
-                ))}
+                    </li>
+                  )
+                })}
               </ol>
             )
           }
@@ -230,18 +258,13 @@ export default async function BlogPostPage({ params }: Props) {
             return (
               <div
                 key={i}
-                className="
-                  flex gap-3 items-start
-                  rounded-xl p-4
-                  bg-amber-50 dark:bg-amber-500/10
-                  border border-amber-200 dark:border-amber-500/30
-                "
+                className="flex gap-3 items-start rounded-xl p-4 bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30"
               >
                 <span className="text-xl shrink-0">💡</span>
-                <p className="text-amber-800 dark:text-amber-300 text-sm md:text-base leading-relaxed">
-                  <span className="font-semibold">Pro Tip: </span>
-                  {block.text}
-                </p>
+                <p
+                  className="text-amber-800 dark:text-amber-300 text-sm md:text-base leading-relaxed [&_a]:text-amber-900 dark:[&_a]:text-amber-200 [&_a]:underline"
+                  dangerouslySetInnerHTML={{ __html: `<span class="font-semibold">Pro Tip: </span>${block.text}` }}
+                />
               </div>
             )
           }
@@ -251,19 +274,43 @@ export default async function BlogPostPage({ params }: Props) {
             return (
               <div
                 key={i}
-                className="
-                  flex gap-3 items-start
-                  rounded-xl p-4
-                  bg-cyan-50 dark:bg-cyan-500/10
-                  border border-cyan-200 dark:border-cyan-500/30
-                "
+                className="flex gap-3 items-start rounded-xl p-4 bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30"
               >
                 <span className="text-xl shrink-0">📌</span>
-                <p className="text-cyan-800 dark:text-cyan-300 text-sm md:text-base leading-relaxed">
-                  {block.text}
-                </p>
+                <p
+                  className="text-cyan-800 dark:text-cyan-300 text-sm md:text-base leading-relaxed [&_a]:text-cyan-900 dark:[&_a]:text-cyan-200 [&_a]:underline"
+                  dangerouslySetInnerHTML={{ __html: block.text }}
+                />
               </div>
             )
+          }
+
+          // ─── FAQ Accordions ───────────────────────────────────────────
+          if (block.type === 'faq') {
+            if (!block.items || block.items.length === 0) return null;
+            return (
+              <div key={i} className="my-6 space-y-3">
+                {block.items.map((faqItem: { question: string; answer: string }, j: number) => (
+                  <details
+                    key={j}
+                    className="group rounded-xl border border-zinc-200/80 bg-zinc-50/70 px-4 py-3.5 transition open:border-cyan-500/40 open:bg-cyan-50/30 sm:px-5 sm:py-4 dark:border-zinc-800 dark:bg-zinc-900/80 dark:open:border-cyan-500/30 dark:open:bg-zinc-900"
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-left font-bold text-zinc-900 sm:text-base dark:text-zinc-100">
+                      <span>{faqItem.question}</span>
+                      <span className="flex items-center justify-center rounded-full bg-zinc-200/60 p-1.5 text-zinc-600 transition group-open:rotate-180 group-open:bg-cyan-100 group-open:text-cyan-700 dark:bg-zinc-800 dark:text-zinc-300 dark:group-open:bg-cyan-500/20 dark:group-open:text-cyan-300">
+                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </span>
+                    </summary>
+                    <p
+                      className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300 [&_a]:text-cyan-600 dark:[&_a]:text-cyan-400 [&_a]:underline"
+                      dangerouslySetInnerHTML={{ __html: faqItem.answer }}
+                    />
+                  </details>
+                ))}
+              </div>
+            );
           }
 
           // ─── Comparison / Data Table ──────────────────────────────────

@@ -52,6 +52,10 @@ export type ContentBlock =
       link?: { href: string; label: string }
       reverse?: boolean
     }
+  | {
+      type: 'faq'
+      items: { question: string; answer: string }[]
+    }
 
 export interface Post {
   slug: string

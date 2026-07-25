@@ -10,6 +10,7 @@ import {
   FiShield,
   FiSliders,
 } from "react-icons/fi";
+import RelatedTools from "@/components/tools/RelatedTools";
 
 const faqData = [
   {
@@ -453,6 +454,7 @@ export default function PasswordGeneratorClientPage() {
                 })}
               </div>
             </section>
+            <RelatedTools currentPath="/tools/password-generator" />
           </main>
         </div>
       </div>

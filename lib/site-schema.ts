@@ -92,3 +92,67 @@ export function buildWebsiteSchema() {
     },
   }
 }
+
+export function buildBlogArticleSchema(post: {
+  slug: string
+  title: string
+  excerpt: string
+  image: string
+  date: string
+  category: string
+}) {
+  const siteUrl = getSiteUrl()
+  const postUrl = absoluteUrl(`/blog/${post.slug}`)
+  const imageUrl = absoluteUrl(post.image)
+  const isoDate = new Date(`${post.date}T00:00:00.000Z`).toISOString()
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${postUrl}#article`,
+    isPartOf: {
+      '@type': 'WebPage',
+      '@id': postUrl,
+      url: postUrl,
+      name: post.title,
+    },
+    headline: post.title,
+    description: post.excerpt,
+    image: [imageUrl],
+    datePublished: isoDate,
+    dateModified: isoDate,
+    author: {
+      '@type': 'Organization',
+      name: 'Velmora Now',
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Velmora Now',
+      logo: {
+        '@type': 'ImageObject',
+        url: absoluteUrl('/images/velmora-logo-white-black.png'),
+      },
+    },
+    articleSection: post.category,
+    inLanguage: 'en',
+    mainEntityOfPage: postUrl,
+  }
+}
+
+export function buildFAQSchema(faqItems: { question: string; answer: string }[]) {
+  if (!faqItems || faqItems.length === 0) return null
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer.replace(/<[^>]*>/g, ''),
+      },
+    })),
+  }
+}

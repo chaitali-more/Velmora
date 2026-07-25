@@ -11,6 +11,7 @@ import {
   FiUploadCloud,
   FiX,
 } from "react-icons/fi";
+import RelatedTools from "@/components/tools/RelatedTools";
 
 type TargetFormat = "jpg" | "png" | "webp";
 type DetectedFormat = "JPG" | "PNG" | "WebP" | "Unknown";
@@ -587,6 +588,7 @@ export default function ImageConverterClientPage() {
           <FiShield className="h-4 w-4 text-emerald-400" />
           Your images never leave your device. All conversion happens locally in your browser.
         </p>
+        <RelatedTools currentPath="/image-converter" />
       </div>
     </div>
   );

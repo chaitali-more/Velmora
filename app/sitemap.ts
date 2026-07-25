@@ -28,6 +28,10 @@ const staticRoutes = [
   { path: '/tools/text-case-converter', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/tools/password-generator', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/tools/percentage-calculator', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/tools/emi-calculator', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/tools/json-formatter', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/tools/json-validator', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/tools/slug-generator', priority: 0.8, changeFrequency: 'monthly' },
 ] as const
 
 function absoluteUrl(path: string) {

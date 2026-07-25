@@ -13,6 +13,7 @@ import {
   FiTrash2,
   FiType,
 } from "react-icons/fi";
+import RelatedTools from "@/components/tools/RelatedTools";
 
 type StatCardProps = {
   label: string;
@@ -366,6 +367,7 @@ export default function WordCounterClientPage() {
                 })}
               </div>
             </section>
+            <RelatedTools currentPath="/tools/word-counter" />
           </main>
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import QRCode from "qrcode";
+import RelatedTools from "@/components/tools/RelatedTools";
 
 type QRMode = "url" | "pdf";
 
@@ -211,6 +212,7 @@ export default function QRCodeGeneratorClientPage() {
             </div>
           </section>
         </div>
+        <RelatedTools currentPath="/qr-code-generator" />
       </div>
     </div>
   );

@@ -1,10 +1,11 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import BMIForm from "@/components/bmi/BMIForm";
 import BMIResult from "@/components/bmi/BMIResult";
 import UnitToggle from "@/components/bmi/UnitToggle";
 import FAQSection from "@/components/calculators/FAQSection";
+import RelatedCalculators from "@/components/calculators/RelatedCalculators";
 import ResultPlaceholder from "@/components/calculators/ResultPlaceholder";
 import ResultActions from "@/components/calculators/ResultActions";
 import { bmiFaqs } from "@/data/calculator-faqs";
@@ -129,6 +130,7 @@ export default function BMIPage() {
       </div>
       <div className="mx-auto w-full max-w-7xl">
         <FAQSection items={bmiFaqs} />
+        <RelatedCalculators currentPath="/bmi-calculator" />
       </div>
     </div>
   );
