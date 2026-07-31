@@ -7,10 +7,13 @@ import {
   FiImage,
   FiMinimize2,
   FiFileText,
+  FiColumns,
+  FiAlignLeft,
   FiType,
   FiLock,
   FiPercent,
   FiDollarSign,
+  FiTrendingUp,
   FiCode,
   FiCheckSquare,
   FiLink,
@@ -34,10 +37,17 @@ const allTools: ToolItem[] = [
   },
   {
     title: "Image Converter",
-    description: "Convert images between PNG, JPG, WebP, and AVIF formats.",
+    description: "Convert WebP, PNG, JPG, and AVIF images in your browser.",
     href: "/image-converter",
     icon: FiImage,
-    badge: "Converter",
+    badge: "Media",
+  },
+  {
+    title: "Image to Base64",
+    description: "Convert image files to Base64 strings, HTML img tags, or CSS rules, and vice versa.",
+    href: "/tools/image-to-base64",
+    icon: FiImage,
+    badge: "Media",
   },
   {
     title: "Image Compressor",
@@ -61,6 +71,20 @@ const allTools: ToolItem[] = [
     badge: "Text",
   },
   {
+    title: "Compare Text",
+    description: "Compare two text blocks side-by-side or inline and highlight changes.",
+    href: "/tools/compare-text",
+    icon: FiColumns,
+    badge: "Text",
+  },
+  {
+    title: "Lorem Ipsum",
+    description: "Generate customized placeholder dummy text with options for paragraphs and HTML tags.",
+    href: "/tools/lorem-ipsum-generator",
+    icon: FiAlignLeft,
+    badge: "Text",
+  },
+  {
     title: "Password Generator",
     description: "Generate secure, randomized passwords with custom rules.",
     href: "/tools/password-generator",
@@ -79,6 +103,20 @@ const allTools: ToolItem[] = [
     description: "Calculate monthly loan EMI and total interest payable.",
     href: "/tools/emi-calculator",
     icon: FiDollarSign,
+    badge: "Finance",
+  },
+  {
+    title: "SIP Calculator",
+    description: "Calculate expected returns for mutual fund SIP & lumpsum investments.",
+    href: "/tools/sip-calculator",
+    icon: FiTrendingUp,
+    badge: "Finance",
+  },
+  {
+    title: "Compound Interest Calculator",
+    description: "Calculate compound interest growth for your investments and savings.",
+    href: "/tools/compound-interest-calculator",
+    icon: FiTrendingUp,
     badge: "Finance",
   },
   {
@@ -127,7 +165,7 @@ export default function RelatedTools({ currentPath }: { currentPath: string }) {
       </div>
 
       {/* 3 cards - grid on desktop, horizontal scroll on mobile */}
-      <div className="flex gap-3.5 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-3 scrollbar-none">
+      <div className="flex gap-3.5 overflow-x-auto snap-x snap-mandatory pb-2 -mx-3.5 px-3.5 sm:mx-0 sm:px-0 sm:pb-0 sm:grid sm:grid-cols-3 scrollbar-none">
         {related.map((item) => {
           const Icon = item.icon;
           return (

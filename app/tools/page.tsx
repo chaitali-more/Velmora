@@ -18,8 +18,13 @@ const tools = [
   {
     name: "Image Compressor",
     href: "/image-compressor",
+    description: "Compress images up to 70% offline in browser safely with high quality output.",
+  },
+  {
+    name: "Image to Base64",
+    href: "/tools/image-to-base64",
     description:
-      "Reduce image file size for JPG, PNG, and WebP with browser-based compression and ZIP downloads.",
+      "Convert image files to Base64 strings, HTML img tags, or CSS rules, and decode Base64 back to image files.",
   },
   {
     name: "Word Counter & Character Counter",
@@ -32,6 +37,18 @@ const tools = [
     href: "/tools/text-case-converter",
     description:
       "Instantly convert text to UPPERCASE, lowercase, Title Case, Sentence case, alternating case, and inverse case.",
+  },
+  {
+    name: "Compare Text",
+    href: "/tools/compare-text",
+    description:
+      "Compare two text blocks side-by-side or inline and see highlights of additions, deletions, and differences instantly.",
+  },
+  {
+    name: "Lorem Ipsum Generator",
+    href: "/tools/lorem-ipsum-generator",
+    description:
+      "Generate customizable placeholder dummy text (paragraphs, sentences, words, and bullet lists) with optional HTML wrappers.",
   },
   {
     name: "Password Generator",
@@ -50,6 +67,18 @@ const tools = [
     href: "/tools/emi-calculator",
     description:
       "Calculate monthly loan EMI, total interest payable, and full repayment schedule with interactive breakdown charts.",
+  },
+  {
+    name: "SIP Calculator",
+    href: "/tools/sip-calculator",
+    description:
+      "Calculate maturity value and estimated returns of systematic investment plans (SIP) and lumpsum investments with annual growth schedules.",
+  },
+  {
+    name: "Compound Interest Calculator",
+    href: "/tools/compound-interest-calculator",
+    description:
+      "Calculate the future value of your savings or investments with customizable compounding frequencies and regular deposits.",
   },
   {
     name: "JSON Formatter & Validator",

@@ -66,6 +66,12 @@ const calculatorCategories: CalculatorItem[] = [
     description: 'Calculate daily calories for weight maintenance.',
   },
   {
+    href: '/calories-burned-calculator',
+    label: 'Calories Burned Calculator',
+    category: 'Energy & Calories',
+    description: 'Calculate calories burned during workouts & sports.',
+  },
+  {
     href: '/protein-calculator',
     label: 'Protein Calculator',
     category: 'Nutrition & Hydration',
@@ -120,7 +126,13 @@ const toolCategories: ToolItem[] = [
     href: '/image-converter',
     label: 'Image Converter',
     category: 'Media & Files',
-    description: 'Convert WebP, JPG, PNG images in browser.',
+    description: 'Convert PNG, JPG, WebP, AVIF & PDF files.',
+  },
+  {
+    href: '/tools/image-to-base64',
+    label: 'Image to Base64',
+    category: 'Media & Files',
+    description: 'Convert image files to Base64 and vice versa.',
   },
   {
     href: '/image-compressor',
@@ -141,6 +153,18 @@ const toolCategories: ToolItem[] = [
     description: 'Convert UPPERCASE, lowercase, & Title Case.',
   },
   {
+    href: '/tools/compare-text',
+    label: 'Compare Text',
+    category: 'Text & Productivity',
+    description: 'Compare text and highlight additions & deletions.',
+  },
+  {
+    href: '/tools/lorem-ipsum-generator',
+    label: 'Lorem Ipsum Generator',
+    category: 'Text & Productivity',
+    description: 'Generate customizable placeholder dummy text.',
+  },
+  {
     href: '/tools/percentage-calculator',
     label: 'Percentage Calculator',
     category: 'Math & Finance',
@@ -151,6 +175,18 @@ const toolCategories: ToolItem[] = [
     label: 'EMI Calculator',
     category: 'Math & Finance',
     description: 'Calculate loan EMI & repayment schedules.',
+  },
+  {
+    href: '/tools/sip-calculator',
+    label: 'SIP Calculator',
+    category: 'Math & Finance',
+    description: 'Calculate mutual fund SIP & lumpsum returns.',
+  },
+  {
+    href: '/tools/compound-interest-calculator',
+    label: 'Compound Interest Calculator',
+    category: 'Math & Finance',
+    description: 'Calculate compound interest growth with deposits.',
   },
 ]
 

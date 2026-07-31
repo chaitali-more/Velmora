@@ -15,6 +15,9 @@ import {
   FiMinimize2,
   FiPercent,
   FiShield,
+  FiTrendingUp,
+  FiColumns,
+  FiAlignLeft,
   FiType,
   FiZap,
 } from 'react-icons/fi'
@@ -135,8 +138,34 @@ const tools: Tool[] = [
     { label: 'Processing', value: 'Runs locally (no upload)' },
   ],
 },
+{
+  number: '04',
+  title: 'Image to Base64',
+  tagline: 'Convert images to Base64 data strings, HTML tags, or CSS rules, and decode Base64 back to image files.',
+  href: '/tools/image-to-base64',
+  icon: FiImage,
+  accent: 'from-blue-300 via-cyan-400 to-emerald-300',
+  glow: 'bg-emerald-400/25 dark:bg-emerald-500/14',
+  metric: 'Base64',
+  features: [
+    'Convert images to Base64 strings',
+    'HTML img tags & CSS rules',
+    'Decode Base64 back to images',
+    '100% private in-browser'
+  ],
+  badges: [
+    'Instant',
+    'Private',
+    'Free'
+  ],
+  preview: [
+    { label: 'Uploads', value: 'PNG, JPG, WebP, SVG, GIF' },
+    { label: 'Outputs', value: 'Raw, HTML, CSS snippets' },
+    { label: 'Decoder', value: 'Decodes Base64 to image' },
+  ],
+},
   {
-    number: '04',
+    number: '05',
     title: 'Word Counter',
     tagline: 'Count words, characters, sentences, and paragraphs in real time with estimated reading & speaking times.',
     href: '/tools/word-counter',
@@ -162,7 +191,7 @@ const tools: Tool[] = [
     ],
   },
   {
-    number: '05',
+    number: '06',
     title: 'Text Case Converter',
     tagline: 'Convert text between UPPERCASE, lowercase, Title Case, Sentence case, alternating, and inverse case instantly.',
     href: '/tools/text-case-converter',
@@ -188,7 +217,59 @@ const tools: Tool[] = [
     ],
   },
   {
-    number: '06',
+    number: '07',
+    title: 'Compare Text',
+    tagline: 'Compare two text blocks side-by-side or inline and highlight changes of additions & deletions instantly.',
+    href: '/tools/compare-text',
+    icon: FiColumns,
+    accent: 'from-pink-300 via-rose-400 to-violet-500',
+    glow: 'bg-pink-400/25 dark:bg-pink-500/14',
+    metric: 'Diff Checker',
+    features: [
+      'Split & Unified diff views',
+      'Highlights additions/deletions',
+      'Instant character count stats',
+      '100% private in-browser'
+    ],
+    badges: [
+      'Instant',
+      'Private',
+      'Free'
+    ],
+    preview: [
+      { label: 'Views', value: 'Split & Unified' },
+      { label: 'Highlighting', value: 'Red & Green lines' },
+      { label: 'Privacy', value: '100% Client-side' },
+    ],
+  },
+  {
+    number: '08',
+    title: 'Lorem Ipsum Generator',
+    tagline: 'Generate highly customizable placeholder dummy text (paragraphs, lists, sentences, words) with HTML wraps.',
+    href: '/tools/lorem-ipsum-generator',
+    icon: FiAlignLeft,
+    accent: 'from-amber-300 via-orange-400 to-red-500',
+    glow: 'bg-amber-400/25 dark:bg-amber-500/14',
+    metric: 'Dummy Text',
+    features: [
+      'Paragraphs, sentences, lists',
+      'Short, medium, long profiles',
+      'Optional HTML tag wraps',
+      '100% private in-browser'
+    ],
+    badges: [
+      'Instant',
+      'Private',
+      'Free'
+    ],
+    preview: [
+      { label: 'Types', value: 'Paragraphs, lists, words' },
+      { label: 'Formatting', value: 'Plain Text & HTML wraps' },
+      { label: 'Privacy', value: '100% Client-side' },
+    ],
+  },
+  {
+    number: '09',
     title: 'Password Generator',
     tagline: 'Generate strong, customizable, cryptographically secure passwords locally in your browser.',
     href: '/tools/password-generator',
@@ -214,7 +295,7 @@ const tools: Tool[] = [
     ],
   },
   {
-    number: '07',
+    number: '10',
     title: 'Percentage Calculator',
     tagline: 'Calculate percentages, percentage increase/decrease, and percentage changes instantly.',
     href: '/tools/percentage-calculator',
@@ -240,7 +321,7 @@ const tools: Tool[] = [
     ],
   },
   {
-    number: '08',
+    number: '11',
     title: 'EMI Calculator',
     tagline: 'Calculate monthly loan EMI, total interest payable, and full repayment schedule with breakdown charts.',
     href: '/tools/emi-calculator',
@@ -263,6 +344,58 @@ const tools: Tool[] = [
       { label: 'Charts', value: 'Interactive Pie breakdown' },
       { label: 'Schedule', value: 'Yearly Amortization' },
       { label: 'Privacy', value: '100% Client-side' },
+    ],
+  },
+  {
+    number: '12',
+    title: 'SIP Calculator',
+    tagline: 'Calculate maturity value and estimated returns of systematic investment plans (SIP) or lumpsum investments with growth charts.',
+    href: '/tools/sip-calculator',
+    icon: FiTrendingUp,
+    accent: 'from-emerald-400 via-teal-500 to-cyan-500',
+    glow: 'bg-emerald-400/25 dark:bg-emerald-500/14',
+    metric: 'Investment Math',
+    features: [
+      'SIP & Lumpsum modes',
+      'Invested vs Returns breakdown',
+      'Interactive growth chart',
+      'Year-by-year compounding schedule'
+    ],
+    badges: [
+      'Interactive',
+      'Private',
+      'Free'
+    ],
+    preview: [
+      { label: 'Modes', value: 'SIP & Lumpsum' },
+      { label: 'Breakdown', value: 'Invested vs Interest' },
+      { label: 'Schedule', value: 'Yearly Growth Table' },
+    ],
+  },
+  {
+    number: '13',
+    title: 'Compound Interest Calculator',
+    tagline: 'Calculate compound interest growth for your savings and investments with customizable compounding and additions.',
+    href: '/tools/compound-interest-calculator',
+    icon: FiTrendingUp,
+    accent: 'from-cyan-400 via-sky-500 to-indigo-500',
+    glow: 'bg-cyan-400/25 dark:bg-cyan-500/14',
+    metric: 'Compound Math',
+    features: [
+      'Daily/Monthly/Yearly Compound',
+      'Support custom additions',
+      'Interactive growth chart',
+      'Annual growth projection table'
+    ],
+    badges: [
+      'Advanced',
+      'Private',
+      'Free'
+    ],
+    preview: [
+      { label: 'Compounding', value: '5 Frequencies' },
+      { label: 'Additions', value: 'Monthly or Yearly' },
+      { label: 'Schedule', value: 'Annual Projections' },
     ],
   }
 ]

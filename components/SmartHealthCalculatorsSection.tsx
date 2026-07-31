@@ -43,6 +43,14 @@ const calculators = [
     icon: FiActivity,
   },
   {
+    title: 'Calories Burned',
+    description: 'Calculate calories burned during workouts, sports, and daily activities based on your weight.',
+    href: '/calories-burned-calculator',
+    metric: 'burn',
+    accent: 'from-orange-300 via-amber-400 to-rose-500',
+    icon: FiActivity,
+  },
+  {
     title: 'BMI Calculator',
     description: 'Check your Body Mass Index (BMI) to understand if your weight is in a healthy range.',
     href: '/bmi-calculator',

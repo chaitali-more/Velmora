@@ -6,8 +6,6 @@ import {
   FiChevronDown,
   FiChevronUp,
   FiCopy,
-  FiDollarSign,
-  FiInfo,
   FiPieChart,
   FiRotateCcw,
   FiShield,
@@ -24,41 +22,40 @@ import {
 } from "recharts";
 import { buildToolPageSchema } from "@/lib/tool-page-schema";
 
-type TenureUnit = "years" | "months";
+type InvestmentMode = "sip" | "lumpsum";
 
-interface YearlyAmortization {
+interface YearlyCompounding {
   year: number;
-  principalPaid: number;
-  interestPaid: number;
-  totalPaid: number;
-  remainingBalance: number;
+  investedSoFar: number;
+  maturityValue: number;
+  estReturns: number;
 }
 
 const faqData = [
   {
-    question: "What is EMI and how is it calculated?",
+    question: "What is a Systematic Investment Plan (SIP) and how does it work?",
     answer:
-      "EMI stands for Equated Monthly Installment. It is a fixed payment amount made by a borrower to a lender at a specified date each calendar month. EMI is calculated using the reducing balance method formula: EMI = P × r × (1 + r)^n / ((1 + r)^n − 1), where P is the loan principal, r is the monthly interest rate, and n is the total number of monthly installments.",
+      "A Systematic Investment Plan (SIP) is an investment vehicle offered by mutual funds where you invest a fixed amount of money regularly (e.g., monthly) instead of making a one-time payment. It allows you to build wealth over time through compounding and benefits from Rupee Cost Averaging, meaning you buy more units when prices are low and fewer when they are high.",
   },
   {
-    question: "How does changing loan tenure affect my monthly EMI and total interest?",
+    question: "What is the difference between SIP and Lumpsum investment?",
     answer:
-      "A longer loan tenure reduces your monthly EMI amount, making payments more manageable in the short term. However, it significantly increases the total interest payable over the entire life of the loan. Conversely, a shorter tenure leads to higher monthly EMIs but drastically reduces total interest paid.",
+      "A SIP involves regular, periodic contributions (monthly, weekly, etc.) into an investment plan. It is ideal for salaried individuals to invest systematically. A Lumpsum investment is a one-time major deposit made at once, suitable for those who have a large surplus of idle cash (e.g., from bonuses, property sales, or savings).",
   },
   {
-    question: "What is the reducing balance method for interest calculation?",
+    question: "How does the compounding formula calculate SIP returns?",
     answer:
-      "In the reducing balance method, interest is calculated every month on the outstanding principal balance rather than the initial principal amount. As you pay each monthly EMI, a portion goes toward interest and the rest reduces the principal, resulting in lower interest charges in subsequent months.",
+      "SIP returns are calculated using the Future Value of an Annuity formula: M = P × [ ( (1 + i)^n - 1 ) / i ] × (1 + i), where P is the monthly investment, i is the periodic interest rate (annual return rate divided by 12, then divided by 100), and n is the total number of monthly payments. Compounding helps your accumulated returns earn further returns over the investment period.",
   },
   {
-    question: "Can I use this calculator for Home, Car, and Personal Loans?",
+    question: "What expected return rate should I enter in the calculator?",
     answer:
-      "Yes! This EMI calculator works for all types of reducing-balance loans, including home loans, auto/car loans, personal loans, education loans, and business loans. Simply adjust the loan amount, interest rate, and tenure according to your loan terms.",
+      "Mutual funds do not offer guaranteed returns as they are linked to the market. Historically, long-term equity mutual funds in India have delivered average returns ranging between 12% to 15% per annum. Debt mutual funds generally yield between 6% to 9%. You should choose a conservative expected rate of return based on your fund type and historic performance.",
   },
   {
-    question: "How does an amortization schedule help in financial planning?",
+    question: "How does Rupee Cost Averaging help long-term investors?",
     answer:
-      "An amortization schedule breaks down each repayment into principal paid and interest paid across the loan tenure. Viewing the year-by-year summary allows you to see how your balance decreases over time and helps you plan prepayments or refinancing effectively.",
+      "Rupee Cost Averaging eliminates the need to time the market. When market prices fall, your fixed SIP installment buys more mutual fund units. When markets rise, it buys fewer units. Over a long tenure, this averages out the cost of unit purchase, lowering your overall purchase price and maximizing profits when the market trends upward.",
   },
 ];
 
@@ -84,26 +81,21 @@ const formatINR = (val: number): string => {
   }).format(Math.round(val));
 };
 
-const formatNumberOnly = (val: number): string => {
-  if (isNaN(val) || !isFinite(val)) return "0";
-  return new Intl.NumberFormat("en-IN", {
-    maximumFractionDigits: 2,
-  }).format(val);
-};
-
-export default function EmiCalculatorClientPage() {
+export default function SipCalculatorClientPage() {
   const [isMounted, setIsMounted] = useState(false);
 
-  // Input states
-  const [loanAmount, setLoanAmount] = useState<number>(500000);
-  const [loanAmountInput, setLoanAmountInput] = useState<string>("500000");
+  // Mode state
+  const [mode, setMode] = useState<InvestmentMode>("sip");
 
-  const [interestRate, setInterestRate] = useState<number>(10);
-  const [interestRateInput, setInterestRateInput] = useState<string>("10");
+  // Inputs
+  const [amount, setAmount] = useState<number>(5000);
+  const [amountInput, setAmountInput] = useState<string>("5000");
 
-  const [tenure, setTenure] = useState<number>(5);
-  const [tenureInput, setTenureInput] = useState<string>("5");
-  const [tenureUnit, setTenureUnit] = useState<TenureUnit>("years");
+  const [returnRate, setReturnRate] = useState<number>(12);
+  const [returnRateInput, setReturnRateInput] = useState<string>("12");
+
+  const [tenure, setTenure] = useState<number>(10);
+  const [tenureInput, setTenureInput] = useState<string>("10");
 
   // UI state
   const [copied, setCopied] = useState(false);
@@ -112,11 +104,12 @@ export default function EmiCalculatorClientPage() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   useEffect(() => {
-    setIsMounted(true);
+    const timer = setTimeout(() => setIsMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const toolSchema = useMemo(() => {
-    return buildToolPageSchema("/tools/emi-calculator");
+    return buildToolPageSchema("/tools/sip-calculator");
   }, []);
 
   const showToast = (msg: string) => {
@@ -126,38 +119,51 @@ export default function EmiCalculatorClientPage() {
     }, 2500);
   };
 
-  // Synchronize numeric input values when state updates
-  const handleLoanAmountChange = (val: number) => {
-    const clamped = Math.max(10000, Math.min(100000000, val));
-    setLoanAmount(clamped);
-    setLoanAmountInput(clamped.toString());
-  };
-
-  const handleLoanAmountInput = (strVal: string) => {
-    setLoanAmountInput(strVal);
-    const parsed = parseFloat(strVal.replace(/[^0-9.]/g, ""));
-    if (!isNaN(parsed) && parsed >= 0) {
-      setLoanAmount(parsed);
+  // Auto-adjust default amount ranges when switching modes
+  const handleModeChange = (selectedMode: InvestmentMode) => {
+    if (selectedMode === mode) return;
+    setMode(selectedMode);
+    if (selectedMode === "sip") {
+      setAmount(5000);
+      setAmountInput("5000");
+    } else {
+      setAmount(50000);
+      setAmountInput("50000");
     }
   };
 
-  const handleInterestRateChange = (val: number) => {
-    const clamped = Math.max(0.1, Math.min(30, val));
-    setInterestRate(clamped);
-    setInterestRateInput(clamped.toString());
+  const handleAmountChange = (val: number) => {
+    const minVal = mode === "sip" ? 500 : 1000;
+    const maxVal = mode === "sip" ? 1000000 : 10000000;
+    const clamped = Math.max(minVal, Math.min(maxVal, val));
+    setAmount(clamped);
+    setAmountInput(clamped.toString());
   };
 
-  const handleInterestRateInput = (strVal: string) => {
-    setInterestRateInput(strVal);
+  const handleAmountInput = (strVal: string) => {
+    setAmountInput(strVal);
     const parsed = parseFloat(strVal.replace(/[^0-9.]/g, ""));
     if (!isNaN(parsed) && parsed >= 0) {
-      setInterestRate(parsed);
+      setAmount(parsed);
+    }
+  };
+
+  const handleReturnRateChange = (val: number) => {
+    const clamped = Math.max(1, Math.min(30, val));
+    setReturnRate(clamped);
+    setReturnRateInput(clamped.toString());
+  };
+
+  const handleReturnRateInput = (strVal: string) => {
+    setReturnRateInput(strVal);
+    const parsed = parseFloat(strVal.replace(/[^0-9.]/g, ""));
+    if (!isNaN(parsed) && parsed >= 0) {
+      setReturnRate(parsed);
     }
   };
 
   const handleTenureChange = (val: number) => {
-    const maxVal = tenureUnit === "years" ? 30 : 360;
-    const clamped = Math.max(1, Math.min(maxVal, val));
+    const clamped = Math.max(1, Math.min(40, val));
     setTenure(clamped);
     setTenureInput(clamped.toString());
   };
@@ -170,124 +176,96 @@ export default function EmiCalculatorClientPage() {
     }
   };
 
-  const handleTenureUnitToggle = (unit: TenureUnit) => {
-    if (unit === tenureUnit) return;
-    if (unit === "months") {
-      const convertedMonths = Math.min(360, Math.max(1, tenure * 12));
-      setTenureUnit("months");
-      setTenure(convertedMonths);
-      setTenureInput(convertedMonths.toString());
-    } else {
-      const convertedYears = Math.min(30, Math.max(1, Math.round(tenure / 12)));
-      setTenureUnit("years");
-      setTenure(convertedYears);
-      setTenureInput(convertedYears.toString());
-    }
-  };
-
-  // Core EMI Calculation
+  // Core Compounding Calculations
   const calculationResults = useMemo(() => {
-    const P = Math.max(0, loanAmount);
-    const annualRate = Math.max(0, interestRate);
-    const totalMonths =
-      tenureUnit === "years" ? tenure * 12 : Math.max(1, tenure);
+    const P = Math.max(0, amount);
+    const R = Math.max(0, returnRate);
+    const Y = Math.max(1, tenure);
 
-    if (P <= 0 || totalMonths <= 0) {
-      return {
-        monthlyEmi: 0,
-        totalInterest: 0,
-        totalPayment: 0,
-        principalAmount: P,
-        totalMonths,
-        amortization: [] as YearlyAmortization[],
-      };
-    }
+    let investedAmount = 0;
+    let maturityValue = 0;
+    const amortization: YearlyCompounding[] = [];
 
-    const r = annualRate / 12 / 100;
-    let monthlyEmi = 0;
+    if (mode === "sip") {
+      const monthlyRate = R / 12 / 100;
+      const totalMonths = Y * 12;
 
-    if (r === 0) {
-      monthlyEmi = P / totalMonths;
-    } else {
-      const compoundFactor = Math.pow(1 + r, totalMonths);
-      monthlyEmi = (P * r * compoundFactor) / (compoundFactor - 1);
-    }
+      investedAmount = P * totalMonths;
 
-    const totalPayment = monthlyEmi * totalMonths;
-    const totalInterest = Math.max(0, totalPayment - P);
+      if (monthlyRate === 0) {
+        maturityValue = P * totalMonths;
+      } else {
+        maturityValue = P * ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate) * (1 + monthlyRate);
+      }
 
-    // Amortization Schedule (Year-by-Year Aggregation)
-    const amortization: YearlyAmortization[] = [];
-    let currentBalance = P;
-    let currentYearPrincipal = 0;
-    let currentYearInterest = 0;
-    let currentYearTotal = 0;
-
-    for (let month = 1; month <= totalMonths; month++) {
-      const monthInterest = r === 0 ? 0 : currentBalance * r;
-      const monthPrincipal = Math.min(
-        currentBalance,
-        monthlyEmi - monthInterest
-      );
-      const monthTotal = monthPrincipal + monthInterest;
-
-      currentBalance = Math.max(0, currentBalance - monthPrincipal);
-
-      currentYearPrincipal += monthPrincipal;
-      currentYearInterest += monthInterest;
-      currentYearTotal += monthTotal;
-
-      const isYearEnd = month % 12 === 0 || month === totalMonths;
-      if (isYearEnd) {
-        const yearNumber = Math.ceil(month / 12);
+      // Populate year-by-year growth
+      for (let year = 1; year <= Y; year++) {
+        const months = year * 12;
+        const yearInvested = P * months;
+        let yearMaturity = 0;
+        if (monthlyRate === 0) {
+          yearMaturity = P * months;
+        } else {
+          yearMaturity = P * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate);
+        }
         amortization.push({
-          year: yearNumber,
-          principalPaid: currentYearPrincipal,
-          interestPaid: currentYearInterest,
-          totalPaid: currentYearTotal,
-          remainingBalance: currentBalance,
+          year,
+          investedSoFar: yearInvested,
+          maturityValue: yearMaturity,
+          estReturns: Math.max(0, yearMaturity - yearInvested),
         });
-        currentYearPrincipal = 0;
-        currentYearInterest = 0;
-        currentYearTotal = 0;
+      }
+    } else {
+      // Lumpsum Mode
+      const annualRateDecimal = R / 100;
+      investedAmount = P;
+      maturityValue = P * Math.pow(1 + annualRateDecimal, Y);
+
+      // Populate year-by-year growth
+      for (let year = 1; year <= Y; year++) {
+        const yearMaturity = P * Math.pow(1 + annualRateDecimal, year);
+        amortization.push({
+          year,
+          investedSoFar: P,
+          maturityValue: yearMaturity,
+          estReturns: Math.max(0, yearMaturity - P),
+        });
       }
     }
 
+    const estReturns = Math.max(0, maturityValue - investedAmount);
+
     return {
-      monthlyEmi,
-      totalInterest,
-      totalPayment,
-      principalAmount: P,
-      totalMonths,
+      investedAmount,
+      estReturns,
+      maturityValue,
       amortization,
     };
-  }, [loanAmount, interestRate, tenure, tenureUnit]);
+  }, [mode, amount, returnRate, tenure]);
 
   // Recharts Data
   const chartData = useMemo(() => {
     return [
-      { name: "Principal Amount", value: calculationResults.principalAmount },
-      { name: "Total Interest", value: calculationResults.totalInterest },
+      { name: "Invested Amount", value: calculationResults.investedAmount },
+      { name: "Estimated Returns", value: calculationResults.estReturns },
     ];
   }, [calculationResults]);
 
   const COLORS = ["#06b6d4", "#a855f7"]; // Cyan & Purple matching Velmora gradient
 
   const handleCopySummary = async () => {
-    const text = `Loan Amount: ${formatINR(
-      calculationResults.principalAmount
-    )}\nInterest Rate: ${interestRate}%\nTenure: ${tenure} ${tenureUnit}\nMonthly EMI: ${formatINR(
-      calculationResults.monthlyEmi
-    )}\nTotal Interest: ${formatINR(
-      calculationResults.totalInterest
-    )}\nTotal Payment: ${formatINR(
-      calculationResults.totalPayment
-    )}\nCalculated with Velmora EMI Calculator`;
+    const text = `Investment Mode: ${mode.toUpperCase()}\nInvested Amount: ${formatINR(
+      calculationResults.investedAmount
+    )}\nExpected Return Rate: ${returnRate}%\nTenure: ${tenure} Years\nEstimated Returns: ${formatINR(
+      calculationResults.estReturns
+    )}\nTotal Value (Maturity): ${formatINR(
+      calculationResults.maturityValue
+    )}\nCalculated with Velmora SIP & Lumpsum Calculator`;
 
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      showToast("EMI summary copied to clipboard!");
+      showToast("Investment summary copied to clipboard!");
       setTimeout(() => setCopied(false), 2000);
     } catch {
       showToast("Failed to copy to clipboard.");
@@ -295,21 +273,23 @@ export default function EmiCalculatorClientPage() {
   };
 
   const handleReset = () => {
-    setLoanAmount(500000);
-    setLoanAmountInput("500000");
-    setInterestRate(10);
-    setInterestRateInput("10");
-    setTenure(5);
-    setTenureInput("5");
-    setTenureUnit("years");
+    if (mode === "sip") {
+      setAmount(5000);
+      setAmountInput("5000");
+    } else {
+      setAmount(50000);
+      setAmountInput("50000");
+    }
+    setReturnRate(12);
+    setReturnRateInput("12");
+    setTenure(10);
+    setTenureInput("10");
     showToast("Values reset to default!");
   };
 
   const toggleFaq = (index: number) => {
     setOpenFaqIndex((prev) => (prev === index ? null : index));
   };
-
-  const maxTenureRange = tenureUnit === "years" ? 30 : 360;
 
   return (
     <>
@@ -343,23 +323,46 @@ export default function EmiCalculatorClientPage() {
                 Free Online Tool • 100% Browser Private
               </span>
               <h1 className="mt-2.5 text-2xl font-black tracking-tight text-slate-900 sm:text-4xl dark:text-slate-100">
-                EMI Calculator
+                SIP & Lumpsum Calculator
               </h1>
               <p className="mt-2 max-w-3xl text-xs leading-relaxed text-slate-600 sm:text-base dark:text-slate-300">
-                Calculate your monthly loan EMI, total interest, and repayment
-                schedule instantly — for home loans, car loans, or personal
-                loans. Get an interactive breakdown chart and full
-                amortization details with zero signup required.
+                Calculate expected returns for your mutual fund Systematic Investment Plan (SIP) or one-time Lumpsum investments instantly. Get an interactive breakdown chart and a year-by-year compounding growth schedule.
               </p>
+            </div>
+
+            {/* Tab Selector */}
+            <div className="mt-6 grid grid-cols-2 border-b border-slate-200 dark:border-white/10">
+              <button
+                type="button"
+                onClick={() => handleModeChange("sip")}
+                className={`py-3.5 px-2 text-xs sm:text-sm font-black transition relative text-center ${
+                  mode === "sip"
+                    ? "text-cyan-600 dark:text-cyan-400 border-b-2 border-cyan-500 dark:border-cyan-400"
+                    : "text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
+                }`}
+              >
+                SIP (Monthly Investment)
+              </button>
+              <button
+                type="button"
+                onClick={() => handleModeChange("lumpsum")}
+                className={`py-3.5 px-2 text-xs sm:text-sm font-black transition relative text-center ${
+                  mode === "lumpsum"
+                    ? "text-cyan-600 dark:text-cyan-400 border-b-2 border-cyan-500 dark:border-cyan-400"
+                    : "text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
+                }`}
+              >
+                Lumpsum (One-time)
+              </button>
             </div>
 
             {/* Main Interactive Workspace (Grid layout) */}
             <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
-              {/* Input Parameters Section (Left side on desktop) */}
+              {/* Input Parameters Section */}
               <div className="space-y-5 rounded-2xl border border-slate-200/80 bg-white p-4 sm:p-6 dark:border-white/10 dark:bg-slate-900/40 lg:col-span-6">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3 dark:border-white/5">
                   <h2 className="text-sm font-black uppercase tracking-wider text-slate-800 dark:text-slate-200">
-                    Loan Details
+                    Investment Details
                   </h2>
                   <button
                     type="button"
@@ -371,11 +374,11 @@ export default function EmiCalculatorClientPage() {
                   </button>
                 </div>
 
-                {/* Field 1: Loan Amount */}
+                {/* Field 1: Amount */}
                 <div className="space-y-2.5">
                   <div className="flex items-center justify-between">
                     <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                      Loan Amount (₹)
+                      {mode === "sip" ? "Monthly Investment (₹)" : "Lumpsum Investment (₹)"}
                     </label>
                     <div className="relative w-36 sm:w-44">
                       <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">
@@ -384,8 +387,8 @@ export default function EmiCalculatorClientPage() {
                       <input
                         type="number"
                         inputMode="decimal"
-                        value={loanAmountInput}
-                        onChange={(e) => handleLoanAmountInput(e.target.value)}
+                        value={amountInput}
+                        onChange={(e) => handleAmountInput(e.target.value)}
                         className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-7 pr-3 text-right text-sm font-black text-slate-900 outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-slate-950/70 dark:text-slate-100 dark:focus:border-cyan-400 dark:focus:bg-slate-950"
                       />
                     </div>
@@ -393,32 +396,40 @@ export default function EmiCalculatorClientPage() {
 
                   <input
                     type="range"
-                    min={10000}
-                    max={10000000}
-                    step={10000}
-                    value={loanAmount}
-                    onChange={(e) =>
-                      handleLoanAmountChange(Number(e.target.value))
-                    }
+                    min={mode === "sip" ? 500 : 1000}
+                    max={mode === "sip" ? 100000 : 1000000}
+                    step={mode === "sip" ? 500 : 1000}
+                    value={amount}
+                    onChange={(e) => handleAmountChange(Number(e.target.value))}
                     className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-cyan-500 dark:bg-slate-800 dark:accent-cyan-400"
                   />
 
-                  {/* Quick Preset Buttons for Loan Amount */}
+                  {/* Quick Preset Buttons */}
                   <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                    {[
-                      { label: "1 Lakh", value: 100000 },
-                      { label: "5 Lakhs", value: 500000 },
-                      { label: "10 Lakhs", value: 1000000 },
-                      { label: "25 Lakhs", value: 2500000 },
-                      { label: "50 Lakhs", value: 5000000 },
-                      { label: "1 Crore", value: 10000000 },
-                    ].map((preset) => (
+                    {(mode === "sip"
+                      ? [
+                          { label: "₹1,000", value: 1000 },
+                          { label: "₹2,000", value: 2000 },
+                          { label: "₹5,000", value: 5000 },
+                          { label: "₹10,000", value: 10000 },
+                          { label: "₹25,000", value: 25000 },
+                          { label: "₹50,000", value: 50000 },
+                        ]
+                      : [
+                          { label: "₹10,000", value: 10000 },
+                          { label: "₹25,000", value: 25000 },
+                          { label: "₹50,000", value: 50000 },
+                          { label: "₹1 Lakh", value: 100000 },
+                          { label: "₹5 Lakhs", value: 500000 },
+                          { label: "₹10 Lakhs", value: 1000000 },
+                        ]
+                    ).map((preset) => (
                       <button
                         key={preset.value}
                         type="button"
-                        onClick={() => handleLoanAmountChange(preset.value)}
+                        onClick={() => handleAmountChange(preset.value)}
                         className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition ${
-                          loanAmount === preset.value
+                          amount === preset.value
                             ? "bg-cyan-500 text-white shadow-sm"
                             : "border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 dark:border-white/10 dark:bg-slate-800/60 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200"
                         }`}
@@ -429,21 +440,19 @@ export default function EmiCalculatorClientPage() {
                   </div>
                 </div>
 
-                {/* Field 2: Interest Rate */}
+                {/* Field 2: Expected returnRate */}
                 <div className="space-y-2.5 pt-2">
                   <div className="flex items-center justify-between">
                     <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                      Interest Rate (% p.a.)
+                      Expected Return Rate (% p.a.)
                     </label>
                     <div className="relative w-28 sm:w-32">
                       <input
                         type="number"
                         inputMode="decimal"
                         step="0.1"
-                        value={interestRateInput}
-                        onChange={(e) =>
-                          handleInterestRateInput(e.target.value)
-                        }
+                        value={returnRateInput}
+                        onChange={(e) => handleReturnRateInput(e.target.value)}
                         className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-3 pr-7 text-right text-sm font-black text-slate-900 outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-slate-950/70 dark:text-slate-100 dark:focus:border-cyan-400 dark:focus:bg-slate-950"
                       />
                       <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">
@@ -457,22 +466,20 @@ export default function EmiCalculatorClientPage() {
                     min={1}
                     max={30}
                     step={0.1}
-                    value={interestRate}
-                    onChange={(e) =>
-                      handleInterestRateChange(Number(e.target.value))
-                    }
+                    value={returnRate}
+                    onChange={(e) => handleReturnRateChange(Number(e.target.value))}
                     className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-violet-500 dark:bg-slate-800 dark:accent-violet-400"
                   />
 
                   {/* Preset Rates */}
                   <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                    {[7.5, 8.5, 9.5, 10.5, 12, 14].map((rate) => (
+                    {[6, 8, 10, 12, 15, 18, 20].map((rate) => (
                       <button
                         key={rate}
                         type="button"
-                        onClick={() => handleInterestRateChange(rate)}
+                        onClick={() => handleReturnRateChange(rate)}
                         className={`rounded-lg px-2.5 py-1 text-[11px] font-bold transition ${
-                          interestRate === rate
+                          returnRate === rate
                             ? "bg-violet-500 text-white shadow-sm"
                             : "border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 dark:border-white/10 dark:bg-slate-800/60 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200"
                         }`}
@@ -483,70 +490,39 @@ export default function EmiCalculatorClientPage() {
                   </div>
                 </div>
 
-                {/* Field 3: Loan Tenure */}
+                {/* Field 3: Time Period */}
                 <div className="space-y-2.5 pt-2">
                   <div className="flex items-center justify-between">
                     <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                      Loan Tenure
+                      Time Period (Years)
                     </label>
-
-                    {/* Unit Toggle Button Group */}
-                    <div className="flex items-center gap-2">
-                      <div className="inline-flex rounded-xl border border-slate-200 bg-slate-100 p-1 dark:border-white/10 dark:bg-slate-950">
-                        <button
-                          type="button"
-                          onClick={() => handleTenureUnitToggle("years")}
-                          className={`rounded-lg px-2.5 py-1 text-xs font-bold transition ${
-                            tenureUnit === "years"
-                              ? "bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 text-white shadow-sm"
-                              : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-                          }`}
-                        >
-                          Yr
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleTenureUnitToggle("months")}
-                          className={`rounded-lg px-2.5 py-1 text-xs font-bold transition ${
-                            tenureUnit === "months"
-                              ? "bg-gradient-to-br from-cyan-400 via-violet-500 to-fuchsia-500 text-white shadow-sm"
-                              : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-                          }`}
-                        >
-                          Mo
-                        </button>
-                      </div>
-
-                      <div className="w-24 sm:w-28">
-                        <input
-                          type="number"
-                          inputMode="decimal"
-                          value={tenureInput}
-                          onChange={(e) => handleTenureInput(e.target.value)}
-                          className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 px-3 text-right text-sm font-black text-slate-900 outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-slate-950/70 dark:text-slate-100 dark:focus:border-cyan-400 dark:focus:bg-slate-950"
-                        />
-                      </div>
+                    <div className="relative w-28 sm:w-32">
+                      <input
+                        type="number"
+                        inputMode="numeric"
+                        value={tenureInput}
+                        onChange={(e) => handleTenureInput(e.target.value)}
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-2 pl-3 pr-7 text-right text-sm font-black text-slate-900 outline-none transition focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/10 dark:border-white/10 dark:bg-slate-950/70 dark:text-slate-100 dark:focus:border-cyan-400 dark:focus:bg-slate-950"
+                      />
+                      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">
+                        Yr
+                      </span>
                     </div>
                   </div>
 
                   <input
                     type="range"
                     min={1}
-                    max={maxTenureRange}
+                    max={40}
                     step={1}
                     value={tenure}
-                    onChange={(e) =>
-                      handleTenureChange(Number(e.target.value))
-                    }
+                    onChange={(e) => handleTenureChange(Number(e.target.value))}
                     className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-fuchsia-500 dark:bg-slate-800 dark:accent-fuchsia-400"
                   />
 
                   {/* Preset Tenure Buttons */}
                   <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                    {(tenureUnit === "years"
-                      ? [1, 3, 5, 10, 15, 20, 30]
-                      : [12, 24, 36, 60, 120, 180, 240]
-                    ).map((tVal) => (
+                    {[1, 5, 10, 15, 20, 25, 30, 40].map((tVal) => (
                       <button
                         key={tVal}
                         type="button"
@@ -557,7 +533,7 @@ export default function EmiCalculatorClientPage() {
                             : "border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 dark:border-white/10 dark:bg-slate-800/60 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200"
                         }`}
                       >
-                        {tVal} {tenureUnit === "years" ? "Yrs" : "Mos"}
+                        {tVal} Yrs
                       </button>
                     ))}
                   </div>
@@ -567,47 +543,37 @@ export default function EmiCalculatorClientPage() {
               {/* StatCards & Visual Breakdown Chart (Right side on desktop) */}
               <div className="space-y-5 lg:col-span-6">
                 {/* StatCards Grid */}
-                <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-3">
-                  {/* Primary Highlight Card: Monthly EMI */}
-                  <div className="relative overflow-hidden rounded-2xl border border-cyan-300/80 bg-gradient-to-br from-cyan-500/10 via-violet-500/10 to-fuchsia-500/10 p-4.5 text-center shadow-lg shadow-cyan-500/5 sm:col-span-3 dark:border-cyan-400/30 dark:from-cyan-400/15 dark:to-violet-500/15">
+                <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+                  {/* Primary Highlight Card: Maturity Value */}
+                  <div className="relative overflow-hidden rounded-2xl border border-cyan-300/80 bg-gradient-to-br from-cyan-500/10 via-violet-500/10 to-fuchsia-500/10 p-4.5 text-center shadow-lg shadow-cyan-500/5 sm:col-span-2 dark:border-cyan-400/30 dark:from-cyan-400/15 dark:to-violet-500/15">
                     <span className="text-[11px] font-black uppercase tracking-wider text-cyan-600 dark:text-cyan-300">
-                      Monthly Loan EMI
+                      Total Expected Wealth
                     </span>
                     <p className="mt-1 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-                      {formatINR(calculationResults.monthlyEmi)}
+                      {formatINR(calculationResults.maturityValue)}
                     </p>
                     <p className="mt-1 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
-                      Payable for {calculationResults.totalMonths} months
+                      Accumulated value after {tenure} years
                     </p>
                   </div>
 
-                  {/* Stat Card 2: Total Interest */}
-                  <div className="rounded-2xl border border-slate-200/80 bg-white p-4 text-center dark:border-white/10 dark:bg-slate-900/40">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
-                      Total Interest
-                    </span>
-                    <p className="mt-1 text-lg font-black text-slate-900 sm:text-xl dark:text-slate-100">
-                      {formatINR(calculationResults.totalInterest)}
-                    </p>
-                  </div>
-
-                  {/* Stat Card 3: Total Payment */}
+                  {/* Stat Card 2: Invested Amount */}
                   <div className="rounded-2xl border border-slate-200/80 bg-white p-4 text-center dark:border-white/10 dark:bg-slate-900/40">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
-                      Total Payment
+                      Invested Amount
                     </span>
                     <p className="mt-1 text-lg font-black text-slate-900 sm:text-xl dark:text-slate-100">
-                      {formatINR(calculationResults.totalPayment)}
+                      {formatINR(calculationResults.investedAmount)}
                     </p>
                   </div>
 
-                  {/* Stat Card 4: Principal Loan Amount */}
+                  {/* Stat Card 3: Est. Returns */}
                   <div className="rounded-2xl border border-slate-200/80 bg-white p-4 text-center dark:border-white/10 dark:bg-slate-900/40">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                      Principal Loan
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+                      Est. Returns
                     </span>
                     <p className="mt-1 text-lg font-black text-slate-900 sm:text-xl dark:text-slate-100">
-                      {formatINR(calculationResults.principalAmount)}
+                      {formatINR(calculationResults.estReturns)}
                     </p>
                   </div>
                 </div>
@@ -618,7 +584,7 @@ export default function EmiCalculatorClientPage() {
                     <div className="flex items-center gap-2">
                       <FiPieChart className="h-4 w-4 text-cyan-500" />
                       <h3 className="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200">
-                        Payment Breakdown
+                        Wealth Breakdown
                       </h3>
                     </div>
                     <button
@@ -656,6 +622,7 @@ export default function EmiCalculatorClientPage() {
                             ))}
                           </Pie>
                           <Tooltip
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
                             formatter={(value: any) => [
                               formatINR(Number(value) || 0),
                               "",
@@ -690,7 +657,7 @@ export default function EmiCalculatorClientPage() {
               </div>
             </div>
 
-            {/* Collapsible Year-by-Year Amortization Schedule Table */}
+            {/* Collapsible Year-by-Year Growth Table */}
             <div className="mt-8 rounded-2xl border border-slate-200/80 bg-white p-4 sm:p-6 dark:border-white/10 dark:bg-slate-900/40">
               <button
                 type="button"
@@ -701,11 +668,10 @@ export default function EmiCalculatorClientPage() {
                   <FiTable className="hidden sm:block h-4 w-4 text-violet-500" />
                   <div>
                     <h3 className="text-sm font-black uppercase tracking-wider text-slate-900 dark:text-slate-100">
-                      Amortization Schedule (Year-by-Year)
+                      Annual Compounding Growth Schedule
                     </h3>
                     <p className="text-xs text-slate-500 dark:text-slate-400">
-                      Click to {showAmortization ? "hide" : "view"} annual
-                      principal and interest breakdown
+                      Click to {showAmortization ? "hide" : "view"} year-by-year invested amount and estimated returns breakdown
                     </p>
                   </div>
                 </div>
@@ -727,16 +693,13 @@ export default function EmiCalculatorClientPage() {
                           Year
                         </th>
                         <th className="px-4 py-3 font-black uppercase tracking-wider">
-                          Principal Paid (₹)
+                          Invested Amount (₹)
                         </th>
                         <th className="px-4 py-3 font-black uppercase tracking-wider">
-                          Interest Paid (₹)
+                          Estimated Returns (₹)
                         </th>
                         <th className="px-4 py-3 font-black uppercase tracking-wider">
-                          Total Paid (₹)
-                        </th>
-                        <th className="px-4 py-3 font-black uppercase tracking-wider">
-                          Balance (₹)
+                          Total Value (₹)
                         </th>
                       </tr>
                     </thead>
@@ -750,16 +713,13 @@ export default function EmiCalculatorClientPage() {
                             Year {row.year}
                           </td>
                           <td className="px-4 py-3 font-semibold text-cyan-600 dark:text-cyan-400">
-                            {formatINR(row.principalPaid)}
+                            {formatINR(row.investedSoFar)}
                           </td>
                           <td className="px-4 py-3 font-semibold text-purple-600 dark:text-purple-400">
-                            {formatINR(row.interestPaid)}
+                            {formatINR(row.estReturns)}
                           </td>
                           <td className="px-4 py-3 font-bold text-slate-900 dark:text-slate-100">
-                            {formatINR(row.totalPaid)}
-                          </td>
-                          <td className="px-4 py-3 font-semibold text-slate-600 dark:text-slate-400">
-                            {formatINR(row.remainingBalance)}
+                            {formatINR(row.maturityValue)}
                           </td>
                         </tr>
                       ))}
@@ -775,8 +735,7 @@ export default function EmiCalculatorClientPage() {
                 Frequently Asked Questions (FAQ)
               </h2>
               <p className="mt-1 text-xs text-slate-600 sm:text-sm dark:text-slate-400">
-                Learn more about loan EMIs, interest calculations, and smart
-                repayment strategies.
+                Learn more about SIPs, lumpsum investing, compounding, and wealth creation strategies.
               </p>
 
               <div className="mt-6 space-y-3">
@@ -811,7 +770,8 @@ export default function EmiCalculatorClientPage() {
                 })}
               </div>
             </div>
-            <RelatedTools currentPath="/tools/emi-calculator" />
+
+            <RelatedTools currentPath="/tools/sip-calculator" />
           </main>
         </div>
       </div>

@@ -19,6 +19,11 @@ const calculators = [
     description: "Estimate daily calorie needs and get simple targets for maintenance, loss, or gain.",
   },
   {
+    name: "Calories Burned Calculator",
+    href: "/calories-burned-calculator",
+    description: "Calculate calories burned during workouts, sports, and daily activities based on body weight.",
+  },
+  {
     name: "BMI Calculator",
     href: "/bmi-calculator",
     description: "Check body mass index instantly with a visual result and category.",

@@ -80,6 +80,21 @@ const toolPageSchemaConfigs: Record<string, ToolPageSchemaConfig> = {
       'Gives instant browser-based results',
     ],
   },
+  '/calories-burned-calculator': {
+    path: '/calories-burned-calculator',
+    name: 'Calories Burned Calculator',
+    description:
+      'Free online calories burned calculator. Select from 15+ activities, enter duration & weight, and calculate exercise calorie burn using MET formulas.',
+    applicationCategory: ['HealthApplication', 'Fitness Calculators', 'Calculator'],
+    featureList: [
+      'Calculate energy expenditure for over 15 distinct exercises and sports',
+      'Uses standardized MET (Metabolic Equivalent of Task) values',
+      'Supports kg and lbs weight unit conversions',
+      'Provides engaging food calorie equivalence insights',
+      'Generates comparison grid matching workout durations across other activities',
+      '100% private client-side browser execution',
+    ],
+  },
   '/protein-calculator': {
     path: '/protein-calculator',
     name: 'Protein Calculator',
@@ -223,6 +238,78 @@ const toolPageSchemaConfigs: Record<string, ToolPageSchemaConfig> = {
       'Year-by-year collapsible amortization schedule table',
       'Numeric inputMode for mobile keypads',
       '100% private browser-based tool',
+    ],
+  },
+  '/tools/sip-calculator': {
+    path: '/tools/sip-calculator',
+    name: 'SIP Calculator',
+    description:
+      'Free online SIP calculator to calculate maturity amount, invested amount, and estimated returns of systematic investment plans (SIP) and lumpsum investments.',
+    applicationCategory: ['UtilitiesApplication', 'FinanceApplication', 'Calculator'],
+    featureList: [
+      'Calculate mutual fund SIP & lumpsum returns',
+      'Synced slider and numeric inputs for investment amount, expected returns rate, and tenure',
+      'Supports both monthly SIP and one-time lumpsum investment modes',
+      'Interactive pie chart breakdown of total invested vs. returns',
+      'Year-by-year collapsible growth schedule table',
+      'Numeric inputMode for mobile keypads',
+      '100% private browser-based tool',
+    ],
+  },
+  '/tools/compound-interest-calculator': {
+    path: '/tools/compound-interest-calculator',
+    name: 'Compound Interest Calculator',
+    description:
+      'Free online compound interest calculator to calculate the future value of your savings or investments with optional daily, monthly, quarterly, semi-annual, or annual deposits and compounding.',
+    applicationCategory: ['UtilitiesApplication', 'FinanceApplication', 'Calculator'],
+    featureList: [
+      'Calculate investment compounding growth over time',
+      'Supports daily, monthly, quarterly, semi-annual, and annual compounding frequencies',
+      'Allows regular monthly or yearly contributions/deposits',
+      'Interactive chart breakdown of principal, total deposits, and accumulated interest',
+      'Collapsible annual balance projection table',
+      '100% browser-based private logic with zero data collection',
+    ],
+  },
+  '/tools/compare-text': {
+    path: '/tools/compare-text',
+    name: 'Compare Text',
+    description:
+      'Free online diff checker and text comparison tool. Compare two texts side-by-side or inline and see highlights of additions, deletions, and differences instantly.',
+    applicationCategory: ['UtilitiesApplication', 'Text Tools', 'Productivity'],
+    featureList: [
+      'Side-by-side (split) and inline (unified) diff views',
+      'Highlight additions and deletions with clear green and red syntax styling',
+      'Compare line-by-line instantly on typing or clicking compare',
+      'Line gutters showing line numbers and change symbols (+/-)',
+      '100% browser-based private processing with zero server uploads',
+    ],
+  },
+  '/tools/lorem-ipsum-generator': {
+    path: '/tools/lorem-ipsum-generator',
+    name: 'Lorem Ipsum Generator',
+    description:
+      'Free online placeholder dummy text generator. Generate paragraphs, sentences, words, or lists with customizable length and optional HTML markup wrapping.',
+    applicationCategory: ['UtilitiesApplication', 'Text Tools', 'Productivity'],
+    featureList: [
+      'Generate customizable paragraphs, lists, sentences, and words',
+      'Toggle paragraphs length between short, medium, and long profiles',
+      'Add standard paragraph HTML tags (<p>) or list wrappers (<li>)',
+      'Include or omit starting \"Lorem ipsum dolor sit amet...\" placeholder text',
+      '100% browser-based private processing with zero server uploads',
+    ],
+  },
+  '/tools/image-to-base64': {
+    path: '/tools/image-to-base64',
+    name: 'Image to Base64',
+    description:
+      'Free online Base64 image converter. Convert PNG, JPG, SVG, and WebP images to Base64 strings, HTML img tags, or CSS rules, and decode Base64 back to image files.',
+    applicationCategory: ['UtilitiesApplication', 'Media Tools', 'Productivity'],
+    featureList: [
+      'Convert image files to raw Base64 data strings',
+      'Generate HTML img tag syntax and CSS background-image style rules',
+      'Decode Base64 strings back to previewable and downloadable image files',
+      '100% browser-based private processing with zero server uploads',
     ],
   },
   '/tools/json-formatter': {

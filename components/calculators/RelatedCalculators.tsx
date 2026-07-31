@@ -36,6 +36,13 @@ const allCalculators: CalculatorItem[] = [
     badge: "Calories",
   },
   {
+    title: "Calories Burned",
+    description: "Calculate calories burned during workouts, sports, and daily activities based on weight.",
+    href: "/calories-burned-calculator",
+    icon: FiActivity,
+    badge: "Calories",
+  },
+  {
     title: "Protein Calculator",
     description: "Determine daily protein targets based on activity and goals.",
     href: "/protein-calculator",
